@@ -5,15 +5,6 @@ using UnityEngine;
 public class CustomerTest : MonoBehaviour
 {
 
-    //customer gets spawned by a customer manager
-    //go to front of house desk --
-    //wait 2 seconds --
-    //check if a table is free
-    //move to empty table
-    //wait 2 seconds
-    //thought bubble appears
-    //player can then interact
-
     private float speed = 8.0f;
     public Vector3 FoHtarget;
     public Vector3 DeskTarget;
@@ -25,6 +16,10 @@ public class CustomerTest : MonoBehaviour
     public bool stoppedmoving;
 
     public GameObject ThoughtBubble;
+
+    public bool MovingtoDesk;
+    public bool WaitingatTable;
+    public bool 
 
     void Start()
     {
