@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI DialogueText;
+
+    public GameObject SnakeOrder;
+
+    public GameObject Buttons;
+    public GameObject ThoughtBubble;
+
+    public void YesButton()
     {
-        
+        DialogueText.text = "Yay!";
+        Buttons.SetActive(false);
+        SnakeOrder.SetActive(true);
+        ThoughtBubble.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void NoButton()
     {
-        
+        DialogueText.text = "Oh...";
     }
+
 }

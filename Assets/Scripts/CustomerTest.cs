@@ -19,16 +19,23 @@ public class CustomerTest : MonoBehaviour
 
     public bool MovingtoDesk;
     public bool WaitingatTable;
-    public bool 
+
+    public bool DayBegin;
 
     void Start()
     {
         position = gameObject.transform.position;
-        movingtofoh = true;
+        //movingtofoh = true;
     }
 
     void Update()
     {
+
+        if(DayBegin)
+        {
+            movingtofoh = true;
+            DayBegin = false;
+        }
         float step = speed * Time.deltaTime;
 
         if(movingtofoh)
@@ -36,7 +43,11 @@ public class CustomerTest : MonoBehaviour
             // move sprite towards the target location
             transform.position = Vector2.MoveTowards(transform.position, FoHtarget, step);
 
-            StartCoroutine(DeskWait());
+            if(!MovingtoDesk)
+            {
+                StartCoroutine(DeskWait());
+                MovingtoDesk = true;
+            }
         }
 
         if(movingtotable)
@@ -44,7 +55,11 @@ public class CustomerTest : MonoBehaviour
             // move sprite towards the target location
             transform.position = Vector2.MoveTowards(transform.position, DeskTarget, step);
 
-            StartCoroutine(ThoughtWait());
+            if(!WaitingatTable)
+            {
+                StartCoroutine(ThoughtWait());
+                WaitingatTable = true;
+            }
         }
     }
 

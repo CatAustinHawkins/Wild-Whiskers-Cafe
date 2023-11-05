@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 270772787}
   m_Layer: 0
   m_Name: PlayerSetup
-  m_TagString: Untagged
+  m_TagString: Setup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 376567875}
   - component: {fileID: 376567877}
   - component: {fileID: 376567876}
+  - component: {fileID: 376567878}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -424,6 +425,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376567874}
   m_CullTransparentMesh: 1
+--- !u!114 &376567878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376567874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923cb18d967c6974eb5d3cdc903c6979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnlyToSelection: 0
+  textToChangeColor: 
+  wobbleText: 1
+  wobblingSpeed: 3.8
 --- !u!1 &546989429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,7 +1114,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 829288565}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 270772787}
+        m_TargetAssemblyTypeName: PlayerSetup, Assembly-CSharp
+        m_MethodName: Finished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &829288565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,6 +1531,7 @@ GameObject:
   - component: {fileID: 1190637115}
   - component: {fileID: 1190637117}
   - component: {fileID: 1190637116}
+  - component: {fileID: 1190637118}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -1626,6 +1656,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190637114}
   m_CullTransparentMesh: 1
+--- !u!114 &1190637118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190637114}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923cb18d967c6974eb5d3cdc903c6979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnlyToSelection: 0
+  textToChangeColor: 
+  wobbleText: 1
+  wobblingSpeed: 3.8
 --- !u!1 &1203620863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,6 +1892,7 @@ GameObject:
   - component: {fileID: 1246976389}
   - component: {fileID: 1246976391}
   - component: {fileID: 1246976390}
+  - component: {fileID: 1246976392}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1893,7 +1940,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Finished
+  m_text: Finished?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7eedbb3b323e9f7429d8def5461dd35d, type: 2}
   m_sharedMaterial: {fileID: 4035300132230051486, guid: 7eedbb3b323e9f7429d8def5461dd35d, type: 2}
@@ -1970,6 +2017,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246976388}
   m_CullTransparentMesh: 1
+--- !u!114 &1246976392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246976388}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923cb18d967c6974eb5d3cdc903c6979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnlyToSelection: 0
+  textToChangeColor: 
+  wobbleText: 1
+  wobblingSpeed: 3.8
 --- !u!1 &1289209928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2120,7 @@ GameObject:
   - component: {fileID: 1410411887}
   - component: {fileID: 1410411889}
   - component: {fileID: 1410411888}
+  - component: {fileID: 1410411890}
   m_Layer: 5
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
@@ -2181,6 +2245,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410411886}
   m_CullTransparentMesh: 1
+--- !u!114 &1410411890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410411886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923cb18d967c6974eb5d3cdc903c6979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyOnlyToSelection: 0
+  textToChangeColor: 
+  wobbleText: 1
+  wobblingSpeed: 3.8
 --- !u!1 &1573698371
 GameObject:
   m_ObjectHideFlags: 0
