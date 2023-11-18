@@ -18,12 +18,6 @@ public class CustomerManager : MonoBehaviour
         SpawnCustomer();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public void SpawnCustomer()
     {

@@ -1,8 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+
+//Script by Madalaski
+//https://youtu.be/FgWVW2PL1bQ?si=-Efsc2-gfgUcEzaF 
+//Edited by @vimtutorials5234
+
 
 public class RainbowText : MonoBehaviour
 {

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class PlayerScript : MonoBehaviour
@@ -25,6 +22,17 @@ public class PlayerScript : MonoBehaviour
 
     public TextMeshProUGUI PlayerNameIntro;
 
+    //new work
+    public bool Recipe1InProgress;
+    //player needs to go to fridge and the chopping board
+
+    public bool Recipe2InProgress;
+    //player needs to go to the fridge, then the oven, the chopping board
+
+    public bool Recipe3InProgress;
+    //player needs to go the fridge, the oven, then the chopping board
+
+    public int CurrentCustomer;
 
     void Start()
     {
@@ -84,4 +92,6 @@ public class PlayerScript : MonoBehaviour
             DialogueBox.SetActive(false);
         }
     }
+
+
 }

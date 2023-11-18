@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomerTest : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class CustomerTest : MonoBehaviour
     public Vector3 FoHtarget;
     public Vector3 DeskTarget;
     private Vector2 position;
+    public Vector3 LeavingArea;
 
     public bool TableFree;
     public bool movingtofoh;
@@ -22,8 +23,25 @@ public class CustomerTest : MonoBehaviour
 
     public bool DayBegin;
 
+    public Slider Happiness;
+    public Slider OverallHappiness;
+    public float happinessvalue = 1;
+    public float overallhappinessvalue = 1;
+
+    public bool Leaving;
+
+    public GameObject NextCustomer;
+    public GameObject DayFinished;
+
+    public int CustomerNumber;
+
+    public PlayerScript Player;
+
+    public bool FoodReady;
+
     void Start()
     {
+        StartCoroutine(HappinessDecrease());
         position = gameObject.transform.position;
         //movingtofoh = true;
     }
@@ -31,6 +49,11 @@ public class CustomerTest : MonoBehaviour
     void Update()
     {
 
+        Player.CurrentCustomer = CustomerNumber;
+        if(overallhappinessvalue < 0)
+        {
+            DayFinished.SetActive(true);
+        }
         if(DayBegin)
         {
             movingtofoh = true;
@@ -61,6 +84,17 @@ public class CustomerTest : MonoBehaviour
                 WaitingatTable = true;
             }
         }
+
+        if(Leaving)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, LeavingArea, step);
+
+            if(transform.position == LeavingArea)
+            {
+                NextCustomer.SetActive(true);
+                Destroy(gameObject);
+            }
+        }
     }
 
 
@@ -86,5 +120,41 @@ public class CustomerTest : MonoBehaviour
         Debug.Log("ThoughtWaitDone");
 
 
+    }
+
+    IEnumerator HappinessDecrease()
+    {
+        happinessvalue = happinessvalue - 0.01f;
+        overallhappinessvalue = overallhappinessvalue - 0.00333f;
+        Happiness.value = happinessvalue;
+        OverallHappiness.value = overallhappinessvalue;
+        yield return new WaitForSeconds(1);
+        if(happinessvalue < 0)
+        {
+            Leaving = true;
+        }
+        else
+        {
+            StartCoroutine(HappinessDecrease());
+        }
+    }
+
+    public void Fed()
+    {
+        Leaving = true;
+        if(CustomerNumber == 3)
+        {
+            DayFinished.SetActive(true);
+
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "LeavingArea")
+        {
+            NextCustomer.SetActive(true);
+            Destroy(gameObject);
+        }
     }
 }

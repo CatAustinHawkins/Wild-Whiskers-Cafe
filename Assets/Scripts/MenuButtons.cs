@@ -1,11 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
 
+    public void FixedUpdate()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+    }
+
+    public void Start()
+    {
+        Screen.SetResolution(1600, 900, false);
+
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("PlayerSetup");
@@ -13,7 +25,7 @@ public class MenuButtons : MonoBehaviour
 
     public void OptionsMenu()
     {
-        SceneManager.LoadScene("Options");
+        SceneManager.LoadScene("OptionsMenu");
     }
 
     public void Close()

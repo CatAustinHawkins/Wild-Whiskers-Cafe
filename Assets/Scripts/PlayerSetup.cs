@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+//player setup
 
 public class PlayerSetup : MonoBehaviour
 {
 
     public TMP_InputField NameEntry;
 
-    public string PlayerName;
+    public string PlayerName = "Cat";
 
+    [Header("")]
     public Image Choice1;
     public Image Choice2;
     public Image Choice3;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CustomerTest
   - Setup
+  - LeavingArea
   layers:
   - Default
   - TransparentFX
