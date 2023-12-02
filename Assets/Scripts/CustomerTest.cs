@@ -41,7 +41,6 @@ public class CustomerTest : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(HappinessDecrease());
         position = gameObject.transform.position;
         //movingtofoh = true;
     }
@@ -120,23 +119,6 @@ public class CustomerTest : MonoBehaviour
         Debug.Log("ThoughtWaitDone");
 
 
-    }
-
-    IEnumerator HappinessDecrease()
-    {
-        happinessvalue = happinessvalue - 0.01f;
-        overallhappinessvalue = overallhappinessvalue - 0.00333f;
-        Happiness.value = happinessvalue;
-        OverallHappiness.value = overallhappinessvalue;
-        yield return new WaitForSeconds(1);
-        if(happinessvalue < 0)
-        {
-            Leaving = true;
-        }
-        else
-        {
-            StartCoroutine(HappinessDecrease());
-        }
     }
 
     public void Fed()
