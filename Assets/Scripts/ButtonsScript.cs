@@ -4,13 +4,14 @@ using UnityEngine.SceneManagement;
 public class ButtonsScript : MonoBehaviour
 {
 
-    public CustomerTest customertestscript;
     public GameObject StartDayWindow;
+
+    public GameObject Tutorials;
 
     public void StartGame()
     {
-        customertestscript.DayBegin = true;
         StartDayWindow.SetActive(false);
+        Tutorials.SetActive(true);
     }
 
     public void FinishedDay1()

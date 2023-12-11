@@ -30,7 +30,6 @@ public class CustomerTest : MonoBehaviour
 
     public bool Leaving;
 
-    public GameObject NextCustomer;
     public GameObject DayFinished;
 
     public int CustomerNumber;
@@ -38,6 +37,7 @@ public class CustomerTest : MonoBehaviour
     public PlayerScript Player;
 
     public bool FoodReady;
+
 
     void Start()
     {
@@ -90,8 +90,9 @@ public class CustomerTest : MonoBehaviour
 
             if(transform.position == LeavingArea)
             {
-                NextCustomer.SetActive(true);
                 Destroy(gameObject);
+                DayFinished.SetActive(true);
+
             }
         }
     }
@@ -124,18 +125,13 @@ public class CustomerTest : MonoBehaviour
     public void Fed()
     {
         Leaving = true;
-        if(CustomerNumber == 3)
-        {
-            DayFinished.SetActive(true);
-
-        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "LeavingArea")
         {
-            NextCustomer.SetActive(true);
+            DayFinished.SetActive(true);
             Destroy(gameObject);
         }
     }

@@ -3,26 +3,22 @@ using TMPro;
 
 public class Fridge : MonoBehaviour
 {
-    public TextMeshProUGUI PlayerHolding;
-    public PlayerScript Player;
+    public GameObject BambooIcon;
+    public GameObject BreadIcon;
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public bool HoldingBamboo;
+    public bool HoldingBread;
+
+    public void BambooButton()
     {
-        if(other.tag == "Player")
-        {
-            if(Player.CurrentCustomer == 1) 
-            {
-                PlayerHolding.text = "Holding: Bamboo, Hotdog Bun";
-            }
-            if (Player.CurrentCustomer == 2)
-            {
-                PlayerHolding.text = "Holding: Venison Steak";
-            }
-            if (Player.CurrentCustomer == 3)
-            {
-                PlayerHolding.text = "Holding: Mouse Burger, Burger Bun";
-            }
-        }
+        BambooIcon.SetActive(true);
+        HoldingBamboo = true;
+    }
+
+    public void BreadButton()
+    {
+        BreadIcon.SetActive(true);
+        HoldingBread = true;
     }
 
 }

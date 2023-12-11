@@ -7,6 +7,11 @@ TagManager:
   - CustomerTest
   - Setup
   - LeavingArea
+  - BackgroundMusic
+  - Oven
+  - Fridge
+  - ChoppingBoard
+  - PandaCustomer
   layers:
   - Default
   - TransparentFX

@@ -32,7 +32,7 @@ public class PlayerScript : MonoBehaviour
     public bool Recipe3InProgress;
     //player needs to go the fridge, the oven, then the chopping board
 
-    public int CurrentCustomer;
+    public int CurrentCustomer = 1;
 
     void Start()
     {
@@ -77,21 +77,6 @@ public class PlayerScript : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == "CustomerTest")
-        {
-            DialogueBox.SetActive(true);
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.tag == "CustomerTest")
-        {
-            DialogueBox.SetActive(false);
-        }
-    }
 
 
 }

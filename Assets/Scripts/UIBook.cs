@@ -1,7 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIBook : MonoBehaviour
 {
+
+    public Image IngredientsChoice;
+    public Image RecipeChoice;
+    public Image AnimalsChoice;
+    public Image ShopChoice;
+    public Image OptionsChoice;
 
     public GameObject UIBookImage;
 
@@ -121,6 +128,12 @@ public class UIBook : MonoBehaviour
         AnimalsSection.SetActive(false);
         ShopSection.SetActive(false);
         OptionsSection.SetActive(false);
+
+        IngredientsChoice.color = new Color32(171, 171, 171, 255);
+        RecipeChoice.color = new Color32(255, 255, 255, 255);
+        AnimalsChoice.color = new Color32(255, 255, 255, 255);
+        ShopChoice.color = new Color32(255, 255, 255, 255);
+        OptionsChoice.color = new Color32(255, 255, 255, 255);
     }
     public void OpenRecipes()
     {
@@ -129,6 +142,12 @@ public class UIBook : MonoBehaviour
         AnimalsSection.SetActive(false);
         ShopSection.SetActive(false);
         OptionsSection.SetActive(false);
+
+        RecipeChoice.color = new Color32(171, 171, 171, 255);
+        IngredientsChoice.color = new Color32(255, 255, 255, 255);
+        AnimalsChoice.color = new Color32(255, 255, 255, 255);
+        ShopChoice.color = new Color32(255, 255, 255, 255);
+        OptionsChoice.color = new Color32(255, 255, 255, 255);
     }
 
     public void OpenAnimals()
@@ -138,6 +157,13 @@ public class UIBook : MonoBehaviour
         AnimalsSection.SetActive(true);
         ShopSection.SetActive(false);
         OptionsSection.SetActive(false);
+
+
+        AnimalsChoice.color = new Color32(171, 171, 171, 255);
+        RecipeChoice.color = new Color32(255, 255, 255, 255);
+        IngredientsChoice.color = new Color32(255, 255, 255, 255);
+        ShopChoice.color = new Color32(255, 255, 255, 255);
+        OptionsChoice.color = new Color32(255, 255, 255, 255);
     }
 
     public void OpenShop()
@@ -147,6 +173,13 @@ public class UIBook : MonoBehaviour
         AnimalsSection.SetActive(false);
         ShopSection.SetActive(true);
         OptionsSection.SetActive(false);
+
+        ShopChoice.color = new Color32(171, 171, 171, 255);
+        RecipeChoice.color = new Color32(255, 255, 255, 255);
+        AnimalsChoice.color = new Color32(255, 255, 255, 255);
+        IngredientsChoice.color = new Color32(255, 255, 255, 255);
+        OptionsChoice.color = new Color32(255, 255, 255, 255);
+
     }
 
     public void OpenOptions()
@@ -156,5 +189,11 @@ public class UIBook : MonoBehaviour
         AnimalsSection.SetActive(false);
         ShopSection.SetActive(false);
         OptionsSection.SetActive(true);
+
+        OptionsChoice.color = new Color32(171, 171, 171, 255);
+        RecipeChoice.color = new Color32(255, 255, 255, 255);
+        AnimalsChoice.color = new Color32(255, 255, 255, 255);
+        IngredientsChoice.color = new Color32(255, 255, 255, 255);
+        ShopChoice.color = new Color32(255, 255, 255, 255);
     }
 }
