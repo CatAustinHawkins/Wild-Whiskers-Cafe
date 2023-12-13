@@ -7,8 +7,8 @@ public class CustomerTest : MonoBehaviour
 
     private float speed = 8.0f;
     public Vector3 FoHtarget;
+    public Vector2 position;
     public Vector3 DeskTarget;
-    private Vector2 position;
     public Vector3 LeavingArea;
 
     public bool TableFree;
