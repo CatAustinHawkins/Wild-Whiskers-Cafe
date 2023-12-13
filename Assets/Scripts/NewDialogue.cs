@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
+//new dialogue script that works the dialogue button
 
 public class NewDialogue : MonoBehaviour
 {
 
-    public bool PandaInRange;
-    public bool FrontOfHouseInRange;
-    public TextMeshProUGUI DialogueText;
+    public bool PandaInRange; //if pandas in range
+    public TextMeshProUGUI DialogueText; //dialogue text object
 
-    public GameObject DialogueBox;
+    public GameObject DialogueBox; //dialogue box
 
+
+    //same as interact script
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "PandaCustomer")
@@ -33,7 +34,7 @@ public class NewDialogue : MonoBehaviour
     {
         if(PandaInRange)
         {
-            DialogueBox.SetActive(true);
+            DialogueBox.SetActive(true); //enable the panda dialogue asking for the bamboo hotdog
         }
     }
 }

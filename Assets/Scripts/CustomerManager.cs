@@ -2,35 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//this manages the customer spawning
-//depends on level
-
+//This script is intended to control when customers are spawned in
 
 
 public class CustomerManager : MonoBehaviour
 {
 
-    public GameObject[] Customers;
+    public GameObject[] Customers; //Plan to have an array of customers which can be spawned
 
-    // Start is called before the first frame update
+  
     void Start()
     {
-        SpawnCustomer();
+        SpawnCustomer(); //when the game starts, spawn a customer
     }
 
 
     public void SpawnCustomer()
     {
-        //int random = Random.Range(0, 10);
-        Customers[0].SetActive(true);
-        StartCoroutine(CustomerWait());
+        Customers[0].SetActive(true); //Enable the first customer in the array
+        StartCoroutine(CustomerWait()); //Start a coroutine
 
     }
     IEnumerator CustomerWait()
     {
-        Debug.Log("Waiting to Spawn Customer");
-        yield return new WaitForSeconds(4);
-        SpawnCustomer();
+        Debug.Log("Waiting to Spawn Customer"); //Debug log to show that the manager is waiting
+        yield return new WaitForSeconds(4); //Wait 4 seconds
+        SpawnCustomer(); //Spawn next customer
     }
 
 }

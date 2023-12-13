@@ -1,30 +1,51 @@
 using UnityEngine;
 using TMPro;
 
+//This script controls the dialogue between the player and the customer - plan to change this
+
 public class Dialogue : MonoBehaviour
 {
-    public TextMeshProUGUI DialogueText;
+    public TextMeshProUGUI DialogueText; //The dialogue text asset
 
-    public GameObject SnakeOrder;
+    public GameObject PandaOrder; //the first orderform - the panda's
 
-    public GameObject Buttons;
-    public GameObject ThoughtBubble;
+    public GameObject Buttons; //The Yes/No buttons
+    public GameObject ThoughtBubble;//The customers thought bubble
 
-    public TextMeshProUGUI FirstOptionText;
-    public TextMeshProUGUI SecondOptionText;
+    public TextMeshProUGUI FirstOptionText; //The first option (Yes) 
+    public TextMeshProUGUI SecondOptionText; //The second option (No)
 
-    public bool FirstDialogue;
+    public bool FirstDialogue; //The first dialogue with the customer
     public bool OptionNoWasClicked; //Initial Choice 
     public bool OptionYesWasClicked; //Initial Choice
 
     public PlayerScript Player;
-    public void YesButton()
+
+    //This dialogue is "Hi! Can I get a hotdog please?"
+    
+    //if the player says Yes
+    //"Yay!"
+
+    //And then, if the player talks to the customer again they say
+    //"Thank you!"
+
+    //if the player said No
+    //"Oh... Are you sure?"
+
+    //then displays Yes and No again
+    //If the player says Yes - as in, Yes I'm sure
+    //":(" 
+
+    //If the player says No - as in, No I'm not sure
+    //"Yay!"
+
+    public void YesButton() //Yes Button
     {
         if (FirstDialogue)
         {
             DialogueText.text = "Yay!";
             Buttons.SetActive(false);
-            SnakeOrder.SetActive(true);
+            PandaOrder.SetActive(true);
             ThoughtBubble.SetActive(false);
             OptionYesWasClicked = true;
         }
@@ -42,7 +63,7 @@ public class Dialogue : MonoBehaviour
 
     }
 
-    public void NoButton()
+    public void NoButton() //No Button
     {
         if(FirstDialogue)
         {
@@ -55,16 +76,10 @@ public class Dialogue : MonoBehaviour
         {
             DialogueText.text = "Yay!";
             Buttons.SetActive(false);
-            SnakeOrder.SetActive(true);
+            PandaOrder.SetActive(true);
             ThoughtBubble.SetActive(false);
 
         }
-
-        //are you sure
-        //display buttons again
-        //if player says no then the character leaves
-
-
     }
 
 }

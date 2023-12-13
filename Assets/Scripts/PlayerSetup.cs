@@ -3,22 +3,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-//player setup
+//This script controls the player setup
 
 public class PlayerSetup : MonoBehaviour
 {
 
-    public TMP_InputField NameEntry;
+    public TMP_InputField NameEntry; //the input field the player can put their name into
 
-    public string PlayerName = "Cat";
+    public string PlayerName = "Cat"; //default name is Cat
 
-    [Header("")]
-    public Image Choice1;
+    //Different player images
+    public Image Choice1; 
     public Image Choice2;
     public Image Choice3;
     public Image Choice4;
 
-
+    //which choice the player chooses
     public bool Choice1Selected;
     public bool Choice2Selected;
     public bool Choice3Selected;
@@ -27,19 +27,22 @@ public class PlayerSetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
 
     }
 
-    public void InputField()
+    public void InputField() //the input field
     {
         PlayerName = NameEntry.text.ToString();
-        if(string.IsNullOrWhiteSpace(PlayerName))
+        if(string.IsNullOrWhiteSpace(PlayerName)) //if the player doesnt input anything
         {
-            PlayerName = "Cat";
+            PlayerName = "Cat"; //default to cat
         }
     }
 
+
+    //each player avatar choice is a button
+    //clicking each option changes the bool and updated the button to reflect what the player chose
     public void PlayerAvatarChoice1()
     {
         Choice1Selected = true;
@@ -91,7 +94,7 @@ public class PlayerSetup : MonoBehaviour
 
     public void Finished()
     {
-        SceneManager.LoadScene("MainLevel");
+        SceneManager.LoadScene("MainLevel"); //go back to main menu
     }
 
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+//UI book script control
 public class UIBook : MonoBehaviour
 {
 
@@ -11,6 +12,8 @@ public class UIBook : MonoBehaviour
     public Image OptionsChoice;
 
     public GameObject UIBookImage;
+
+    //Arrays for each UIBook page
 
     public GameObject[] IngredientsPages;
     public int Icurrentpage;
@@ -40,6 +43,7 @@ public class UIBook : MonoBehaviour
     public GameObject ShopSection;
     public GameObject OptionsSection;
 
+    //open and close the UI book
     public void UIBookButton()
     {
         if(!UIBookOpen)
@@ -54,6 +58,7 @@ public class UIBook : MonoBehaviour
         }
     }
 
+    //Switch UI book pages
     public void IngredientsNextPage()
     {
         IngredientsPages[0].SetActive(false);
@@ -121,6 +126,8 @@ public class UIBook : MonoBehaviour
         OptionsPages[Opreviouspage].SetActive(true);
     }
 
+
+    //Open each section, and change the colour of each button to reflect which section is open.
     public void OpenIngredients()
     {
         IngredientsSection.SetActive(true);

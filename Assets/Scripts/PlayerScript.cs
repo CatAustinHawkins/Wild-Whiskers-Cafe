@@ -1,18 +1,19 @@
 using UnityEngine;
 using TMPro;
 
+//Player Script - controls their movement and player image
+
 public class PlayerScript : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb2d;
-    public GameObject DialogueBox;
 
-    public GameObject playersetupscript;
-
+    public GameObject playersetupscript; //the player setup script
     public PlayerSetup playersetup;
 
     public string PlayerName;
 
+    //the different player sprites
     public Sprite Player1;
     public Sprite Player2;
     public Sprite Player3;
@@ -20,29 +21,23 @@ public class PlayerScript : MonoBehaviour
 
     public SpriteRenderer spriterenderer;
 
-    public TextMeshProUGUI PlayerNameIntro;
-
-    //new work
-    public bool Recipe1InProgress;
-    //player needs to go to fridge and the chopping board
-
-    public bool Recipe2InProgress;
-    //player needs to go to the fridge, then the oven, the chopping board
-
-    public bool Recipe3InProgress;
-    //player needs to go the fridge, the oven, then the chopping board
+    public TextMeshProUGUI PlayerNameIntro; //player name text 
 
     public int CurrentCustomer = 1;
+
+    public bool Recipe2InProgress;
+    public bool Recipe3InProgress;
 
     void Start()
     {
 
-        playersetupscript = GameObject.FindWithTag("Setup");
+        playersetupscript = GameObject.FindWithTag("Setup"); //find the player setup script
         playersetup = playersetupscript.GetComponent<PlayerSetup>();
 
 
         rb2d = GetComponent<Rigidbody2D>();
 
+        //change the player sprite image based on what the player chose
         if(playersetup.Choice1Selected)
         {
             spriterenderer.sprite = Player1;
@@ -63,20 +58,18 @@ public class PlayerScript : MonoBehaviour
             spriterenderer.sprite = Player4;
         }
 
-        PlayerName = playersetup.PlayerName;
+        PlayerName = playersetup.PlayerName; //set the players name
 
-        PlayerNameIntro.text = "Hi " + PlayerName + "!";
+        PlayerNameIntro.text = "Hi " + PlayerName + "!"; 
     }
 
     void Update()
     {
+        //movement control
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         rb2d.velocity = new Vector2(moveHorizontal * speed, moveVertical * speed);
-
     }
-
-
 
 }

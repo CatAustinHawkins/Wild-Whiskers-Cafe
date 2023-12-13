@@ -3,19 +3,21 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+//This script is for the options menu
+
 public class Options : MonoBehaviour
 {
 
-    public TMP_Dropdown DropdownMenu;
+    public TMP_Dropdown DropdownMenu; //the resolution drop down menu
 
-    public bool EasyModeOn;
+    public bool EasyModeOn; //easy mode bool
 
-    public bool FullScreenOn;
+    public bool FullScreenOn; //fullscreen bool
 
-    public Slider VolumeSlider;
+    public Slider VolumeSlider; //volume slider 
 
-    public int width = 1600;
-    public int height = 900;
+    public int width = 1600; //default resolution width
+    public int height = 900; //default resolution height
 
     public Sprite Tick;
     public Sprite Cross;
@@ -23,14 +25,10 @@ public class Options : MonoBehaviour
     public Image FullScreenButtonImage;
     public Image EasyModeButtonImage;
 
-    void Start()
-    {
-        DontDestroyOnLoad(this.gameObject);
-
-    }
 
     public void DropdownMenuChanged()
     {
+        //how the dropdown menu works
         if(DropdownMenu.value == 0)
         {
             Screen.SetResolution(1600, 900, FullScreenOn);
@@ -67,7 +65,7 @@ public class Options : MonoBehaviour
         }
     }
 
-    public void FullScreenButton()
+    public void FullScreenButton() //turn fullscreen mode on and off
     {
 
         if (!FullScreenOn)
@@ -86,7 +84,7 @@ public class Options : MonoBehaviour
 
     }
 
-    public void EasyMode()
+    public void EasyMode() //turn easy mode on and off (currently doesn't do anything)
     {
         if(!EasyModeOn)
         {
@@ -103,11 +101,11 @@ public class Options : MonoBehaviour
     //On the Volume Slider 
     public void ChangeVolume()
     {
-        AudioListener.volume = VolumeSlider.value;
+        AudioListener.volume = VolumeSlider.value; //change the volume of the overall audio
     }
 
     public void Finished()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu"); //load the main menu
     }
 }

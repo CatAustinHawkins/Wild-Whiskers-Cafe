@@ -1,24 +1,27 @@
 using UnityEngine;
 
+//This script is used to show the current order that the player is making
+
 public class CurrentOrder : MonoBehaviour
 {
 
-    public PlayerScript Player;
+    public PlayerScript Player; //To access the players script
 
-    public GameObject Order1;
-    public GameObject Order2;
-    public GameObject Order3;
+    public GameObject Order1; //The first order
+    public GameObject Order2; //The second order
+    public GameObject Order3; //The third order
 
-    public bool OrderOpen;
+    public bool OrderOpen; //Check if the order is open or not
 
-    public void Clicked()
+    public void Clicked() //UIBook Button
     {
-        if(!OrderOpen)
+        if(!OrderOpen) //if the order form is not currently open
         {
+            //check which customer the player is currently serving
             if(Player.CurrentCustomer == 1)
             {
-                Order1.SetActive(true);
-                OrderOpen = true;
+                Order1.SetActive(true); //activate the relevant order form
+                OrderOpen = true; //set order open to true
             }
             if(Player.CurrentCustomer == 2)
             {
@@ -33,12 +36,13 @@ public class CurrentOrder : MonoBehaviour
 
             }
         }
-        else
+        else //if the order form is open
         {
+            //check which customer the player is currently serving
             if (Player.CurrentCustomer == 1)
             {
-                Order1.SetActive(false);
-                OrderOpen = false;
+                Order1.SetActive(false); //close the relevant order form
+                OrderOpen = false; //set order open to false
 
             }
             if (Player.Recipe2InProgress)

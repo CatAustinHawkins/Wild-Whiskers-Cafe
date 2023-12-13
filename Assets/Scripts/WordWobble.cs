@@ -11,7 +11,8 @@ public class RainbowText : MonoBehaviour
 {
     //Variables for Word Change
     [SerializeField] bool applyOnlyToSelection;
-    [TextArea(5, 5)]                             //make this area bigger if you need to add more lines
+    [TextArea(5, 5)]                             
+    //make this area bigger if you need to add more lines
     [SerializeField] string textToChangeColor;
     int specificWordIndex;
 
@@ -46,16 +47,20 @@ public class RainbowText : MonoBehaviour
 
             for (int i = 0; i < tempString.Length; i++)
             {
-                if (tempString[i].CompareTo(tempChars[0]) == 0)      //check if the first letter of the Selection is found
+                if (tempString[i].CompareTo(tempChars[0]) == 0)      
+                    //check if the first letter of the Selection is found
                 {
-                    for (int j = 1; j < tempChars.Length; j++)      //Go over every character in our selection
+                    for (int j = 1; j < tempChars.Length; j++)      
+                        //Go over every character in our selection
                     {
-                        if (tempString[i + j].CompareTo(tempChars[j]) != 0)  //if next character is not the character in our selection, go back to the 1st For Loop
+                        if (tempString[i + j].CompareTo(tempChars[j]) != 0)  
+                    //if next character is not the character in our selection, go back to the 1st For Loop
                         {
                             break;
                         }
 
-                        if (j == tempChars.Length - 1)       //if every character was correct, We found our selection!!
+                        if (j == tempChars.Length - 1)       
+                            //if every character was correct, We found our selection!!
                         {
                             print("Found the word!");
                             wordIndexes.Add(i);
@@ -66,7 +71,7 @@ public class RainbowText : MonoBehaviour
                     }
                 }
 
-                //Our selection was not found, Script will deactivate itself because it wont do anything anyways
+           //Our selection was not found, Script will deactivate itself because it wont do anything anyways
                 if (i == tempString.Length - 1) { print("Word not found!"); this.enabled = false; }
             }
         }
@@ -103,7 +108,8 @@ public class RainbowText : MonoBehaviour
 
                 int index = c.vertexIndex;
 
-                if (applyOnlyToSelection) { if (index == 0) continue; } //if there is a blank character, go to the next character instead
+                if (applyOnlyToSelection) { if (index == 0) continue; } 
+                //if there is a blank character, go to the next character instead
 
 
                 if (wobbleText)

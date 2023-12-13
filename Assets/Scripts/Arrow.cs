@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+//This script is used to take the player from one room to another. For example, from the kitchen to the cafe.
 
 public class Arrow : MonoBehaviour
 {
+    public GameObject Camera; //get the camera gameobject so it can be moved 
+    public Vector3 NewCameraPosition; //the new position for the camera
+    public GameObject Player; //get the player gameobject so it can be moved
+    public Vector3 NewPlayerPosition; //the new position for the camera
 
-    public GameObject Camera;
-    public Vector3 NewCameraPosition;
-    public GameObject Player;
-    public Vector3 NewPlayerPosition;
-
-    // arrow
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //when the player collides with the arrow
     {
-        Camera.transform.position = NewCameraPosition;
-        Player.transform.position = NewPlayerPosition;
+        Camera.transform.position = NewCameraPosition; //update the cameras position
+        Player.transform.position = NewPlayerPosition; //update the players position
     }
-
 }
