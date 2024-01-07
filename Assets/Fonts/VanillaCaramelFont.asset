@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: VanillaCaramelFont
   m_EditorClassIdentifier: 
-  hashCode: -504637593
+  hashCode: 1160585207
   material: {fileID: 4035300132230051486}
-  materialHashCode: -1353741977
+  materialHashCode: 1809484791
   m_Version: 1.1.0
   m_SourceFontFileGUID: d7409d9192d43894384ef0ee30a782d2
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: d7409d9192d43894384ef0ee30a782d2, type: 3}
@@ -430,6 +430,21 @@ MonoBehaviour:
       m_Y: 645
       m_Width: 36
       m_Height: 30
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 31
+    m_Metrics:
+      m_Width: 31.515625
+      m_Height: 34.5
+      m_HorizontalBearingX: 1.359375
+      m_HorizontalBearingY: 45.4375
+      m_HorizontalAdvance: 34.546875
+    m_GlyphRect:
+      m_X: 345
+      m_Y: 348
+      m_Width: 32
+      m_Height: 36
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -1243,21 +1258,6 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-  - m_Index: 31
-    m_Metrics:
-      m_Width: 31.515625
-      m_Height: 34.5
-      m_HorizontalBearingX: 1.359375
-      m_HorizontalBearingY: 45.4375
-      m_HorizontalAdvance: 34.546875
-    m_GlyphRect:
-      m_X: 345
-      m_Y: 348
-      m_Width: 32
-      m_Height: 36
-    m_Scale: 1
-    m_AtlasIndex: 0
-    m_ClassDefinitionType: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 32
@@ -1362,6 +1362,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 61
     m_GlyphIndex: 30
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 62
+    m_GlyphIndex: 31
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 63
@@ -1578,10 +1582,6 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 8211
     m_GlyphIndex: 186
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 62
-    m_GlyphIndex: 31
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: 7441728454704288055}
@@ -2339,7 +2339,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.25
+    - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9

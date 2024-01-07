@@ -9,6 +9,7 @@ public class Options : MonoBehaviour
 {
 
     public TMP_Dropdown DropdownMenu; //the resolution drop down menu
+    public TMP_Dropdown DropdownMenuQuality; //the resolution drop down menu
 
     public bool EasyModeOn; //easy mode bool
 
@@ -107,5 +108,10 @@ public class Options : MonoBehaviour
     public void Finished()
     {
         SceneManager.LoadScene("MainMenu"); //load the main menu
+    }
+
+    public void SetQuality()
+    {
+        QualitySettings.SetQualityLevel(DropdownMenuQuality.value);
     }
 }
