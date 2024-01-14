@@ -108,6 +108,7 @@ public class Options : MonoBehaviour
     public void Finished()
     {
         SceneManager.LoadScene("MainMenu"); //load the main menu
+        Screen.SetResolution(width, height, FullScreenOn);
     }
 
     public void SetQuality()

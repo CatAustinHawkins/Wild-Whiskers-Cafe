@@ -12,6 +12,7 @@ TagManager:
   - Fridge
   - ChoppingBoard
   - PandaCustomer
+  - Options
   layers:
   - Default
   - TransparentFX

@@ -646,7 +646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 429, y: 168.99998}
+  m_AnchoredPosition: {x: 429, y: 106.999985}
   m_SizeDelta: {x: 320, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273961171
@@ -1169,6 +1169,7 @@ RectTransform:
   - {fileID: 1303845154}
   - {fileID: 1232269030}
   - {fileID: 2080792969}
+  - {fileID: 1095790850}
   - {fileID: 1943573162}
   - {fileID: 1708992892}
   - {fileID: 754960616}
@@ -2545,17 +2546,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095790849}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2762787, y: 0.2762787, z: 0.2762787}
+  m_LocalScale: {x: 0.44478112, y: 0.44478112, z: 0.44478112}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1943573162}
+  m_Father: {fileID: 584645531}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 180, y: 288}
   m_SizeDelta: {x: 148, y: 148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1095790851
@@ -4024,7 +4025,7 @@ GameObject:
   - component: {fileID: 1718718320}
   m_Layer: 0
   m_Name: Options
-  m_TagString: Untagged
+  m_TagString: Options
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4042,15 +4043,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DropdownMenu: {fileID: 2080792970}
-  DropdownMenuQuality: {fileID: 0}
+  DropdownMenuQuality: {fileID: 2080792970}
   EasyModeOn: 0
   FullScreenOn: 0
   VolumeSlider: {fileID: 1708992893}
   width: 1600
   height: 900
-  Tick: {fileID: 21300000, guid: 8a0ad7e70569d5347bab81c412f0914e, type: 3}
-  Cross: {fileID: 21300000, guid: 740ccbdc583334549aae68dc05887ad6, type: 3}
-  FullScreenButtonImage: {fileID: 1095790851}
+  Tick: {fileID: 21300000, guid: 8c27a3d182580974daedc603137c131d, type: 3}
+  Cross: {fileID: 21300000, guid: eda08bf96212eb248be479aa96b4969b, type: 3}
+  FullScreenButtonImage: {fileID: 1943573164}
   EasyModeButtonImage: {fileID: 1374753313}
 --- !u!4 &1718718321
 Transform:
@@ -4461,7 +4462,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1032093032}
-  - {fileID: 1095790850}
   m_Father: {fileID: 584645531}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4546,7 +4546,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 2fb165919b2cf6e448380a015dbbd833, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4680,7 +4680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -401, y: 166}
+  m_AnchoredPosition: {x: -401, y: 104}
   m_SizeDelta: {x: 320, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080792970
