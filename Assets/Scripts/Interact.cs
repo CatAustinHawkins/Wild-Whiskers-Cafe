@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 //This script is used on the Interact button, to see if the player can interact with the objects around them
 
@@ -26,7 +27,24 @@ public class Interact : MonoBehaviour
     public GameObject BambooHotdog; //bamboo hotdog gameobject that the player holds
 
     public CustomerTest CustomerTestScript; //customer script
-    
+
+    public bool TimerRunning;
+
+
+    public void Update()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            InteractButton();
+        }
+
+        if(Input.GetKey(KeyCode.Alpha4) && !TimerRunning)
+        {
+            InteractButton();
+            StartCoroutine(DelayTime());
+        }
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Oven") //check if the player is colliding with the oven
@@ -128,4 +146,10 @@ public class Interact : MonoBehaviour
         }
     }
 
+    IEnumerator DelayTime()
+    {
+        TimerRunning = true;
+        yield return new WaitForSeconds(0.25f);
+        TimerRunning = false;
+    }
 }

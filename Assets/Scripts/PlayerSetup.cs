@@ -28,7 +28,7 @@ public class PlayerSetup : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
-
+        PlayerName = "Cat"; //default to cat
     }
 
     public void InputField() //the input field
@@ -94,7 +94,7 @@ public class PlayerSetup : MonoBehaviour
 
     public void Finished()
     {
-        SceneManager.LoadScene("MainLevel"); //go back to main menu
+        SceneManager.LoadScene("Tutorial"); 
     }
 
 

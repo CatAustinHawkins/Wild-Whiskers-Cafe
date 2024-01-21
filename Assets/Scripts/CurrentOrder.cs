@@ -1,9 +1,13 @@
 using UnityEngine;
+using System.Collections;
 
 //This script is used to show the current order that the player is making
 
 public class CurrentOrder : MonoBehaviour
 {
+
+    private IEnumerator coroutine;
+
 
     public PlayerScript Player; //To access the players script
 
@@ -12,6 +16,23 @@ public class CurrentOrder : MonoBehaviour
     public GameObject Order3; //The third order
 
     public bool OrderOpen; //Check if the order is open or not
+
+    public bool TimerRunning;
+
+
+    public void Update()
+    {
+        if(Input.GetKey(KeyCode.Alpha2) && !TimerRunning)
+        {
+            Clicked();
+            StartCoroutine(DelayTime());
+        }
+
+        if (Input.GetKey(KeyCode.Escape) && OrderOpen)
+        {
+            Clicked();
+        }
+    }
 
     public void Clicked() //UIBook Button
     {
@@ -58,5 +79,12 @@ public class CurrentOrder : MonoBehaviour
 
             }
         }
+    }
+
+    IEnumerator DelayTime()
+    {
+        TimerRunning = true;
+        yield return new WaitForSeconds(0.25f);
+        TimerRunning = false;
     }
 }
