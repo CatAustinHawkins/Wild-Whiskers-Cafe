@@ -76,7 +76,7 @@ public class CustomerTest : MonoBehaviour
             // move sprite towards the target location
             transform.position = Vector2.MoveTowards(transform.position, FoHtarget, step);
 
-            if(!MovingtoDesk)
+            if (!MovingtoDesk)
             {
                 StartCoroutine(DeskWait());
                 MovingtoDesk = true;
@@ -88,7 +88,7 @@ public class CustomerTest : MonoBehaviour
             // move sprite towards the target location
             transform.position = Vector2.MoveTowards(transform.position, DeskTarget, step);
 
-            if(!WaitingatTable)
+            if (!WaitingatTable)
             {
                 StartCoroutine(ThoughtWait());
                 WaitingatTable = true;
@@ -98,8 +98,9 @@ public class CustomerTest : MonoBehaviour
         if(Leaving) //if the customer has been fed and is leaving
         {
             transform.position = Vector2.MoveTowards(transform.position, LeavingArea, step);
+            transform.position = Vector2.MoveTowards(transform.position, LeavingArea, step);
 
-            if(transform.position == LeavingArea)
+            if (transform.position == LeavingArea)
             {
                 Destroy(gameObject); //destory the customer
                 DayFinished.SetActive(true); //enable the day finished ui window
@@ -113,7 +114,7 @@ public class CustomerTest : MonoBehaviour
     {
         Debug.Log("DeskWait");
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         movingtofoh = false;
         TableFree = true;
         Debug.Log("DeskWaitDone");
@@ -124,7 +125,7 @@ public class CustomerTest : MonoBehaviour
     IEnumerator ThoughtWait()//waiting at the table - then the thought bubble appears
     {
         Debug.Log("ThoughtWait");
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(8);
         movingtotable = false;
         TableFree = false;
         ThoughtBubble.SetActive(true);

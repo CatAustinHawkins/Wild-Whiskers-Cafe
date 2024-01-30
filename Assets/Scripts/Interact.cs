@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 //This script is used on the Interact button, to see if the player can interact with the objects around them
 
@@ -29,6 +30,13 @@ public class Interact : MonoBehaviour
     public CustomerTest CustomerTestScript; //customer script
 
     public bool TimerRunning;
+
+    public GameObject OvenInteractPrompt;
+    public GameObject ChoppingBoardInteractPrompt;
+
+    public TextMeshProUGUI OvenTimerText;
+    public TextMeshProUGUI ChoppingBoardTimerText;
+
 
 
     public void Update()
@@ -107,6 +115,7 @@ public class Interact : MonoBehaviour
             {
                 Bamboo.SetActive(false);
                 CookedBamboo.SetActive(true); //make them hold cooked bamboo instead
+                OvenInteractPrompt.SetActive(true);
                 FoodCooked = true;
             }
         }
@@ -129,6 +138,7 @@ public class Interact : MonoBehaviour
         {
             if(FoodCooked) //if the food is cooked
             {
+                ChoppingBoardInteractPrompt.SetActive(true);
                 CookedBamboo.SetActive(false);
                 Bread.SetActive(false);
                 BambooHotdog.SetActive(true); //enable the bamboo hotdog gameobject
@@ -150,6 +160,20 @@ public class Interact : MonoBehaviour
     {
         TimerRunning = true;
         yield return new WaitForSeconds(0.25f);
+        TimerRunning = false;
+    }
+
+    IEnumerator OvenTimer()
+    {
+        TimerRunning = true;
+        yield return new WaitForSeconds(3f);
+        TimerRunning = false;
+    }
+
+    IEnumerator ChoppingTimer()
+    {
+        TimerRunning = true;
+        yield return new WaitForSeconds(2f);
         TimerRunning = false;
     }
 }
