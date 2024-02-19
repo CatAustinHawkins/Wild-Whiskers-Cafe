@@ -23,10 +23,10 @@ public class PlayerScript : MonoBehaviour
 
     public TextMeshProUGUI PlayerNameIntro; //player name text 
 
-    public int CurrentCustomer = 1;
+    public int CurrentCustomer = 0;
 
-    public bool Recipe2InProgress;
-    public bool Recipe3InProgress;
+    public int gold;
+
 
     void Start()
     {

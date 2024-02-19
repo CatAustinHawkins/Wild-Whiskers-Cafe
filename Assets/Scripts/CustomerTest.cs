@@ -27,10 +27,9 @@ public class CustomerTest : MonoBehaviour
     public bool WaitingatTable;
 
     //This is set to true when they day begins. Stops the customer from moving around whilst the players in the tutorial
-    public bool DayBegin;
+    public bool DayBegin = true;
 
     //Happiness variables
-    public Slider Happiness;
     public Slider OverallHappiness;
     public float happinessvalue = 1;
     public float overallhappinessvalue = 1;
@@ -38,7 +37,6 @@ public class CustomerTest : MonoBehaviour
     //If the customers leaving
     public bool Leaving;
 
-    //Day finished UI screen
     public GameObject DayFinished;
 
     //Each customer has their own number to check which customer is currently in the cafe
@@ -51,6 +49,8 @@ public class CustomerTest : MonoBehaviour
     void Start()
     {
         position = gameObject.transform.position; //Get the customers position
+        StartCoroutine(HappinessValue());
+
     }
 
     void Update()
@@ -103,8 +103,6 @@ public class CustomerTest : MonoBehaviour
             if (transform.position == LeavingArea)
             {
                 Destroy(gameObject); //destory the customer
-                DayFinished.SetActive(true); //enable the day finished ui window
-
             }
         }
     }
@@ -134,6 +132,14 @@ public class CustomerTest : MonoBehaviour
 
     }
 
+    IEnumerator HappinessValue()
+    {
+        yield return new WaitForSeconds(1f);
+        overallhappinessvalue = overallhappinessvalue - 0.005f;
+        OverallHappiness.value = overallhappinessvalue;
+        StartCoroutine(HappinessValue());
+    }
+
     public void Fed() //if the customer has been fed
     {
         Leaving = true; //they can leave
@@ -143,7 +149,6 @@ public class CustomerTest : MonoBehaviour
     {
         if(other.tag == "LeavingArea") //when the customer collides with the leaving area (an off screen zone)
         {
-            DayFinished.SetActive(true); //enable the day finished UI Window
             Destroy(gameObject); //destroy the customer
         }
     }

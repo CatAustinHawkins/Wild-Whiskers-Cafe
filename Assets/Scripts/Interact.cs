@@ -17,6 +17,8 @@ public class Interact : MonoBehaviour
     public bool MealReady; //is the meal ready
     public bool PandaInRange; //is the player in range of the panda
 
+    public bool BedInRange;
+
 
     [Header("Fridge Assets")]
     public GameObject FridgeUI; //fridge ui window
@@ -34,11 +36,21 @@ public class Interact : MonoBehaviour
     public GameObject OvenInteractPrompt;
     public GameObject ChoppingBoardInteractPrompt;
 
-    public TextMeshProUGUI OvenTimerText;
+    public GameObject TutorialEnd;
+
+    public Tutorial TutorialScript;
+
+    public TextMeshProUGUI OvenTimerTimerText;
     public TextMeshProUGUI ChoppingBoardTimerText;
 
+    public float OvenTimerFloat = 3f;
+    public float ChoppingBoardFloat = 2f;
 
-
+    public void Start()
+    {
+        OvenTimerFloat = 3f;
+        ChoppingBoardFloat = 2f;
+    }
     public void Update()
     {
         if(Input.GetKey(KeyCode.Escape))
@@ -77,6 +89,11 @@ public class Interact : MonoBehaviour
         {
             PandaInRange = true;
         }
+
+        if (other.tag == "Bed")
+        {
+            BedInRange = true;
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)
@@ -102,6 +119,10 @@ public class Interact : MonoBehaviour
         {
             PandaInRange = false;
         }
+        if (other.tag == "Bed")
+        {
+            BedInRange = false;
+        }
 
     }
 
@@ -113,10 +134,8 @@ public class Interact : MonoBehaviour
 
             if(FridgeScript.HoldingBamboo) //if the players holding bamboo
             {
-                Bamboo.SetActive(false);
-                CookedBamboo.SetActive(true); //make them hold cooked bamboo instead
                 OvenInteractPrompt.SetActive(true);
-                FoodCooked = true;
+                StartCoroutine(OvenTimer());
             }
         }
 
@@ -126,11 +145,19 @@ public class Interact : MonoBehaviour
             {
                 FridgeUI.SetActive(true);
                 FridgeOpen = true;
+                if(TutorialScript.TutorialImages == 11)
+                {
+                    TutorialScript.NextTutorial();
+                }
             }
             else
             {
                 FridgeUI.SetActive(false);
                 FridgeOpen = false;
+                if (TutorialScript.TutorialImages == 13)
+                {
+                    TutorialScript.NextTutorial();
+                }
             }
         }
 
@@ -139,10 +166,7 @@ public class Interact : MonoBehaviour
             if(FoodCooked) //if the food is cooked
             {
                 ChoppingBoardInteractPrompt.SetActive(true);
-                CookedBamboo.SetActive(false);
-                Bread.SetActive(false);
-                BambooHotdog.SetActive(true); //enable the bamboo hotdog gameobject
-                MealReady = true;
+                StartCoroutine(ChoppingTimer());
             }
         }
 
@@ -152,7 +176,16 @@ public class Interact : MonoBehaviour
             {
                 BambooHotdog.SetActive(false); //disable the bamboo hotdog
                 CustomerTestScript.Fed();//call to the customer script
+                if (TutorialScript.TutorialImages == 16)
+                {
+                    TutorialScript.NextTutorial();
+                }
             }
+        }
+        
+        if(BedInRange)
+        {
+            TutorialEnd.SetActive(true);
         }
     }
 
@@ -165,15 +198,57 @@ public class Interact : MonoBehaviour
 
     IEnumerator OvenTimer()
     {
+        StartCoroutine(OvenTimerText());
         TimerRunning = true;
         yield return new WaitForSeconds(3f);
         TimerRunning = false;
+        Bamboo.SetActive(false);
+        CookedBamboo.SetActive(true); //make them hold cooked bamboo instead
+        FoodCooked = true;
+        OvenInteractPrompt.SetActive(false);
+        if (TutorialScript.TutorialImages == 14)
+        {
+            TutorialScript.NextTutorial();
+        }
     }
 
     IEnumerator ChoppingTimer()
     {
+        StartCoroutine(ChoppingTimerText());
         TimerRunning = true;
         yield return new WaitForSeconds(2f);
+        CookedBamboo.SetActive(false);
+        Bread.SetActive(false);
+        Bamboo.SetActive(false);
+        BambooHotdog.SetActive(true); //enable the bamboo hotdog gameobject
+        MealReady = true;
         TimerRunning = false;
+        ChoppingBoardInteractPrompt.SetActive(false);
+        if (TutorialScript.TutorialImages == 15)
+        {
+            TutorialScript.NextTutorial();
+        }
+    }
+
+    IEnumerator ChoppingTimerText()
+    {
+        yield return new WaitForSeconds(0.25f);
+        ChoppingBoardFloat = ChoppingBoardFloat - 0.25f;
+        ChoppingBoardTimerText.text = ChoppingBoardFloat.ToString() + "s";
+        if (ChoppingBoardFloat > 0)
+        {
+            StartCoroutine(ChoppingTimerText());
+        }
+    }
+
+    IEnumerator OvenTimerText()
+    {
+        yield return new WaitForSeconds(0.25f);
+        OvenTimerFloat = OvenTimerFloat - 0.25f;
+        OvenTimerTimerText.text = OvenTimerFloat.ToString() + "s";
+        if (OvenTimerFloat > 0)
+        {
+            StartCoroutine(OvenTimerText());
+        }
     }
 }

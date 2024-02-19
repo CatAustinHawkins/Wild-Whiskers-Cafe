@@ -13,11 +13,12 @@ TagManager:
   - ChoppingBoard
   - PandaCustomer
   - Options
+  - Bed
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - test
   - Water
   - UI
   - 

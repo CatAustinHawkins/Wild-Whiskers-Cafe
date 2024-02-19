@@ -59,10 +59,17 @@ public class UIBook : MonoBehaviour
 
     public bool TimerRunning;
 
+    public Tutorial TutorialScript;
+
     public void Update()
     {
         if(Input.GetKey(KeyCode.UpArrow) && !TimerRunning && CurrentPage > 0)
         {
+            if (TutorialScript.TutorialImages == 3)
+            {
+                TutorialScript.NextTutorial();
+            }
+
             StartCoroutine(DelayTime());
 
             CurrentPage--;
@@ -97,6 +104,10 @@ public class UIBook : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow) && !TimerRunning && CurrentPage < 5)
         {
+            if (TutorialScript.TutorialImages == 3)
+            {
+                TutorialScript.NextTutorial();
+            }
             StartCoroutine(DelayTime());
 
             CurrentPage++;
@@ -131,6 +142,10 @@ public class UIBook : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow) && !TimerRunning)
         {
+            if (TutorialScript.TutorialImages == 3)
+            {
+                TutorialScript.NextTutorial();
+            }
             StartCoroutine(DelayTime());
 
             if(IngredientsOpen && Icurrentpage < 6)
@@ -171,6 +186,10 @@ public class UIBook : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow) && !TimerRunning)
         {
+            if (TutorialScript.TutorialImages == 3)
+            {
+                TutorialScript.NextTutorial();
+            }
             StartCoroutine(DelayTime());
 
             if(IngredientsOpen && Icurrentpage > 0)
@@ -224,6 +243,11 @@ public class UIBook : MonoBehaviour
     //open and close the UI book
     public void UIBookButton()
     {
+        if(TutorialScript.TutorialImages == 2 || TutorialScript.TutorialImages == 4)
+        {
+            TutorialScript.NextTutorial();
+        }
+
         if(!UIBookOpen)
         {
             UIBookImage.SetActive(true);
@@ -239,6 +263,10 @@ public class UIBook : MonoBehaviour
     //Switch UI book pages
     public void IngredientsNextPage()
     {
+        if (TutorialScript.TutorialImages == 3)
+        {
+            TutorialScript.NextTutorial();
+        }
         IngredientsPages[Icurrentpage].SetActive(false);
         Icurrentpage++;
         IngredientsPages[Icurrentpage].SetActive(true);
@@ -322,6 +350,10 @@ public class UIBook : MonoBehaviour
     //Open each section, and change the colour of each button to reflect which section is open.
     public void OpenIngredients()
     {
+        if (TutorialScript.TutorialImages == 3)
+        {
+            TutorialScript.NextTutorial();
+        }
         IngredientsSection.SetActive(true);
         RecipeSection.SetActive(false);
         AnimalsSection.SetActive(false);
@@ -345,6 +377,10 @@ public class UIBook : MonoBehaviour
     }
     public void OpenRecipes()
     {
+        if (TutorialScript.TutorialImages == 3)
+        {
+            TutorialScript.NextTutorial();
+        }
         IngredientsSection.SetActive(false);
         RecipeSection.SetActive(true);
         AnimalsSection.SetActive(false);
@@ -369,6 +405,10 @@ public class UIBook : MonoBehaviour
 
     public void OpenAnimals()
     {
+        if (TutorialScript.TutorialImages == 3)
+        {
+            TutorialScript.NextTutorial();
+        }
         IngredientsSection.SetActive(false);
         RecipeSection.SetActive(false);
         AnimalsSection.SetActive(true);
@@ -394,6 +434,10 @@ public class UIBook : MonoBehaviour
 
     public void OpenShop()
     {
+        if (TutorialScript.TutorialImages == 3)
+        {
+            TutorialScript.NextTutorial();
+        }
         IngredientsSection.SetActive(false);
         RecipeSection.SetActive(false);
         AnimalsSection.SetActive(false);
@@ -418,6 +462,10 @@ public class UIBook : MonoBehaviour
 
     public void OpenOptions()
     {
+        if (TutorialScript.TutorialImages == 3)
+        {
+            TutorialScript.NextTutorial();
+        }
         IngredientsSection.SetActive(false);
         RecipeSection.SetActive(false);
         AnimalsSection.SetActive(false);
@@ -442,6 +490,10 @@ public class UIBook : MonoBehaviour
 
     public void OpenGuide()
     {
+        if (TutorialScript.TutorialImages == 3)
+        {
+            TutorialScript.NextTutorial();
+        }
         IngredientsSection.SetActive(false);
         RecipeSection.SetActive(false);
         AnimalsSection.SetActive(false);

@@ -9,6 +9,7 @@ public class Fridge : MonoBehaviour
 
     public bool HoldingBamboo; //if the player is holding bamboo or not
     public bool HoldingBread; //if the player is holding bread or not
+    public Tutorial TutorialScript;
 
     public void BambooButton() //This button is on the bamboo icon 
     {
@@ -22,4 +23,11 @@ public class Fridge : MonoBehaviour
         HoldingBread = true; //set holding bread to true
     }
 
+    public void Update()
+    {
+        if(HoldingBamboo && HoldingBread && TutorialScript.TutorialImages == 12)
+        {
+            TutorialScript.NextTutorial();
+        }
+    }
 }

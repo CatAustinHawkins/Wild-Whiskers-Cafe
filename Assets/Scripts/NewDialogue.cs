@@ -18,7 +18,9 @@ public class NewDialogue : MonoBehaviour
 
     public TextMeshProUGUI DialogueTextTMP;
     public TextMeshProUGUI NameTextTMP;
+    public Tutorial TutorialScript;
 
+    public GameObject ThinkBubble;
 
     public void Update()
     {
@@ -74,12 +76,20 @@ public class NewDialogue : MonoBehaviour
             {
                 DialogueBox.SetActive(true); //enable the panda dialogue asking for the bamboo hotdog
                 DialogueOpen = true;
+                if(TutorialScript.TutorialImages == 5)
+                {
+                    TutorialScript.NextTutorial();
+                }
             }
         }
         else
         {
             DialogueBox.SetActive(false);
             DialogueOpen = false;
+            if (TutorialScript.TutorialImages == 7)
+            {
+                TutorialScript.NextTutorial();
+            }
         }
     }
 
@@ -90,9 +100,14 @@ public class NewDialogue : MonoBehaviour
         {
             if (PandaInRange)
             {
-                //
+                ThinkBubble.SetActive(false);
                 DialogueTextTMP.text = "Yay!!!";
             }
+        }
+
+        if (TutorialScript.TutorialImages == 6)
+        {
+            TutorialScript.NextTutorial();
         }
     }
 

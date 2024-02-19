@@ -14,11 +14,7 @@ public class MenuButtons : MonoBehaviour
         }
     }
 
-    public void Start() //when the game starts
-    {
-        Screen.SetResolution(1600, 900, false); //set the games resolution to 1600,900 and the fullscreen value to false
 
-    }
     public void StartGame() //if the player clicks the start game button
     {
         SceneManager.LoadScene("PlayerSetup"); //open the playersetup scene
@@ -28,9 +24,17 @@ public class MenuButtons : MonoBehaviour
     {
         SceneManager.LoadScene("OptionsMenu"); //open the options menu scene
     }
-
+    public void AboutMenu() //if the player clicks the options menu button
+    {
+        SceneManager.LoadScene("AboutMenu"); //open the options menu scene
+    }
     public void Close() //if the player clicks the close button
     {
         Application.Quit(); //close the game
+    }
+
+    public void BacktoMain()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

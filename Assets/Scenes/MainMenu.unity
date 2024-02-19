@@ -950,7 +950,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1767474430}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: OptionsMenu
+        m_MethodName: AboutMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
