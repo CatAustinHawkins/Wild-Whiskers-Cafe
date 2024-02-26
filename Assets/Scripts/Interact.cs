@@ -6,7 +6,6 @@ using TMPro;
 
 public class Interact : MonoBehaviour
 {
-
     [Header("Bools")]
     public bool OvenInRange; //if the oven is in range
     public bool ChoppingBoardInRange; //if the chopping board is in range
@@ -19,6 +18,18 @@ public class Interact : MonoBehaviour
 
     public bool BedInRange;
 
+    public bool ToCafeArea1;//to cafe from kitchen
+    public bool ToCafeArea2;//to cafe from bedroom
+    public bool ToKitchenArea;
+    public bool ToBedroomArea;
+
+    public bool BroomInRange;
+    public bool FireExtinguisherInRange;
+
+    public bool BroomHeld;
+    public bool FireExtinguisherHeld;
+
+    public bool FireExtinguishUse;
 
     [Header("Fridge Assets")]
     public GameObject FridgeUI; //fridge ui window
@@ -46,6 +57,24 @@ public class Interact : MonoBehaviour
     public float OvenTimerFloat = 3f;
     public float ChoppingBoardFloat = 2f;
 
+    public PlayerScript player;
+
+    public GameObject Camera; //get the camera gameobject so it can be moved 
+    public Vector3 NewCameraPosition; //the new position for the camera
+    public GameObject Player; //get the player gameobject so it can be moved
+    public Vector3 NewPlayerPosition; //the new position for the camera
+
+    public PlayerScript PlayerMove;
+
+    public GameObject Broom;
+    public GameObject FireExtinguisher;
+
+    public GameObject BroomPlayer;
+    public GameObject FireExtinguisherPlayer;
+    public GameObject FireExtinguisherinUsePlayer;
+
+    public GameObject EmptyBroom;
+    public GameObject EmptyFireExtinguisher;
     public void Start()
     {
         OvenTimerFloat = 3f;
@@ -94,6 +123,34 @@ public class Interact : MonoBehaviour
         {
             BedInRange = true;
         }
+
+        if(other.tag == "ToCafe1")
+        {
+            ToCafeArea1 = true;
+        }
+        if (other.tag == "ToCafe2")
+        {
+            ToCafeArea2 = true;
+        }
+        if (other.tag == "ToKitchen")
+        {
+            ToKitchenArea = true;
+        }
+
+        if(other.tag == "ToBedroom")
+        {
+            ToBedroomArea = true;
+        }
+
+        if(other.tag == "FireExtinguisher")
+        {
+            FireExtinguisherInRange = true;
+        }
+
+        if(other.tag == "Broom")
+        {
+            BroomInRange = true;
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)
@@ -124,10 +181,40 @@ public class Interact : MonoBehaviour
             BedInRange = false;
         }
 
+        if (other.tag == "ToCafe1")
+        {
+            ToCafeArea1 = false;
+        }
+        if (other.tag == "ToCafe2")
+        {
+            ToCafeArea2 = false;
+        }
+        if (other.tag == "ToKitchen")
+        {
+            ToKitchenArea = false;
+        }
+
+        if (other.tag == "ToBedroom")
+        {
+            ToBedroomArea = false;
+        }
+
+        if (other.tag == "FireExtinguisher")
+        {
+            FireExtinguisherInRange = false;
+        }
+
+        if (other.tag == "Broom")
+        {
+            BroomInRange = false;
+        }
+
     }
 
     public void InteractButton()
     {
+        player.target = player.transform.position;
+
         if(OvenInRange)
         {
             //check what food the player has
@@ -187,6 +274,96 @@ public class Interact : MonoBehaviour
         {
             TutorialEnd.SetActive(true);
         }
+
+        if(ToCafeArea1)
+        {
+            Camera.transform.position = new Vector3(0, 0, -10); //update the cameras position
+            Player.transform.position = new Vector3(21, -4.5f, 0); //update the players position
+            PlayerMove.target = PlayerMove.transform.position;
+        }
+
+        if (ToCafeArea2)
+        {
+            Camera.transform.position = new Vector3(0, 0, -10); //update the cameras position
+            Player.transform.position = new Vector3(-21, -4.5f, 0); //update the players position
+            PlayerMove.target = PlayerMove.transform.position;
+        }
+
+        if (ToKitchenArea)
+        {
+            Camera.transform.position = new Vector3(80, 0, -10); //update the cameras position
+            Player.transform.position = new Vector3(57, -4.5f, 0); //update the players position
+            PlayerMove.target = PlayerMove.transform.position;
+
+            if (ToKitchenArea && TutorialScript.TutorialImages == 10)
+            {
+                TutorialScript.NextTutorial();
+            }
+        }
+
+        if (ToBedroomArea)
+        {
+            Camera.transform.position = new Vector3(-89, 0, -10); //update the cameras position
+            Player.transform.position = new Vector3(-66, -4.5f, 0); //update the players position
+            PlayerMove.target = PlayerMove.transform.position;
+
+            if (ToBedroomArea && TutorialScript.TutorialImages == 17)
+            {
+                TutorialScript.NextTutorial();
+            }
+        }
+
+        if (FireExtinguisherHeld && !FireExtinguishUse)
+        {
+            FireExtinguisherinUsePlayer.SetActive(true);
+            FireExtinguisherPlayer.SetActive(false);
+            FireExtinguishUse = true;
+        }
+
+        /*if (FireExtinguishUse)
+        {
+            FireExtinguisherinUsePlayer.SetActive(false);
+            FireExtinguisherPlayer.SetActive(true);
+            FireExtinguishUse = false;
+        }*/
+
+
+        if (FireExtinguisherInRange)
+        {
+            FireExtinguisherHeld = true;
+            FireExtinguisher.SetActive(false);
+            FireExtinguisherPlayer.SetActive(true);
+            EmptyFireExtinguisher.SetActive(true);
+        }
+
+        if(FireExtinguisherInRange && FireExtinguisherHeld)
+        {
+            FireExtinguisherHeld = false;
+            FireExtinguisher.SetActive(true);
+            FireExtinguisherPlayer.SetActive(false);
+            EmptyFireExtinguisher.SetActive(false);
+            FireExtinguisherinUsePlayer.SetActive(false);
+            FireExtinguishUse = false;
+
+        }
+
+        if (BroomInRange)
+        {
+            BroomHeld = true;
+            Broom.SetActive(false);
+            BroomPlayer.SetActive(true);
+            EmptyBroom.SetActive(true);
+        }
+
+        if (BroomInRange && BroomHeld)
+        {
+            BroomHeld = false;
+            Broom.SetActive(true);
+            BroomPlayer.SetActive(false);
+            EmptyBroom.SetActive(false);
+
+        }
+
     }
 
     IEnumerator DelayTime()

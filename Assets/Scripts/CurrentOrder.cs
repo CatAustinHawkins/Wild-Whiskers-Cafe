@@ -17,6 +17,7 @@ public class CurrentOrder : MonoBehaviour
     public bool TimerRunning;
 
     public Tutorial TutorialScript;
+    public PlayerScript player;
 
     public void Update()
     {
@@ -34,7 +35,9 @@ public class CurrentOrder : MonoBehaviour
 
     public void Clicked() //UIBook Button
     {
-        if(!OrderOpen) //if the order form is not currently open
+        player.target = player.transform.position;
+
+        if (!OrderOpen) //if the order form is not currently open
         {
             if(TutorialScript.TutorialImages == 8)
             {

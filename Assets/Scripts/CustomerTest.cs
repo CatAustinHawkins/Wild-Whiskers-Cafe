@@ -135,7 +135,7 @@ public class CustomerTest : MonoBehaviour
     IEnumerator HappinessValue()
     {
         yield return new WaitForSeconds(1f);
-        overallhappinessvalue = overallhappinessvalue - 0.005f;
+        overallhappinessvalue = overallhappinessvalue - 0.0025f;
         OverallHappiness.value = overallhappinessvalue;
         StartCoroutine(HappinessValue());
     }

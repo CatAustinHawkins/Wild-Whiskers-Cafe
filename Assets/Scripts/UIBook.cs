@@ -61,6 +61,7 @@ public class UIBook : MonoBehaviour
 
     public Tutorial TutorialScript;
 
+    public PlayerScript player;
     public void Update()
     {
         if(Input.GetKey(KeyCode.UpArrow) && !TimerRunning && CurrentPage > 0)
@@ -243,6 +244,7 @@ public class UIBook : MonoBehaviour
     //open and close the UI book
     public void UIBookButton()
     {
+        player.target = player.transform.position;
         if(TutorialScript.TutorialImages == 2 || TutorialScript.TutorialImages == 4)
         {
             TutorialScript.NextTutorial();
