@@ -11,6 +11,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject playersetupscript; //the player setup script
     public PlayerSetup playersetup;
 
+    public GameObject setupscript; //the player setup script
+    public Setup setup;
+
     public string PlayerName;
 
     //the different player sprites
@@ -33,12 +36,17 @@ public class PlayerScript : MonoBehaviour
     public int gold;
 
     public bool ChangedRoom;
+
+    public bool WashingUp;
     void Start()
     {
         target = transform.position;
 
         playersetupscript = GameObject.FindWithTag("Setup"); //find the player setup script
         playersetup = playersetupscript.GetComponent<PlayerSetup>();
+
+        //setupscript = GameObject.FindWithTag("SetupOne"); //find the player setup script
+        //setup = setupscript.GetComponent<Setup>();
 
         rb2d = GetComponent<Rigidbody2D>();
 
@@ -90,32 +98,34 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
-        //movement control
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        rb2d.velocity = new Vector2(moveHorizontal * speed, moveVertical * speed);
-
-        if (Input.GetMouseButtonDown(0))
+        if (!WashingUp)
         {
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            target.z = transform.position.z;
-        }
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
 
-        if(!ChangedRoom)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        }
+            rb2d.velocity = new Vector2(moveHorizontal * speed, moveVertical * speed);
 
-        if (ChangedRoom)
-        {
-            target = transform.position;
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                target.z = transform.position.z;
+            }
 
-        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-        {
-            target = transform.position;
+            if (!ChangedRoom)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+            }
 
+            if (ChangedRoom)
+            {
+                target = transform.position;
+            }
+
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            {
+                target = transform.position;
+
+            }
         }
     }
 
@@ -124,5 +134,38 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("collided");
         target = transform.position;
 
+    }
+
+    public void WardrobeOption1()
+    {
+        spriterenderer.sprite = Player1;
+    }
+    public void WardrobeOption2()
+    {
+        spriterenderer.sprite = Player2;
+    }
+    public void WardrobeOption3()
+    {
+        spriterenderer.sprite = Player3;
+    }
+    public void WardrobeOption4()
+    {
+        spriterenderer.sprite = Player4;
+    }
+    public void WardrobeOption5()
+    {
+        spriterenderer.sprite = Player5;
+    }
+    public void WardrobeOption6()
+    {
+        spriterenderer.sprite = Player6;
+    }
+    public void WardrobeOption7()
+    {
+        spriterenderer.sprite = Player7;
+    }
+    public void WardrobeOption8()
+    {
+        spriterenderer.sprite = Player8;
     }
 }

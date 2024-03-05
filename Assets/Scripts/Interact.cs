@@ -1,35 +1,40 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-
+using UnityEngine.UI;
 //This script is used on the Interact button, to see if the player can interact with the objects around them
 
 public class Interact : MonoBehaviour
 {
-    [Header("Bools")]
+    [Header("In Range Bools")]
     public bool OvenInRange; //if the oven is in range
     public bool ChoppingBoardInRange; //if the chopping board is in range
     public bool FridgeInRange; //if the fridge is in range
-
-    public bool FridgeOpen; //is the fridge window open
-    public bool FoodCooked; //is the food cooked
-    public bool MealReady; //is the meal ready
     public bool PandaInRange; //is the player in range of the panda
-
     public bool BedInRange;
-
     public bool ToCafeArea1;//to cafe from kitchen
     public bool ToCafeArea2;//to cafe from bedroom
     public bool ToKitchenArea;
     public bool ToBedroomArea;
-
     public bool BroomInRange;
     public bool FireExtinguisherInRange;
+    public bool TrashBag1inRange;
+    public bool TrashBag2inRange;
+    public bool TrashBag3inRange;
+    public bool WardrobeInRange;
+    public bool KitchenExitInRange;
+    public bool BlenderinRange;
+    public bool TrashBininRange;
+    public bool DirtyPlateinRange;
 
+    [Header("Other Bools")]
+    public bool FireExtinguishUse;
+    public bool TrashBagHeld;
+    public bool FridgeOpen; //is the fridge window open
+    public bool FoodCooked; //is the food cooked
+    public bool MealReady; //is the meal ready
     public bool BroomHeld;
     public bool FireExtinguisherHeld;
-
-    public bool FireExtinguishUse;
 
     [Header("Fridge Assets")]
     public GameObject FridgeUI; //fridge ui window
@@ -37,8 +42,10 @@ public class Interact : MonoBehaviour
 
     public GameObject Bread; //bread gameobject that the player holds
     public GameObject Bamboo; //bamboo gameobject that the player holds
+    public GameObject Meat;
     public GameObject CookedBamboo; //cooked bamboo gameobject that the player holds
     public GameObject BambooHotdog; //bamboo hotdog gameobject that the player holds
+    public GameObject MeatSmoothie;
 
     public CustomerTest CustomerTestScript; //customer script
 
@@ -46,16 +53,11 @@ public class Interact : MonoBehaviour
 
     public GameObject OvenInteractPrompt;
     public GameObject ChoppingBoardInteractPrompt;
+    public GameObject BlenderInteractPrompt;
 
     public GameObject TutorialEnd;
 
     public Tutorial TutorialScript;
-
-    public TextMeshProUGUI OvenTimerTimerText;
-    public TextMeshProUGUI ChoppingBoardTimerText;
-
-    public float OvenTimerFloat = 3f;
-    public float ChoppingBoardFloat = 2f;
 
     public PlayerScript player;
 
@@ -75,11 +77,51 @@ public class Interact : MonoBehaviour
 
     public GameObject EmptyBroom;
     public GameObject EmptyFireExtinguisher;
+
+    public Slider OvenTimerSlider;
+    public Slider BlenderTimerSlider;
+    public Slider TrashTimerSlider;
+    public Slider SinkTimerSlider;
+    public Slider ChoppingBoardTimerSlider;
+
+    public float OvenTimerValue;
+    public float BlenderTimerValue;
+    public float TrashTimerValue;
+    public float SinkTimerValue;
+    public float ChoppingBoardTimerValue;
+
+    public Image OvenValueColour;
+    public Image BlenderValueColour;
+    public Image ChoppingBoardValueColour;
+
+    public GameObject FireController;
+
+    public bool OvenOn;
+
+    public GameObject FridgeLight;
+
+
+    public GameObject[] TrashBags;
+    public int TrashBagRandom;
+
+    public GameObject WardrobeUI;
+    public bool WardrobeOpen;
+
+    public GameObject TrashBagObject;
+
+    public bool SmoothieMade;
+
+    public bool PlayerLeftHandFull;
+    public bool PlayerRightHandFull;
+
+    public int TrashTimerInt;
+
     public void Start()
     {
-        OvenTimerFloat = 3f;
-        ChoppingBoardFloat = 2f;
+        StartCoroutine(TrashSliderTimer());
+
     }
+
     public void Update()
     {
         if(Input.GetKey(KeyCode.Escape))
@@ -99,14 +141,12 @@ public class Interact : MonoBehaviour
         if (other.tag == "Oven") //check if the player is colliding with the oven
         {
             OvenInRange = true; //set oven in range to true
-            Debug.Log("Player at Oven");
         }
 
         //same for the other game objects
         if (other.tag == "Fridge")
         {
             FridgeInRange = true;
-            Debug.Log("Player at Fridge");
         }
 
         if (other.tag == "ChoppingBoard")
@@ -151,24 +191,66 @@ public class Interact : MonoBehaviour
         {
             BroomInRange = true;
         }
+
+        if (other.tag == "TrashBag1")
+        {
+            TrashBag1inRange = true;
+        }
+
+        if (other.tag == "TrashBag2")
+        {
+            TrashBag2inRange = true;
+        }
+
+        if (other.tag == "TrashBag3")
+        {
+            TrashBag3inRange = true;
+        }
+
+        if(other.tag == "Wardrobe")
+        {
+            WardrobeInRange = true;
+        }
+
+        if(other.tag == "KitchenExit")
+        {
+            KitchenExitInRange = true;  
+        }
+
+        if(other.tag == "Blender")
+        {
+            BlenderinRange = true;
+        }
+
+        if(other.tag == "TrashBin")
+        {
+            TrashBininRange = true;
+        }
+
+        if(other.tag == "DirtyPlate")
+        {
+            DirtyPlateinRange = true;
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        //when the player stops colliding with these tags change their bools
         if(other.tag == "Oven")
         {
             OvenInRange = false;
-            Debug.Log("Player left Oven");
+            OvenInteractPrompt.SetActive(false);
         }
 
         if (other.tag == "Fridge")
         {
             FridgeInRange = false;
-            Debug.Log("Player at Fridge");
+            FridgeLight.SetActive(false);
+            FridgeOpen = false;
+            FridgeUI.SetActive(false);
+
         }
 
-        if(other.tag == "ChoppingBoard")
+        if (other.tag == "ChoppingBoard")
         {
             ChoppingBoardInRange = false;
         }
@@ -209,6 +291,45 @@ public class Interact : MonoBehaviour
             BroomInRange = false;
         }
 
+        if(other.tag == "TrashBag1")
+        {
+            TrashBag1inRange = false;   
+        }
+
+        if (other.tag == "TrashBag2")
+        {
+            TrashBag2inRange = false;
+        }
+
+        if (other.tag == "TrashBag3")
+        {
+            TrashBag3inRange = false;
+        }
+
+        if (other.tag == "Wardrobe")
+        {
+            WardrobeInRange = false;
+        }
+
+        if (other.tag == "KitchenExit")
+        {
+            KitchenExitInRange = false;
+        }
+
+        if (other.tag == "Blender")
+        {
+            BlenderinRange = false;
+        }
+
+        if (other.tag == "TrashBin")
+        {
+            TrashBininRange = false;
+        }
+
+        if (other.tag == "DirtyPlate")
+        {
+            DirtyPlateinRange = false;
+        }
     }
 
     public void InteractButton()
@@ -219,19 +340,49 @@ public class Interact : MonoBehaviour
         {
             //check what food the player has
 
-            if(FridgeScript.HoldingBamboo) //if the players holding bamboo
-            {
+           if(FridgeScript.HoldingBamboo) //if the players holding bamboo
+           {
                 OvenInteractPrompt.SetActive(true);
-                StartCoroutine(OvenTimer());
+           }
+
+            if(FoodCooked)
+            {
+                OvenOn = false;
+                CookedBamboo.SetActive(true);
+                OvenInteractPrompt.SetActive(false);
+                OvenTimerValue = 0;
+                OvenTimerSlider.value = OvenTimerValue;
+                OvenValueColour.color = new Color32(76, 211, 255, 255);
+            }
+        }
+        if (BlenderinRange)
+        {
+            //check what food the player has
+
+            if (FridgeScript.HoldingMeat) //if the players holding bamboo
+            {
+                BlenderInteractPrompt.SetActive(true);
+            }
+
+            if (SmoothieMade)
+            {
+                MeatSmoothie.SetActive(true);
+                BlenderInteractPrompt.SetActive(false);
+                BlenderTimerValue = 0;
+                BlenderTimerSlider.value = BlenderTimerValue;
+                BlenderValueColour.color = new Color32(76, 211, 255, 255);
             }
         }
 
-        if(FridgeInRange) //open the fridge UI
+        if (FridgeInRange) //open the fridge UI
         {
             if(!FridgeOpen)
             {
+                PlayerMove.target = PlayerMove.transform.position;
                 FridgeUI.SetActive(true);
                 FridgeOpen = true;
+                FridgeLight.SetActive(true);
+                StartCoroutine(FridgeLightOverlay());
                 if(TutorialScript.TutorialImages == 11)
                 {
                     TutorialScript.NextTutorial();
@@ -241,12 +392,15 @@ public class Interact : MonoBehaviour
             {
                 FridgeUI.SetActive(false);
                 FridgeOpen = false;
+                FridgeLight.SetActive(false);
+
                 if (TutorialScript.TutorialImages == 13)
                 {
                     TutorialScript.NextTutorial();
                 }
             }
         }
+
 
         if(ChoppingBoardInRange)
         {
@@ -320,13 +474,6 @@ public class Interact : MonoBehaviour
             FireExtinguishUse = true;
         }
 
-        /*if (FireExtinguishUse)
-        {
-            FireExtinguisherinUsePlayer.SetActive(false);
-            FireExtinguisherPlayer.SetActive(true);
-            FireExtinguishUse = false;
-        }*/
-
 
         if (FireExtinguisherInRange)
         {
@@ -360,10 +507,58 @@ public class Interact : MonoBehaviour
             BroomHeld = false;
             Broom.SetActive(true);
             BroomPlayer.SetActive(false);
-            EmptyBroom.SetActive(false);
-
+            EmptyBroom.SetActive(false); 
         }
 
+        if(TrashBag1inRange)
+        {
+            TrashBags[0].SetActive(false);
+            TrashBagHeld = true;
+            TrashBagObject.SetActive(true);
+        }
+
+        if (TrashBag2inRange)
+        {
+            TrashBags[1].SetActive(false);
+            TrashBagHeld = true;
+            TrashBagObject.SetActive(true);
+        }
+
+        if (TrashBag3inRange)
+        {
+            TrashBags[2].SetActive(false);
+            TrashBagHeld = true;
+            TrashBagObject.SetActive(true);
+        }
+
+        if(TrashBininRange)
+        {
+            FridgeScript.MeatIcon.SetActive(false);
+            FridgeScript.BambooIcon.SetActive(false);
+            FridgeScript.BreadIcon.SetActive(false);
+            TrashTimerValue = TrashTimerValue + 0.15f;
+        }
+
+        if (WardrobeInRange) //open the fridge UI
+        {
+            if (!WardrobeOpen)
+            {
+                PlayerMove.target = PlayerMove.transform.position;
+                WardrobeUI.SetActive(true);
+                WardrobeOpen = true;
+            }
+            else
+            {
+                WardrobeUI.SetActive(false);
+                WardrobeOpen = false;
+            }
+        }
+
+        if(KitchenExitInRange && TrashBagHeld)
+        {
+            TrashBagObject.SetActive(false);
+            TrashBagHeld = false;
+        }
     }
 
     IEnumerator DelayTime()
@@ -373,59 +568,141 @@ public class Interact : MonoBehaviour
         TimerRunning = false;
     }
 
-    IEnumerator OvenTimer()
-    {
-        StartCoroutine(OvenTimerText());
-        TimerRunning = true;
-        yield return new WaitForSeconds(3f);
-        TimerRunning = false;
-        Bamboo.SetActive(false);
-        CookedBamboo.SetActive(true); //make them hold cooked bamboo instead
-        FoodCooked = true;
-        OvenInteractPrompt.SetActive(false);
-        if (TutorialScript.TutorialImages == 14)
-        {
-            TutorialScript.NextTutorial();
-        }
-    }
-
     IEnumerator ChoppingTimer()
     {
-        StartCoroutine(ChoppingTimerText());
-        TimerRunning = true;
-        yield return new WaitForSeconds(2f);
-        CookedBamboo.SetActive(false);
-        Bread.SetActive(false);
+        yield return new WaitForSeconds(0.25f);
+        ChoppingBoardTimerValue = ChoppingBoardTimerValue + 0.125f;
+        ChoppingBoardTimerSlider.value = ChoppingBoardTimerValue;
+        StartCoroutine(ChoppingTimer());
+
+        if(ChoppingBoardTimerValue > 1)
+        {
+            CookedBamboo.SetActive(false);
+            Bread.SetActive(false);
+            Bamboo.SetActive(false);
+            BambooHotdog.SetActive(true); //enable the bamboo hotdog gameobject
+            MealReady = true;
+            TimerRunning = false;
+            ChoppingBoardInteractPrompt.SetActive(false);
+            if (TutorialScript.TutorialImages == 15)
+            {
+                TutorialScript.NextTutorial();
+            }
+        }
+    }
+
+    IEnumerator BlenderTimer()
+    {
+        yield return new WaitForSeconds(0.25f);
+        BlenderTimerValue = BlenderTimerValue + 0.125f;
+        BlenderTimerSlider.value = BlenderTimerValue;
+        if (!SmoothieMade)
+        {
+            StartCoroutine(BlenderTimer());
+        }
+
+        if(BlenderTimerValue > 1)
+        {
+            SmoothieMade = true;
+            TimerRunning = false;
+            BlenderValueColour.color = new Color32(113, 255, 76, 255);
+        }
+    }
+    IEnumerator OvenTimer()
+    {
+        OvenOn = true;
+        yield return new WaitForSeconds(0.25f);
+        OvenTimerValue = OvenTimerValue + 0.08333f;
+        OvenTimerSlider.value = OvenTimerValue;
+        if (OvenOn)
+        {
+            StartCoroutine(OvenTimer());
+        }
+        else
+        {
+            OvenTimerValue = 0;
+            OvenTimerSlider.value = OvenTimerValue;
+        }
+
+        if (OvenTimerValue > 1)
+        {
+            FoodCooked = true;
+
+            OvenValueColour.color = new Color32(113, 255, 76, 255);
+
+            if (TutorialScript.TutorialImages == 14)
+            {
+                TutorialScript.NextTutorial();
+            }
+        }
+
+        if (OvenTimerValue > 2)
+        {
+            OvenValueColour.color = new Color32(255, 76, 76, 255);
+            FireController.SetActive(true);
+        }
+            
+    }
+
+    IEnumerator TrashSliderTimer()
+    {
+        TrashTimerValue = TrashTimerValue + 0.0015f;
+        TrashTimerSlider.value = TrashTimerValue;
+        yield return new WaitForSeconds(0.25f);
+        StartCoroutine(TrashSliderTimer());
+        if(TrashTimerValue > 1)
+        {
+            TrashBagRandom = Random.Range(0, 2);
+            TrashBags[TrashBagRandom].SetActive(true);
+            TrashTimerValue = 0;
+            TrashTimerSlider.value = 0;
+        }
+    }
+
+    IEnumerator FridgeLightOverlay()
+    {
+        yield return new WaitForSeconds(0.33f);
+        FridgeLight.SetActive(false);
+    }
+
+    public void OvenPopupTick()
+    {
+        StartCoroutine(OvenTimer());
         Bamboo.SetActive(false);
-        BambooHotdog.SetActive(true); //enable the bamboo hotdog gameobject
-        MealReady = true;
-        TimerRunning = false;
-        ChoppingBoardInteractPrompt.SetActive(false);
-        if (TutorialScript.TutorialImages == 15)
-        {
-            TutorialScript.NextTutorial();
-        }
+        OvenInteractPrompt.SetActive(false);
+        FridgeScript.HoldingBamboo = false;
+        OvenOn = true;
     }
 
-    IEnumerator ChoppingTimerText()
+    public void OvenPopupCross()
     {
-        yield return new WaitForSeconds(0.25f);
-        ChoppingBoardFloat = ChoppingBoardFloat - 0.25f;
-        ChoppingBoardTimerText.text = ChoppingBoardFloat.ToString() + "s";
-        if (ChoppingBoardFloat > 0)
-        {
-            StartCoroutine(ChoppingTimerText());
-        }
+        OvenInteractPrompt.SetActive(false);
     }
 
-    IEnumerator OvenTimerText()
+    public void BlenderPopupTick()
     {
-        yield return new WaitForSeconds(0.25f);
-        OvenTimerFloat = OvenTimerFloat - 0.25f;
-        OvenTimerTimerText.text = OvenTimerFloat.ToString() + "s";
-        if (OvenTimerFloat > 0)
-        {
-            StartCoroutine(OvenTimerText());
-        }
+        StartCoroutine(BlenderTimer());
+        Meat.SetActive(false);
+        BlenderInteractPrompt.SetActive(false);
+        FridgeScript.HoldingMeat = false;
+    }
+
+    public void BlenderPopupCross()
+    {
+        BlenderInteractPrompt.SetActive(false);
+    }
+
+
+    public void ChoppingBoardPopUpTick()
+    {
+        StartCoroutine(BlenderTimer());
+        Meat.SetActive(false);
+        BlenderInteractPrompt.SetActive(false);
+        FridgeScript.HoldingMeat = false;
+    }
+
+    public void ChoppingBoardPopUpCross()
+    {
+        BlenderInteractPrompt.SetActive(false);
     }
 }

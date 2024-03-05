@@ -20,6 +20,15 @@ TagManager:
   - ToCafe2
   - FireExtinguisher
   - Broom
+  - SetupOne
+  - Blender
+  - TrashBag1
+  - TrashBag2
+  - TrashBag3
+  - Wardrobe
+  - KitchenExit
+  - TrashBin
+  - DirtyPlate
   layers:
   - Default
   - TransparentFX

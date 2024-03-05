@@ -9,15 +9,13 @@ public class Fire : MonoBehaviour
 
     public GameObject[] FireArrays;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject FireOven;
+
+
+    private void OnEnable()
     {
         FireBegins();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        FireOven.SetActive(true);
         
     }
 

@@ -34,6 +34,13 @@ public class Tutorial : MonoBehaviour
     //tutorial18 - go to your room
     //tutorial19 - go to bed
 
+
+    //things to add
+    //blender 
+    //fire
+    //trash
+    //  
+
     public void FixedUpdate()
     {
         if (TutorialImages == 0)
