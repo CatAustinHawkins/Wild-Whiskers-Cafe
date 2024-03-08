@@ -10,6 +10,7 @@ public class CurrentOrder : MonoBehaviour
     public PlayerScript Player; //To access the players script
 
     public GameObject Order1; //The first order
+    public GameObject Order2; //The first order
 
 
     public bool OrderOpen; //Check if the order is open or not
@@ -18,6 +19,8 @@ public class CurrentOrder : MonoBehaviour
 
     public Tutorial TutorialScript;
     public PlayerScript player;
+
+    public GameObject OrderBackground;
 
     public void Update()
     {
@@ -35,33 +38,51 @@ public class CurrentOrder : MonoBehaviour
 
     public void Clicked() //UIBook Button
     {
+
         player.target = player.transform.position;
 
         if (!OrderOpen) //if the order form is not currently open
         {
-            if(TutorialScript.TutorialImages == 8)
+            if(TutorialScript.TutorialImages == 10 || TutorialScript.TutorialImages == 24)
             {
                 TutorialScript.NextTutorial();
             }
             //check which customer the player is currently serving
-            if(Player.CurrentCustomer == 1)
+            if(Player.CurrentOrder == 1)
             {
                 Order1.SetActive(true); //activate the relevant order form
                 OrderOpen = true; //set order open to true
+                OrderBackground.SetActive(true);
+            }
+            if (Player.CurrentOrder == 2)
+            {
+                Order2.SetActive(true); //activate the relevant order form
+                OrderOpen = true; //set order open to true
+                OrderBackground.SetActive(true);
+
             }
 
         }
         else //if the order form is open
         {
             //check which customer the player is currently serving
-            if (Player.CurrentCustomer == 1)
+            if (Player.CurrentOrder == 1)
             {
-                if (TutorialScript.TutorialImages == 9)
+                if (TutorialScript.TutorialImages == 11)
                 {
                     TutorialScript.NextTutorial();
                 }
                 Order1.SetActive(false); //close the relevant order form
                 OrderOpen = false; //set order open to false
+                OrderBackground.SetActive(false);
+
+            }
+
+            if (Player.CurrentOrder == 2)
+            {
+                Order2.SetActive(false); //close the relevant order form
+                OrderOpen = false; //set order open to false
+                OrderBackground.SetActive(false);
 
             }
         }

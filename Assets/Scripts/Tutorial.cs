@@ -18,28 +18,36 @@ public class Tutorial : MonoBehaviour
     //tutorial2 - overall happiness meter
     //tutorial3 - open ui book 
     //tutorial4 - use arrow keys to interact with ui book
-    //tutorial5 - close ui book
-    //tutorial6 - talk to the panda
-    //tutorial7 - accept the order
-    //tutorial8 - close dialogue
-    //tutorial9 - open order
-    //tutorial10 - close order form
-    //tutorial11 - go to the kitchen
-    //tutorial12 - open the fridge
-    //tutorial13- select the bamboo and bread
-    //tutorial14 - close the fridge
-    //tutorial15 - cook bamboo in the oven
-    //tutorial16 - put the food together on the chopping board
-    //tutorial17 - serve the customer
-    //tutorial18 - go to your room
-    //tutorial19 - go to bed
+    //tutorial5 - go to the shop page
+    //tutorial6 - get the fishtank!
+    //tutorial7 - close ui book
+    //tutorial8 - talk to the panda
+    //tutorial9 - accept the order 
+    //tutorial10 - close dialogue
+    //tutorial11 - open order
+    //tutorial12 - close order form
+    //tutorial13 - go to the kitchen
+    //tutorial14 - kitchen intro
+    //tutorial15 - Use the broom when puddles appear! and use the fire extinguisher
+    //tutorial16 - open the fridge
+    //tutorial17 - select the meat
+    //tutorial18 - blend the meat
+    //tutorial19 - collect the smoothie
+    //tutorial20 - serve the customer!
+    //tutorial21 - wait for the customer to finish eating
+    //tutorial22 - pick up plate and accept the next order
+    //tutorial23 - go to the sink
+    //tutorial24 - wash up the plate
+    //tutorial25 - check the next order!
+    //tutorial26- select the bamboo and bread
+    //tutorial27 - close the fridge
+    //tutorial28 - cook bamboo in the oven
+    //tutorial29 - put the food together on the chopping board
+    //tutorial30 - serve the customer
+    //tutorial31 - wash the plate up!
+    //tutorial32 - go to your room
+    //tutorial33 - go to bed
 
-
-    //things to add
-    //blender 
-    //fire
-    //trash
-    //  
 
     public void FixedUpdate()
     {
@@ -133,12 +141,23 @@ public class Tutorial : MonoBehaviour
 
         if (TutorialImages == 13)
         {
-            //close the fridge
+            if (Input.GetKey(KeyCode.Space))
+            {
+                //close ui book
+                NextTutorial();
+
+            }
         }
 
         if (TutorialImages == 14)
         {
             //cook bamboo in the oven
+            if (Input.GetKey(KeyCode.Space))
+            {
+                //close ui book
+                NextTutorial();
+
+            }
         }
 
         if (TutorialImages == 15)

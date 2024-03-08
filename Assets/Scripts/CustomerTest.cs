@@ -8,10 +8,10 @@ public class CustomerTest : MonoBehaviour
 {
     //Speed and location variables
     private float speed = 8.0f;
-    public Vector3 FoHtarget;
+    public GameObject FoHtarget;
     public Vector2 position;
-    public Vector3 DeskTarget;
-    public Vector3 LeavingArea;
+    public GameObject DeskTarget;
+    public GameObject LeavingArea;
 
     //Bools which control where the cusotmer goes
     public bool TableFree;
@@ -45,6 +45,14 @@ public class CustomerTest : MonoBehaviour
     //the player's script
     public PlayerScript Player;
 
+    public GameObject DirtyPlate;
+
+    public GameObject MeatSmoothie;
+    public GameObject BambooHotdog;
+
+    public Dialogue DialogueScript;
+    public Interact InteractScript;
+    public Tutorial TutorialScript;
 
     void Start()
     {
@@ -55,8 +63,6 @@ public class CustomerTest : MonoBehaviour
 
     void Update()
     {
-
-        Player.CurrentCustomer = CustomerNumber; //set the players variable to the current customer number so other scripts can use it
         
         if(overallhappinessvalue < 0) //if the overall happiness reaches 0
         {
@@ -74,7 +80,7 @@ public class CustomerTest : MonoBehaviour
         if(movingtofoh) //if the player is moving to the front of house
         {
             // move sprite towards the target location
-            transform.position = Vector2.MoveTowards(transform.position, FoHtarget, step);
+            transform.position = Vector2.MoveTowards(transform.position, FoHtarget.transform.position, step);
 
             if (!MovingtoDesk)
             {
@@ -86,7 +92,7 @@ public class CustomerTest : MonoBehaviour
         if(movingtotable) //if the player is moving towards the table
         {
             // move sprite towards the target location
-            transform.position = Vector2.MoveTowards(transform.position, DeskTarget, step);
+            transform.position = Vector2.MoveTowards(transform.position, DeskTarget.transform.position, step);
 
             if (!WaitingatTable)
             {
@@ -97,10 +103,10 @@ public class CustomerTest : MonoBehaviour
 
         if(Leaving) //if the customer has been fed and is leaving
         {
-            transform.position = Vector2.MoveTowards(transform.position, LeavingArea, step);
-            transform.position = Vector2.MoveTowards(transform.position, LeavingArea, step);
+            transform.position = Vector2.MoveTowards(transform.position, LeavingArea.transform.position, step);
+            transform.position = Vector2.MoveTowards(transform.position, LeavingArea.transform.position, step);
 
-            if (transform.position == LeavingArea)
+            if (transform.position == LeavingArea.transform.position)
             {
                 Destroy(gameObject); //destory the customer
             }
@@ -127,6 +133,7 @@ public class CustomerTest : MonoBehaviour
         movingtotable = false;
         TableFree = false;
         ThoughtBubble.SetActive(true);
+        DialogueScript.AbletoTalk = true;
         Debug.Log("ThoughtWaitDone");
 
 
@@ -140,9 +147,17 @@ public class CustomerTest : MonoBehaviour
         StartCoroutine(HappinessValue());
     }
 
-    public void Fed() //if the customer has been fed
+    public void FedSmoothie() //if the customer has been fed
     {
-        Leaving = true; //they can leave
+        MeatSmoothie.SetActive(true);
+        StartCoroutine(Eating1());
+
+    }
+
+    public void FedMeal() //if the customer has been fed
+    {
+        BambooHotdog.SetActive(true);
+        StartCoroutine(Eating2());
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -152,4 +167,34 @@ public class CustomerTest : MonoBehaviour
             Destroy(gameObject); //destroy the customer
         }
     }
+
+    IEnumerator Eating1()
+    {
+        yield return new WaitForSeconds(6f);
+        DirtyPlate.SetActive(true);
+        MeatSmoothie.SetActive(false);
+        BambooHotdog.SetActive(false);
+        DialogueScript.AbletoTalk = true;
+        DialogueScript.BambooHotdogThought.SetActive(true);
+        DialogueScript.ThinkBubble.SetActive(true);
+        DialogueScript.MealTime = true;
+        if (TutorialScript.TutorialImages == 20)
+        {
+            TutorialScript.NextTutorial();
+        }
+    }
+
+    IEnumerator Eating2()
+    {
+        yield return new WaitForSeconds(6f);
+        DirtyPlate.SetActive(true);
+        MeatSmoothie.SetActive(false);
+        BambooHotdog.SetActive(false);
+        InteractScript.Washup2 = true;
+        Leaving = true;
+
+        TutorialScript.NextTutorial();
+
+    }
 }
+ 

@@ -6,6 +6,7 @@ using System.Collections;
 public class UIBook : MonoBehaviour
 {
 
+
     private IEnumerator coroutine;
 
 
@@ -244,8 +245,9 @@ public class UIBook : MonoBehaviour
     //open and close the UI book
     public void UIBookButton()
     {
+
         player.target = player.transform.position;
-        if(TutorialScript.TutorialImages == 2 || TutorialScript.TutorialImages == 4)
+        if(TutorialScript.TutorialImages == 2 || TutorialScript.TutorialImages == 6)
         {
             TutorialScript.NextTutorial();
         }
@@ -437,6 +439,11 @@ public class UIBook : MonoBehaviour
     public void OpenShop()
     {
         if (TutorialScript.TutorialImages == 3)
+        {
+            TutorialScript.NextTutorial();
+        }
+
+        if (TutorialScript.TutorialImages == 4)
         {
             TutorialScript.NextTutorial();
         }

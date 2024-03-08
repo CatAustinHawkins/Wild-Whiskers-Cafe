@@ -5,7 +5,8 @@ using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
-    public float speed;
+    public float speed = 8;
+    public float speed2 = 16;
     private Rigidbody2D rb2d;
 
     public GameObject playersetupscript; //the player setup script
@@ -31,16 +32,19 @@ public class PlayerScript : MonoBehaviour
 
     public TextMeshProUGUI PlayerNameIntro; //player name text 
 
-    public int CurrentCustomer = 0;
+    public int CurrentOrder = 0;
 
     public int gold;
 
     public bool ChangedRoom;
 
     public bool WashingUp;
+
     void Start()
     {
         target = transform.position;
+        speed = 8;
+        speed2 = 16;
 
         playersetupscript = GameObject.FindWithTag("Setup"); //find the player setup script
         playersetup = playersetupscript.GetComponent<PlayerSetup>();
@@ -103,12 +107,13 @@ public class PlayerScript : MonoBehaviour
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
 
-            rb2d.velocity = new Vector2(moveHorizontal * speed, moveVertical * speed);
+            rb2d.velocity = new Vector2(moveHorizontal * speed2, moveVertical * speed2);
 
             if (Input.GetMouseButtonDown(0))
             {
                 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 target.z = transform.position.z;
+
             }
 
             if (!ChangedRoom)
@@ -124,8 +129,8 @@ public class PlayerScript : MonoBehaviour
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
             {
                 target = transform.position;
-
             }
+
         }
     }
 
