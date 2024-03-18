@@ -12,7 +12,6 @@ public class Tutorial : MonoBehaviour
 
     public GameObject[] TutorialImageArray; //An array of tutorial images
     public int TutorialImages; //the current tutorial image number
-    public CustomerTest customertestscript; //the customer test script
 
     //tutorial1 - wasd movement controls
     //tutorial2 - overall happiness meter

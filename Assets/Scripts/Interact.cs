@@ -51,7 +51,7 @@ public class Interact : MonoBehaviour
     public GameObject MeatSmoothie;
     public GameObject DirtyPlate;
 
-    public CustomerTest CustomerTestScript; //customer script
+    public PandaCustomer CustomerTestScript; //customer script
 
     public bool TimerRunning;
 
@@ -153,12 +153,8 @@ public class Interact : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetKey(KeyCode.Escape))
-        {
-            InteractButton();
-        }
 
-        if(Input.GetKey(KeyCode.Alpha4) && !TimerRunning)
+        if(Input.GetKey(KeyCode.E) && !TimerRunning)
         {
             InteractButton();
             StartCoroutine(DelayTime());

@@ -41,6 +41,11 @@ public class MenuButtons : MonoBehaviour
         Application.Quit(); //close the game
     }
 
+    public void Day1Begin()
+    {
+        SceneManager.LoadScene("Day1");
+    }
+
     public void BacktoMain()
     {
         SceneManager.LoadScene("MainMenu");

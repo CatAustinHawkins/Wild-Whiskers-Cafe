@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 //This script is on the customer, controlling their movement and happiness
 
-public class CustomerTest : MonoBehaviour
+public class PandaCustomer : MonoBehaviour
 {
     //Speed and location variables
     private float speed = 8.0f;
@@ -53,6 +53,9 @@ public class CustomerTest : MonoBehaviour
     public Dialogue DialogueScript;
     public Interact InteractScript;
     public Tutorial TutorialScript;
+    public GameObject Panda;
+
+    public bool Snake;
 
     void Start()
     {
@@ -63,8 +66,12 @@ public class CustomerTest : MonoBehaviour
 
     void Update()
     {
-        
-        if(overallhappinessvalue < 0) //if the overall happiness reaches 0
+        if (Snake && Panda.GetComponent<PandaCustomer>().WaitingatTable)
+        {
+            DayBegin = true;
+        }
+
+        if (overallhappinessvalue < 0) //if the overall happiness reaches 0
         {
             DayFinished.SetActive(true); //end the game
         }

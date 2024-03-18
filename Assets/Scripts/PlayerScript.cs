@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 //Player Script - controls their movement and player image
 
@@ -42,6 +43,10 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+
+            DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
+
+
         target = transform.position;
         speed = 8;
         speed2 = 16;
@@ -132,6 +137,12 @@ public class PlayerScript : MonoBehaviour
             }
 
         }
+
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

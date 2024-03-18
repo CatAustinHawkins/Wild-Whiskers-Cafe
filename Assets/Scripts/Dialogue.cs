@@ -42,16 +42,10 @@ public class Dialogue : MonoBehaviour
     {
         if(AbletoTalk)
         {
-            if (Input.GetKey(KeyCode.Alpha3) && !TimerRunning)
+            if (Input.GetKey(KeyCode.E) && !TimerRunning)
             {
                 DialogueButton();
                 StartCoroutine(DelayTime());
-            }
-
-            if (Input.GetKey(KeyCode.Escape) && DialogueOpen)
-            {
-                DialogueBox.SetActive(false);
-                DialogueOpen = false;
             }
 
             if (Input.GetKey(KeyCode.Alpha5) && !TimerRunning)

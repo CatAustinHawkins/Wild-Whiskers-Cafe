@@ -230,12 +230,7 @@ public class UIBook : MonoBehaviour
             }
         }
 
-        if(Input.GetKey(KeyCode.Escape) && UIBookOpen)
-        {
-            UIBookButton();
-        }
-
-        if(Input.GetKey(KeyCode.Alpha1) && !TimerRunning)
+        if(Input.GetKey(KeyCode.Q) && !TimerRunning)
         {
             UIBookButton();
             StartCoroutine(DelayTime());

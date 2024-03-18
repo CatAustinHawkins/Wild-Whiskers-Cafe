@@ -9,9 +9,14 @@ public class CurrentOrder : MonoBehaviour
 
     public PlayerScript Player; //To access the players script
 
-    public GameObject Order1; //The first order
-    public GameObject Order2; //The first order
+    public GameObject Order; //The first order
 
+    public SpriteRenderer OrderForm;
+
+    public Sprite BlankOrder;
+    public Sprite PandaOrderMS;
+    public Sprite PandaOrderBH;
+    
 
     public bool OrderOpen; //Check if the order is open or not
 
@@ -20,19 +25,13 @@ public class CurrentOrder : MonoBehaviour
     public Tutorial TutorialScript;
     public PlayerScript player;
 
-    public GameObject OrderBackground;
 
     public void Update()
     {
-        if(Input.GetKey(KeyCode.Alpha2) && !TimerRunning)
+        if(Input.GetKey(KeyCode.C) && !TimerRunning)
         {
             Clicked();
             StartCoroutine(DelayTime());
-        }
-
-        if (Input.GetKey(KeyCode.Escape) && OrderOpen)
-        {
-            Clicked();
         }
     }
 
@@ -50,41 +49,28 @@ public class CurrentOrder : MonoBehaviour
             //check which customer the player is currently serving
             if(Player.CurrentOrder == 1)
             {
-                Order1.SetActive(true); //activate the relevant order form
+                OrderForm.sprite = PandaOrderMS;  //activate the relevant order form
+                Order.SetActive(true);
                 OrderOpen = true; //set order open to true
-                OrderBackground.SetActive(true);
             }
             if (Player.CurrentOrder == 2)
             {
-                Order2.SetActive(true); //activate the relevant order form
+                OrderForm.sprite = PandaOrderBH;  //activate the relevant order form
+                Order.SetActive(true);
                 OrderOpen = true; //set order open to true
-                OrderBackground.SetActive(true);
 
             }
 
         }
         else //if the order form is open
         {
-            //check which customer the player is currently serving
-            if (Player.CurrentOrder == 1)
-            {
+
                 if (TutorialScript.TutorialImages == 11)
                 {
                     TutorialScript.NextTutorial();
                 }
-                Order1.SetActive(false); //close the relevant order form
+                Order.SetActive(false); //close the relevant order form
                 OrderOpen = false; //set order open to false
-                OrderBackground.SetActive(false);
-
-            }
-
-            if (Player.CurrentOrder == 2)
-            {
-                Order2.SetActive(false); //close the relevant order form
-                OrderOpen = false; //set order open to false
-                OrderBackground.SetActive(false);
-
-            }
         }
     }
 
