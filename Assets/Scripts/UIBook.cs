@@ -6,9 +6,8 @@ using System.Collections;
 public class UIBook : MonoBehaviour
 {
 
-
-    private IEnumerator coroutine;
-
+    public AudioSource ButtonClick;
+    public GameObject ButtonSource;
 
     public Image IngredientsChoice;
     public Image RecipeChoice;
@@ -63,6 +62,12 @@ public class UIBook : MonoBehaviour
     public Tutorial TutorialScript;
 
     public PlayerScript player;
+
+    public void Start()
+    {
+        ButtonSource = GameObject.FindWithTag("ButtonSound");
+        ButtonClick = ButtonSource.GetComponent<AudioSource>();
+    }
     public void Update()
     {
         if(Input.GetKey(KeyCode.UpArrow) && !TimerRunning && CurrentPage > 0)
@@ -71,6 +76,7 @@ public class UIBook : MonoBehaviour
             {
                 TutorialScript.NextTutorial();
             }
+            ButtonClick.Play();
 
             StartCoroutine(DelayTime());
 
@@ -106,6 +112,8 @@ public class UIBook : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow) && !TimerRunning && CurrentPage < 5)
         {
+            ButtonClick.Play();
+
             if (TutorialScript.TutorialImages == 3)
             {
                 TutorialScript.NextTutorial();
@@ -144,13 +152,15 @@ public class UIBook : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow) && !TimerRunning)
         {
+            ButtonClick.Play();
+
             if (TutorialScript.TutorialImages == 3)
             {
                 TutorialScript.NextTutorial();
             }
             StartCoroutine(DelayTime());
 
-            if(IngredientsOpen && Icurrentpage < 6)
+            if(IngredientsOpen && Icurrentpage < 3)
             {
                 IngredientsPages[Icurrentpage].SetActive(false);
                 Icurrentpage++;
@@ -178,7 +188,7 @@ public class UIBook : MonoBehaviour
                 ShopPages[Scurrentpage].SetActive(true);
             }
 
-            if (GuidesOpen && Gcurrentpage < -1)
+            if (GuidesOpen && Gcurrentpage < 2)
             {
                 GuidePages[Gcurrentpage].SetActive(false);
                 Gcurrentpage++;
@@ -188,6 +198,8 @@ public class UIBook : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow) && !TimerRunning)
         {
+            ButtonClick.Play();
+
             if (TutorialScript.TutorialImages == 3)
             {
                 TutorialScript.NextTutorial();
@@ -232,6 +244,8 @@ public class UIBook : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Q) && !TimerRunning)
         {
+            ButtonClick.Play();
+
             UIBookButton();
             StartCoroutine(DelayTime());
         }
@@ -240,6 +254,7 @@ public class UIBook : MonoBehaviour
     //open and close the UI book
     public void UIBookButton()
     {
+        ButtonClick.Play();
 
         player.target = player.transform.position;
         if(TutorialScript.TutorialImages == 2 || TutorialScript.TutorialImages == 6)
@@ -262,6 +277,8 @@ public class UIBook : MonoBehaviour
     //Switch UI book pages
     public void IngredientsNextPage()
     {
+        ButtonClick.Play();
+
         if (TutorialScript.TutorialImages == 3)
         {
             TutorialScript.NextTutorial();
@@ -273,6 +290,8 @@ public class UIBook : MonoBehaviour
 
     public void IngredientsPreviousPage()
     {
+        ButtonClick.Play();
+
         IngredientsPages[Icurrentpage].SetActive(false);
         Icurrentpage--;
         IngredientsPages[Icurrentpage].SetActive(true);
@@ -280,6 +299,8 @@ public class UIBook : MonoBehaviour
 
     public void RecipeNextPage()
     {
+        ButtonClick.Play();
+
         RecipePages[Rcurrentpage].SetActive(false);
         Rcurrentpage++;
         RecipePages[Rcurrentpage].SetActive(true);
@@ -287,6 +308,8 @@ public class UIBook : MonoBehaviour
 
     public void RecipePreviousPage()
     {
+        ButtonClick.Play();
+
         RecipePages[Rcurrentpage].SetActive(false);
         Rcurrentpage = Rcurrentpage--;
         RecipePages[Rcurrentpage].SetActive(true);
@@ -294,12 +317,16 @@ public class UIBook : MonoBehaviour
 
     public void AnimalNextPage()
     {
+        ButtonClick.Play();
+
         AnimalPages[Acurrentpage].SetActive(false);
         Acurrentpage++;
         AnimalPages[Acurrentpage].SetActive(true);
     }
     public void AnimalPreviousPage()
     {
+        ButtonClick.Play();
+
         AnimalPages[Acurrentpage].SetActive(false);
         Acurrentpage--;
         AnimalPages[Acurrentpage].SetActive(true);
@@ -307,12 +334,16 @@ public class UIBook : MonoBehaviour
 
     public void ShopNextPage()
     {
+        ButtonClick.Play();
+
         ShopPages[Scurrentpage].SetActive(false);
-        Ocurrentpage++;
+        Scurrentpage++;
         ShopPages[Scurrentpage].SetActive(true);
     }
     public void ShopPreviousPage()
     {
+        ButtonClick.Play();
+
         ShopPages[Scurrentpage].SetActive(false);
         Scurrentpage--;
         ShopPages[Scurrentpage].SetActive(true);
@@ -320,12 +351,16 @@ public class UIBook : MonoBehaviour
 
     public void OptionNextPage()
     {
+        ButtonClick.Play();
+
         OptionsPages[Ocurrentpage].SetActive(false);
         Ocurrentpage++;
         OptionsPages[Ocurrentpage].SetActive(true);
     }
     public void OptionPreviousPage()
     {
+        ButtonClick.Play();
+
         OptionsPages[Ocurrentpage].SetActive(false);
         Ocurrentpage--;
         OptionsPages[Ocurrentpage].SetActive(true);
@@ -333,6 +368,8 @@ public class UIBook : MonoBehaviour
 
     public void GuideNextPage()
     {
+        ButtonClick.Play();
+
         GuidePages[Gcurrentpage].SetActive(false);
         Gcurrentpage++;
         GuidePages[Gcurrentpage].SetActive(true);
@@ -340,6 +377,8 @@ public class UIBook : MonoBehaviour
 
     public void GuidePreviousPage()
     {
+        ButtonClick.Play();
+
         GuidePages[Gcurrentpage].SetActive(false);
         Gcurrentpage--;
         GuidePages[Gcurrentpage].SetActive(true);
@@ -349,6 +388,8 @@ public class UIBook : MonoBehaviour
     //Open each section, and change the colour of each button to reflect which section is open.
     public void OpenIngredients()
     {
+        ButtonClick.Play();
+
         if (TutorialScript.TutorialImages == 3)
         {
             TutorialScript.NextTutorial();
@@ -376,6 +417,8 @@ public class UIBook : MonoBehaviour
     }
     public void OpenRecipes()
     {
+        ButtonClick.Play();
+
         if (TutorialScript.TutorialImages == 3)
         {
             TutorialScript.NextTutorial();
@@ -404,6 +447,8 @@ public class UIBook : MonoBehaviour
 
     public void OpenAnimals()
     {
+        ButtonClick.Play();
+
         if (TutorialScript.TutorialImages == 3)
         {
             TutorialScript.NextTutorial();
@@ -433,6 +478,8 @@ public class UIBook : MonoBehaviour
 
     public void OpenShop()
     {
+        ButtonClick.Play();
+
         if (TutorialScript.TutorialImages == 3)
         {
             TutorialScript.NextTutorial();
@@ -466,6 +513,8 @@ public class UIBook : MonoBehaviour
 
     public void OpenOptions()
     {
+        ButtonClick.Play();
+
         if (TutorialScript.TutorialImages == 3)
         {
             TutorialScript.NextTutorial();
@@ -494,6 +543,8 @@ public class UIBook : MonoBehaviour
 
     public void OpenGuide()
     {
+        ButtonClick.Play();
+
         if (TutorialScript.TutorialImages == 3)
         {
             TutorialScript.NextTutorial();

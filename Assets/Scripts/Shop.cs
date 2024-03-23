@@ -35,7 +35,11 @@ public class Shop : MonoBehaviour
         if(PlayerScript.gold > 10 || PlayerScript.gold == 10)
         {
             PlayerScript.gold = PlayerScript.gold - 10;
+
+            ShopObjects[1].SetActive(true);
+            Overlays[1].SetActive(true);
         }
+
     }
 
     public void PineappleHedgehogBuy()
@@ -43,7 +47,11 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 10 || PlayerScript.gold == 10)
         {
             PlayerScript.gold = PlayerScript.gold - 10;
+
+            ShopObjects[2].SetActive(true);
+            Overlays[2].SetActive(true);
         }
+
     }
 
     public void AppleCrabBuy()
@@ -51,7 +59,11 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 10 || PlayerScript.gold == 10)
         {
             PlayerScript.gold = PlayerScript.gold - 10;
+
+            ShopObjects[3].SetActive(true);
+            Overlays[3].SetActive(true);
         }
+
     }
 
     public void StrawberryMiceBuy()
@@ -59,7 +71,11 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 10 || PlayerScript.gold == 10)
         {
             PlayerScript.gold = PlayerScript.gold - 10;
+
+            ShopObjects[4].SetActive(true);
+            Overlays[4].SetActive(true);
         }
+
     }
 
     public void AppleDogBuy()
@@ -67,7 +83,11 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 10 || PlayerScript.gold == 10)
         {
             PlayerScript.gold = PlayerScript.gold - 10;
+
+            ShopObjects[5].SetActive(true);
+            Overlays[5].SetActive(true);
         }
+
     }
 
     public void DisplayTable1Buy()
@@ -75,7 +95,11 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 20 || PlayerScript.gold == 20)
         {
             PlayerScript.gold = PlayerScript.gold - 20;
+
+            ShopObjects[6].SetActive(true);
+            Overlays[6].SetActive(true);
         }
+
     }
 
     public void DisplayTable2Buy()
@@ -83,7 +107,11 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 20 || PlayerScript.gold == 20)
         {
             PlayerScript.gold = PlayerScript.gold - 20;
+
+            ShopObjects[7].SetActive(true);
+            Overlays[7].SetActive(true);
         }
+
     }
 
     public void AlienPlushBuy()
@@ -91,7 +119,11 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 10 || PlayerScript.gold == 10)
         {
             PlayerScript.gold = PlayerScript.gold - 10;
+
+            ShopObjects[8].SetActive(true);
+            Overlays[8].SetActive(true);
         }
+
     }
 
     public void WardrobeBuy()
@@ -99,6 +131,9 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 15 || PlayerScript.gold == 15)
         {
             PlayerScript.gold = PlayerScript.gold - 15;
+
+            ShopObjects[9].SetActive(true);
+            Overlays[9].SetActive(true);
         }
     }
 
@@ -107,6 +142,20 @@ public class Shop : MonoBehaviour
         if (PlayerScript.gold > 20 || PlayerScript.gold == 20)
         {
             PlayerScript.gold = PlayerScript.gold - 20;
+
+            ShopObjects[10].SetActive(true);
+            Overlays[10].SetActive(true);
+        }
+    }
+
+    public void BearPlushBuy()
+    {
+        if (PlayerScript.gold > 10 || PlayerScript.gold == 10)
+        {
+            PlayerScript.gold = PlayerScript.gold - 10;
+
+            ShopObjects[11].SetActive(true);
+            Overlays[11].SetActive(true);
         }
     }
 }

@@ -1,17 +1,18 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 //This script is used to show the current order that the player is making
 
 public class CurrentOrder : MonoBehaviour
 {
 
-
+    public AudioSource ButtonClick;
+    public GameObject ButtonSource;
     public PlayerScript Player; //To access the players script
 
     public GameObject Order; //The first order
 
-    public SpriteRenderer OrderForm;
+    public Image OrderForm;
 
     public Sprite BlankOrder;
     public Sprite PandaOrderMS;
@@ -25,11 +26,16 @@ public class CurrentOrder : MonoBehaviour
     public Tutorial TutorialScript;
     public PlayerScript player;
 
-
+    public void Start()
+    {
+        ButtonSource = GameObject.FindWithTag("ButtonSound");
+        ButtonClick = ButtonSource.GetComponent<AudioSource>();
+    }
     public void Update()
     {
         if(Input.GetKey(KeyCode.C) && !TimerRunning)
         {
+            ButtonClick.Play();
             Clicked();
             StartCoroutine(DelayTime());
         }
@@ -42,7 +48,9 @@ public class CurrentOrder : MonoBehaviour
 
         if (!OrderOpen) //if the order form is not currently open
         {
-            if(TutorialScript.TutorialImages == 10 || TutorialScript.TutorialImages == 24)
+            ButtonClick.Play();
+
+            if (TutorialScript.TutorialImages == 10 || TutorialScript.TutorialImages == 24)
             {
                 TutorialScript.NextTutorial();
             }

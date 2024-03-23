@@ -30,6 +30,8 @@ TagManager:
   - TrashBin
   - DirtyPlate
   - Sink
+  - ButtonSound
+  - Coins
   layers:
   - Default
   - TransparentFX

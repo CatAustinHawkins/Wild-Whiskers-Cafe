@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 //This script is used for the tutorial screen at the start of the game
 
@@ -8,7 +9,7 @@ public class Tutorial : MonoBehaviour
 
     //show tutorial
     //player has to provide the input to go to the next tutorial
-    
+
 
     public GameObject[] TutorialImageArray; //An array of tutorial images
     public int TutorialImages; //the current tutorial image number
@@ -52,139 +53,146 @@ public class Tutorial : MonoBehaviour
     {
         if (TutorialImages == 0)
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
             {
-                //use WASD to move
-                NextTutorial();
+
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    Debug.Log("Clicked on the UI");
+                }
+                else
+                {
+
+                    NextTutorial();
+                }
             }
         }
-
-        if(TutorialImages == 1)
-        {
-            if(Input.GetKey(KeyCode.Space))
+            if (TutorialImages == 1)
             {
-                //close happiness tutorial
-                NextTutorial();
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    //close happiness tutorial
+                    NextTutorial();
+                }
             }
-        }
 
-        if(TutorialImages == 2)
-        {
-            if(Input.GetKey(KeyCode.Alpha1))
+            if (TutorialImages == 2)
             {
-                //open ui book
-                NextTutorial();
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    //open ui book
+                    NextTutorial();
 
+                }
             }
-        }
 
-        if(TutorialImages == 3)
-        {
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            if (TutorialImages == 3)
             {
-                //navigate ui book
-                NextTutorial();
+                if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+                {
+                    //navigate ui book
+                    NextTutorial();
 
+                }
             }
-        }
 
-        if (TutorialImages == 4)
-        {
-            if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Escape))
+            if (TutorialImages == 4)
             {
-                //close ui book
-                NextTutorial();
+                if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.Escape))
+                {
+                    //close ui book
+                    NextTutorial();
 
+                }
             }
-        }
 
-        if (TutorialImages == 5)
-        {
-            //talk to panda 
-        }
-
-        if (TutorialImages == 6)
-        {
-            //accept the order
-        }
-
-        if (TutorialImages == 7)
-        {
-            //close the dialogue
-        }
-
-        if (TutorialImages == 8)
-        {
-            //open the order
-        }
-
-        if (TutorialImages == 9)
-        {
-            //close the order form DONE
-        }
-
-        if (TutorialImages == 10)
-        {
-            //go to the kitchen 
-        }
-
-        if (TutorialImages == 11)
-        {
-            //open the fridge
-        }
-
-        if (TutorialImages == 12)
-        {
-            //select the bamboo and bread
-        }
-
-        if (TutorialImages == 13)
-        {
-            if (Input.GetKey(KeyCode.Space))
+            if (TutorialImages == 5)
             {
-                //close ui book
-                NextTutorial();
-
+                //talk to panda 
             }
-        }
 
-        if (TutorialImages == 14)
-        {
-            //cook bamboo in the oven
-            if (Input.GetKey(KeyCode.Space))
+            if (TutorialImages == 6)
             {
-                //close ui book
-                NextTutorial();
-
+                //accept the order
             }
-        }
 
-        if (TutorialImages == 15)
-        {
-            //put the food together on the chopping board
-        }
+            if (TutorialImages == 7)
+            {
+                //close the dialogue
+            }
 
-        if (TutorialImages == 16)
-        {
-            //serve the customer
-        }
+            if (TutorialImages == 8)
+            {
+                //open the order
+            }
 
-        if (TutorialImages == 17)
-        {
-            //go to your room
-        }
+            if (TutorialImages == 9)
+            {
+                //close the order form DONE
+            }
 
-        if (TutorialImages == 18)
-        {
-            //go to bed
-        }
+            if (TutorialImages == 10)
+            {
+                //go to the kitchen 
+            }
+
+            if (TutorialImages == 11)
+            {
+                //open the fridge
+            }
+
+            if (TutorialImages == 12)
+            {
+                //select the bamboo and bread
+            }
+            if (TutorialImages == 14)
+            {
+                //cook bamboo in the oven
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    //close ui book
+                    NextTutorial();
+
+                }
+            }
+            if (TutorialImages == 13)
+            {
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    //close ui book
+                    NextTutorial();
+
+                }
+            }
+
+
+            if (TutorialImages == 15)
+            {
+                //put the food together on the chopping board
+            }
+
+            if (TutorialImages == 16)
+            {
+                //serve the customer
+            }
+
+            if (TutorialImages == 17)
+            {
+                //go to your room
+            }
+
+            if (TutorialImages == 18)
+            {
+                //go to bed
+            }
+        
     }
-
     public void NextTutorial()
     {
         TutorialImageArray[TutorialImages].SetActive(false); //set the next tutorial image to true
         TutorialImages++;
         TutorialImageArray[TutorialImages].SetActive(true);
     }
+
 
 }

@@ -38,26 +38,46 @@ public class Dialogue : MonoBehaviour
     public GameObject TickButtonGO;
     public GameObject CrossButtonGO;
 
+    public AudioSource PandaMS;
+    public AudioSource PandaBH;
+    public AudioSource PandaYes;
+    public AudioSource PandaNo;
+
     public void Update()
     {
+
+
         if(AbletoTalk)
         {
             if (Input.GetKey(KeyCode.E) && !TimerRunning)
             {
                 DialogueButton();
+                Debug.Log("Test1");
                 StartCoroutine(DelayTime());
             }
 
-            if (Input.GetKey(KeyCode.Alpha5) && !TimerRunning)
+            if (Input.GetKey(KeyCode.Y) && !TimerRunning)
             {
                 TickButton();
                 StartCoroutine(DelayTime());
             }
 
-            if (Input.GetKey(KeyCode.Alpha6) && !TimerRunning)
+            if (Input.GetKey(KeyCode.N) && !TimerRunning)
             {
                 CrossButton();
                 StartCoroutine(DelayTime());
+            }
+        }
+
+        if (Input.GetKey(KeyCode.E) && DialogueOpen && !TimerRunning && !AbletoTalk)
+        {
+            Debug.Log("Test2");
+
+            DialogueBox.SetActive(false);
+            DialogueOpen = false;
+            if (TutorialScript.TutorialImages == 9)
+            {
+                TutorialScript.NextTutorial();
             }
         }
     }
@@ -78,6 +98,7 @@ public class Dialogue : MonoBehaviour
         {
             PandaInRange = false;
             DialogueBox.SetActive(false);
+            DialogueOpen = false;
         }
     }
 
@@ -88,6 +109,8 @@ public class Dialogue : MonoBehaviour
 
         if (DialogueOpen)
         {
+            Debug.Log("Test2");
+
             DialogueBox.SetActive(false);
             DialogueOpen = false;
             if (TutorialScript.TutorialImages == 9)
@@ -104,12 +127,14 @@ public class Dialogue : MonoBehaviour
                     if (TutorialScript.TutorialImages == 7)
                     {
                         TutorialScript.NextTutorial();
+                        PandaMS.Play();
                     }
                     DialogueBox.SetActive(true); //enable the panda dialogue asking for the bamboo hotdog
                     DialogueOpen = true;
 
                     if (MealTime)
                     {
+                        PandaBH.Play();
                         DialogueTextTMP.text = "Can I get a Bamboo Hotdog?";
                     }
                     TickButtonGO.SetActive(true);
@@ -124,6 +149,8 @@ public class Dialogue : MonoBehaviour
                 {
                     TutorialScript.NextTutorial();
                 }
+
+                
             }
         }
 
@@ -137,6 +164,9 @@ public class Dialogue : MonoBehaviour
 
         if (DialogueOpen)
         {
+            PandaMS.Pause();
+            PandaBH.Pause();
+            PandaYes.Play();
             if (PandaInRange)
             {
                 if (TutorialScript.TutorialImages == 8)
@@ -191,6 +221,9 @@ public class Dialogue : MonoBehaviour
 
         if (DialogueOpen)
         {
+            PandaMS.Pause();
+            PandaBH.Pause();
+            PandaNo.Play();
             if (PandaInRange)
             {
                 DialogueTextTMP.text = "Oh... :(";

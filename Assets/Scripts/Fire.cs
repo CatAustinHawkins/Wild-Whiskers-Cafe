@@ -11,14 +11,20 @@ public class Fire : MonoBehaviour
 
     public GameObject FireOven;
 
+    public AudioSource FireSound;
 
     private void OnEnable()
     {
         FireBegins();
         FireOven.SetActive(true);
-        
+        FireSound.Play();
     }
 
+
+    private void OnDisable()
+    {
+        FireSound.Pause();
+    }
     IEnumerator FireSpawn()
     {
         RandomValue = Random.Range(2, 5);

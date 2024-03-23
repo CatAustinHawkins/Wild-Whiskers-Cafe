@@ -50,12 +50,17 @@ public class PandaCustomer : MonoBehaviour
     public GameObject MeatSmoothie;
     public GameObject BambooHotdog;
 
+    public GameObject Coins;
+
     public Dialogue DialogueScript;
     public Interact InteractScript;
     public Tutorial TutorialScript;
     public GameObject Panda;
 
     public bool Snake;
+
+    public AudioSource PlateDrop;
+    public AudioSource AnimalEating;
 
     void Start()
     {
@@ -136,7 +141,7 @@ public class PandaCustomer : MonoBehaviour
     IEnumerator ThoughtWait()//waiting at the table - then the thought bubble appears
     {
         Debug.Log("ThoughtWait");
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(6);
         movingtotable = false;
         TableFree = false;
         ThoughtBubble.SetActive(true);
@@ -177,14 +182,17 @@ public class PandaCustomer : MonoBehaviour
 
     IEnumerator Eating1()
     {
+        AnimalEating.Play();
         yield return new WaitForSeconds(6f);
         DirtyPlate.SetActive(true);
+        Coins.SetActive(true);
         MeatSmoothie.SetActive(false);
         BambooHotdog.SetActive(false);
         DialogueScript.AbletoTalk = true;
         DialogueScript.BambooHotdogThought.SetActive(true);
         DialogueScript.ThinkBubble.SetActive(true);
         DialogueScript.MealTime = true;
+        PlateDrop.Play();
         if (TutorialScript.TutorialImages == 20)
         {
             TutorialScript.NextTutorial();
@@ -193,11 +201,15 @@ public class PandaCustomer : MonoBehaviour
 
     IEnumerator Eating2()
     {
+        AnimalEating.Play();
         yield return new WaitForSeconds(6f);
         DirtyPlate.SetActive(true);
         MeatSmoothie.SetActive(false);
         BambooHotdog.SetActive(false);
         InteractScript.Washup2 = true;
+        Coins.SetActive(true);
+        PlateDrop.Play();
+
         Leaving = true;
 
         TutorialScript.NextTutorial();

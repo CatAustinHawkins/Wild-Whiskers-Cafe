@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 //Player Script - controls their movement and player image
 
@@ -37,6 +38,8 @@ public class PlayerScript : MonoBehaviour
 
     public int gold;
 
+    public TextMeshProUGUI goldtext;
+
     public bool ChangedRoom;
 
     public bool WashingUp;
@@ -44,7 +47,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
 
-            DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
+        //DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
 
 
         target = transform.position;
@@ -107,17 +110,29 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        goldtext.text = "Gold: " + gold.ToString() + "g";
+
         if (!WashingUp)
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
+            //float moveHorizontal = Input.GetAxis("Horizontal");
+            //float moveVertical = Input.GetAxis("Vertical");
 
-            rb2d.velocity = new Vector2(moveHorizontal * speed2, moveVertical * speed2);
+            //rb2d.velocity = new Vector2(moveHorizontal * speed2, moveVertical * speed2);
 
             if (Input.GetMouseButtonDown(0))
             {
-                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                target.z = transform.position.z;
+
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    Debug.Log("Clicked on the UI");
+                    return;
+                }
+                else
+                {
+
+                    target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    target.z = transform.position.z;
+                }
 
             }
 
@@ -131,10 +146,10 @@ public class PlayerScript : MonoBehaviour
                 target = transform.position;
             }
 
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-            {
-                target = transform.position;
-            }
+            //if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            //{
+          //      target = transform.position;
+          //  }
 
         }
 
