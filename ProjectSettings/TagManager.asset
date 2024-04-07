@@ -32,6 +32,8 @@ TagManager:
   - Sink
   - ButtonSound
   - Coins
+  - AdderCustomer
+  - LeopardCustomer
   layers:
   - Default
   - TransparentFX
