@@ -11,11 +11,10 @@ public class Options : MonoBehaviour
     public TMP_Dropdown DropdownMenu; //the resolution drop down menu
     public TMP_Dropdown DropdownMenuQuality; //the resolution drop down menu
 
-    public bool EasyModeOn; //easy mode bool
-
     public bool FullScreenOn; //fullscreen bool
 
     public Slider VolumeSlider; //volume slider 
+    public Slider MusicSlider;
 
     public int width = 1600; //default resolution width
     public int height = 900; //default resolution height
@@ -26,6 +25,18 @@ public class Options : MonoBehaviour
     public Image FullScreenButtonImage;
     public Image EasyModeButtonImage;
 
+    public GameObject BackgroundMusicGO;
+    public AudioSource BackgroundMusic;
+
+    public int FullScreenValue;
+
+    public void Start()
+    {
+        BackgroundMusicGO = GameObject.FindWithTag("BackgroundMusic");
+        BackgroundMusic = BackgroundMusicGO.GetComponent<AudioSource>();
+
+        Load();
+    }
 
     public void DropdownMenuChanged()
     {
@@ -64,6 +75,7 @@ public class Options : MonoBehaviour
             width = 1280;
             height = 720;
         }
+        Save();
     }
 
     public void FullScreenButton() //turn fullscreen mode on and off
@@ -82,37 +94,53 @@ public class Options : MonoBehaviour
             Screen.SetResolution(width, height, false);
             FullScreenButtonImage.sprite = Cross;
         }
-
+        Save();
     }
 
-    public void EasyMode() //turn easy mode on and off (currently doesn't do anything)
+    public void MusicVolume()
     {
-        if(!EasyModeOn)
-        {
-            EasyModeOn = true;
-            EasyModeButtonImage.sprite = Tick;
-        }
-        else
-        {
-            EasyModeOn = false;
-            EasyModeButtonImage.sprite = Cross;
-        }
+        BackgroundMusic.volume = MusicSlider.value;
+        Save();
     }
 
     //On the Volume Slider 
     public void ChangeVolume()
     {
         AudioListener.volume = VolumeSlider.value; //change the volume of the overall audio
+        Save();
     }
 
     public void Finished()
     {
         SceneManager.LoadScene("MainMenu"); //load the main menu
         Screen.SetResolution(width, height, FullScreenOn);
+        Save();
     }
 
     public void SetQuality()
     {
         QualitySettings.SetQualityLevel(DropdownMenuQuality.value);
+        Save();
+    }
+
+
+    public void Save()
+    {
+        PlayerPrefs.SetFloat("OverallVolume", VolumeSlider.value);
+        PlayerPrefs.SetFloat("MusicVolume", MusicSlider.value);
+        PlayerPrefs.SetInt("ScreenWidth", width);
+        PlayerPrefs.SetInt("ScreenHeight", height);
+        PlayerPrefs.SetInt("FullScreen", FullScreenValue);
+        PlayerPrefs.SetInt("GraphicsSetting", DropdownMenu.value);
+    }
+
+    public void Load()
+    {
+        VolumeSlider.value = PlayerPrefs.GetFloat("OverallVolume");
+        MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        width = PlayerPrefs.GetInt("ScreenWidth");
+        height = PlayerPrefs.GetInt("ScreenHeight");
+        FullScreenValue = PlayerPrefs.GetInt("FullScreen");
+        DropdownMenu.value = PlayerPrefs.GetInt("GraphicsSetting");
     }
 }

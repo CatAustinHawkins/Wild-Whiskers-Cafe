@@ -67,6 +67,30 @@ public class MenuButtons : MonoBehaviour
         ButtonClick.Play();
 
     }
+    public void Day2Begin()
+    {
+        SceneManager.LoadScene("Day2");
+        ButtonClick.Play();
+
+    }
+    public void Day3Begin()
+    {
+        SceneManager.LoadScene("Day3");
+        ButtonClick.Play();
+
+    }
+    public void Day4Begin()
+    {
+        SceneManager.LoadScene("Day4");
+        ButtonClick.Play();
+
+    }
+    public void Day5Begin()
+    {
+        SceneManager.LoadScene("Day5");
+        ButtonClick.Play();
+
+    }
 
     public void ButtonNoise()
     {

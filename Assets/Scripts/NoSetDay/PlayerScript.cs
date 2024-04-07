@@ -8,8 +8,6 @@ using UnityEngine.EventSystems;
 public class PlayerScript : MonoBehaviour
 {
     public float speed = 8;
-    public float speed2 = 16;
-    private Rigidbody2D rb2d;
 
     public GameObject playersetupscript; //the player setup script
     public PlayerSetup playersetup;
@@ -30,6 +28,8 @@ public class PlayerScript : MonoBehaviour
     public Sprite Player8;
     public Vector3 target;
 
+    public int PlayerAppearance;
+
     public SpriteRenderer spriterenderer;
 
     public TextMeshProUGUI PlayerNameIntro; //player name text 
@@ -44,68 +44,97 @@ public class PlayerScript : MonoBehaviour
 
     public bool WashingUp;
 
+    public GameObject TestSaveGO;
+    public MainMenuSave TestScript;
+
+    public bool PlayedBefore;
+
+
     void Start()
     {
-
-        //DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
+        Load();
+        DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
 
 
         target = transform.position;
         speed = 8;
-        speed2 = 16;
 
-        playersetupscript = GameObject.FindWithTag("Setup"); //find the player setup script
-        playersetup = playersetupscript.GetComponent<PlayerSetup>();
+        TestSaveGO = GameObject.FindWithTag("Test"); //find the player setup script
+        TestScript = TestSaveGO.GetComponent<MainMenuSave>();
 
-        //setupscript = GameObject.FindWithTag("SetupOne"); //find the player setup script
-        //setup = setupscript.GetComponent<Setup>();
-
-        rb2d = GetComponent<Rigidbody2D>();
-
-        //change the player sprite image based on what the player chose
-        if(playersetup.Choice1Selected)
+        if (!PlayedBefore)
         {
-            spriterenderer.sprite = Player1;
+            playersetupscript = GameObject.FindWithTag("Setup"); //find the player setup script
+            playersetup = playersetupscript.GetComponent<PlayerSetup>();
+
+            TestSaveGO = GameObject.FindWithTag("Test"); //find the player setup script
+            TestScript = TestSaveGO.GetComponent<MainMenuSave>();
+
+            //setupscript = GameObject.FindWithTag("SetupOne"); //find the player setup script
+            //setup = setupscript.GetComponent<Setup>();
+
+
+            //change the player sprite image based on what the player chose
+            if (playersetup.Choice1Selected)
+            {
+                spriterenderer.sprite = Player1;
+                PlayerAppearance = 1;
+                Save();
+            }
+
+            if (playersetup.Choice2Selected)
+            {
+                spriterenderer.sprite = Player2;
+                PlayerAppearance = 2;
+                Save();
+            }
+
+            if (playersetup.Choice3Selected)
+            {
+                spriterenderer.sprite = Player3;
+                PlayerAppearance = 3;
+                Save();
+            }
+
+            if (playersetup.Choice4Selected)
+            {
+                spriterenderer.sprite = Player4;
+                PlayerAppearance = 4;
+                Save();
+            }
+
+            if (playersetup.Choice5Selected)
+            {
+                spriterenderer.sprite = Player5;
+                PlayerAppearance = 5;
+                Save();
+            }
+
+            if (playersetup.Choice6Selected)
+            {
+                spriterenderer.sprite = Player6;
+                PlayerAppearance = 6;
+                Save();
+            }
+
+            if (playersetup.Choice7Selected)
+            {
+                spriterenderer.sprite = Player7;
+                PlayerAppearance = 7;
+                Save();
+            }
+
+            if (playersetup.Choice8Selected)
+            {
+                spriterenderer.sprite = Player8;
+                PlayerAppearance = 8;
+                Save();
+            }
+
+            PlayerName = playersetup.PlayerName; //set the players name
+
+            PlayerNameIntro.text = "Hi " + PlayerName + "!";
         }
-
-        if (playersetup.Choice2Selected)
-        {
-            spriterenderer.sprite = Player2;
-        }
-
-        if (playersetup.Choice3Selected)
-        {
-            spriterenderer.sprite = Player3;
-        }
-
-        if (playersetup.Choice4Selected)
-        {
-            spriterenderer.sprite = Player4;
-        }
-
-        if (playersetup.Choice5Selected)
-        {
-            spriterenderer.sprite = Player5;
-        }
-
-        if (playersetup.Choice6Selected)
-        {
-            spriterenderer.sprite = Player6;
-        }
-
-        if (playersetup.Choice7Selected)
-        {
-            spriterenderer.sprite = Player7;
-        }
-
-        if (playersetup.Choice8Selected)
-        {
-            spriterenderer.sprite = Player8;
-        }
-
-        PlayerName = playersetup.PlayerName; //set the players name
-
-        PlayerNameIntro.text = "Hi " + PlayerName + "!"; 
     }
 
     void Update()
@@ -114,11 +143,6 @@ public class PlayerScript : MonoBehaviour
 
         if (!WashingUp)
         {
-            //float moveHorizontal = Input.GetAxis("Horizontal");
-            //float moveVertical = Input.GetAxis("Vertical");
-
-            //rb2d.velocity = new Vector2(moveHorizontal * speed2, moveVertical * speed2);
-
             if (Input.GetMouseButtonDown(0))
             {
 
@@ -145,12 +169,6 @@ public class PlayerScript : MonoBehaviour
             {
                 target = transform.position;
             }
-
-            //if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-            //{
-          //      target = transform.position;
-          //  }
-
         }
 
         if(Input.GetKey(KeyCode.Escape))
@@ -167,36 +185,75 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    public void NewLevel()
+    {
+        TestScript.PlayerLevel++;
+        TestScript.Save();
+        Save();
+    }
+
     public void WardrobeOption1()
     {
         spriterenderer.sprite = Player1;
+        PlayerAppearance = 1;
+        Save();
     }
     public void WardrobeOption2()
     {
         spriterenderer.sprite = Player2;
+        PlayerAppearance = 2;
+        Save();
     }
     public void WardrobeOption3()
     {
         spriterenderer.sprite = Player3;
+        PlayerAppearance = 3;
+        Save();
     }
     public void WardrobeOption4()
     {
         spriterenderer.sprite = Player4;
+        PlayerAppearance = 4;
+        Save();
     }
     public void WardrobeOption5()
     {
         spriterenderer.sprite = Player5;
+        PlayerAppearance = 5;
+        Save();
     }
     public void WardrobeOption6()
     {
         spriterenderer.sprite = Player6;
+        PlayerAppearance = 6;
+        Save();
     }
     public void WardrobeOption7()
     {
         spriterenderer.sprite = Player7;
+        PlayerAppearance = 7;
+        Save();
     }
     public void WardrobeOption8()
     {
         spriterenderer.sprite = Player8;
+        PlayerAppearance = 8;
+        Save();
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetInt("PlayerSprite", PlayerAppearance);
+        PlayerPrefs.SetInt("PlayerGold", gold);
+        PlayerPrefs.SetString("PlayerName", name);
+
+        PlayedBefore = true;
+    }
+
+    public void Load()
+    {
+        PlayerAppearance = PlayerPrefs.GetInt("PlayerSprite");
+        gold = PlayerPrefs.GetInt("PlayerGold");
+        name = PlayerPrefs.GetString("PlayerName");
     }
 }
