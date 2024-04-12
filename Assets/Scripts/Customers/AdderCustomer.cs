@@ -51,11 +51,9 @@ public class AdderCustomer : MonoBehaviour
 
     public GameObject Coins;
 
-    public GameObject DialogueDay1GO;
-    public GameObject InteractDay1GO;
 
-    public DialogueDay1 DialogueScript;
-    public InteractDay1 InteractScript;
+    public Dialogue DialogueScript;
+    public Interact InteractScript;
 
     public AudioSource PlateDrop;
     public AudioSource AnimalEating;
@@ -69,15 +67,6 @@ public class AdderCustomer : MonoBehaviour
         StartCoroutine(HappinessValue());
         DayBegin = true;
 
-
-        DialogueDay1GO = GameObject.FindWithTag("DialogueDay1"); //find the player setup script
-        DialogueScript = DialogueDay1GO.GetComponent<DialogueDay1>();
-
-        InteractDay1GO = GameObject.FindWithTag("InteractDay1"); //find the player setup script
-        InteractScript = InteractDay1GO.GetComponent<InteractDay1>();
-
-        DialogueDay1GO.SetActive(true);
-        InteractDay1GO.SetActive(true);
 
         Destroy(Interact);
         Destroy(Dialogue);

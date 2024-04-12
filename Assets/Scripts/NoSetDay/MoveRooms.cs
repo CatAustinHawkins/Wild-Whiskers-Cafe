@@ -24,8 +24,8 @@ public class MoveRooms : MonoBehaviour
         if(InCafe) //move to kitchen
         {
             Debug.Log("Test");
-            Camera.transform.position = new Vector3(80, 0, -10); //update the cameras position
-            Player.transform.position = new Vector3(57, -4.5f, 0); //update the players position
+            Camera.transform.position = new Vector3(103, 0, -10); //update the cameras position
+            Player.transform.position = new Vector3(87, -4.5f, 0); //update the players position
             PlayerMove.target = PlayerMove.transform.position;
 
             if (TutorialScript.TutorialImages == 12)
@@ -57,8 +57,8 @@ public class MoveRooms : MonoBehaviour
     {
         if (InCafe) //move to bedroom
         {
-            Camera.transform.position = new Vector3(-89, 0, -10); //update the cameras position
-            Player.transform.position = new Vector3(-66, -4.5f, 0); //update the players position
+            Camera.transform.position = new Vector3(-120, 0, -10); //update the cameras position
+            Player.transform.position = new Vector3(-110, -4.5f, 0); //update the players position
             PlayerMove.target = PlayerMove.transform.position;
             if (TutorialScript.TutorialImages == 31)
             {

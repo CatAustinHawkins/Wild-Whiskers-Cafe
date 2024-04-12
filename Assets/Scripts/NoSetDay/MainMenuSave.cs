@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenuSave : MonoBehaviour
 {
-    public int Testing;
+    public int Testing = 1;
 
     public int PlayerLevel;
 
@@ -35,6 +33,15 @@ public class MainMenuSave : MonoBehaviour
             ContinueButton.SetActive(false);
         }
 
+    }
+
+    public void Update()
+    {
+        if (Testing == 0)
+        {
+            Screen.SetResolution(1600, 900, false);
+            Testing++;
+        }
     }
 
     public void ContinueGame()

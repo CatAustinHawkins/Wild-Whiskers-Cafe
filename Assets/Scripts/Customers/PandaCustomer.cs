@@ -189,9 +189,9 @@ public class PandaCustomer : MonoBehaviour
         MeatSmoothie.SetActive(false);
         BambooHotdog.SetActive(false);
         DialogueScript.AbletoTalk = true;
-        DialogueScript.BambooHotdogThought.SetActive(true);
+        DialogueScript.ThoughtIcons[2].SetActive(true);
         DialogueScript.ThinkBubble.SetActive(true);
-        DialogueScript.MealTime = true;
+        DialogueScript.PandaMeal = true;
         PlateDrop.Play();
         if (TutorialScript.TutorialImages == 20)
         {

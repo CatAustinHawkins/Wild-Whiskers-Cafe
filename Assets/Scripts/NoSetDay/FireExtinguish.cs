@@ -10,7 +10,6 @@ public class FireExtinguish : MonoBehaviour
     public GameObject FireControl;
 
     public Interact InteractScript;
-    public InteractDay1 InteractDay1Script;
 
 
     public bool Tutorial;
@@ -33,8 +32,7 @@ public class FireExtinguish : MonoBehaviour
         {
             FireControl.SetActive(false);
             gameObject.SetActive(false);
-            //InteractDay1Script.OnFire = false;
-            //InteractDay1Script.FireGone();
+
         }
         if (other.tag == "FireExtinguisher")
         {

@@ -52,8 +52,8 @@ public class LeopardCustomer : MonoBehaviour
 
     public GameObject Coins;
 
-    public DialogueDay1 DialogueScript;
-    public InteractDay1 InteractScript;
+    public Dialogue DialogueScript;
+    public Interact InteractScript;
 
     public AudioSource PlateDrop;
     public AudioSource AnimalEating;
@@ -174,7 +174,7 @@ public class LeopardCustomer : MonoBehaviour
         MeatSmoothie.SetActive(false);
         VenisonSteak.SetActive(false);
         DialogueScript.AbletoTalk = true;
-        DialogueScript.VensionSteakThought.SetActive(true);
+        DialogueScript.ThoughtIcons[4].SetActive(true);
         DialogueScript.ThinkBubble.SetActive(true);
         DialogueScript.LeopardMeal = true;
         PlateDrop.Play();

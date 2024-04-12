@@ -57,7 +57,7 @@ public class PlayerScript : MonoBehaviour
 
 
         target = transform.position;
-        speed = 8;
+        speed = 12;
 
         TestSaveGO = GameObject.FindWithTag("Test"); //find the player setup script
         TestScript = TestSaveGO.GetComponent<MainMenuSave>();

@@ -34,6 +34,23 @@ TagManager:
   - Coins
   - AdderCustomer
   - LeopardCustomer
+  - PonyCustomer
+  - HedgehogCustomer
+  - GiraffeCustomer
+  - FerretCustomer
+  - KangarooCustomer
+  - ChimpCustomer
+  - BeaverCustomer
+  - GemsbokCustomer
+  - IbexCustomer
+  - DuckCustomer
+  - PangolinCustomer
+  - ChipmunkCustomer
+  - PlatypusCustomer
+  - BatCustomer
+  - RaccoonCustomer
+  - AlpacaCustomer
+  - FoxCustomer
   layers:
   - Default
   - TransparentFX
