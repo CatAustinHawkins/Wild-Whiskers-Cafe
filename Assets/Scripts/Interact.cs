@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
 using UnityEngine.UI;
-//This script is used on the Interact button, to see if the player can interact with the objects around them
 
+/// <summary>
+/// This script is used on the Interact button, to see if the player can interact with the objects surrounding them.
+/// This script is very long, but it can be optimised.
+/// </summary>
 public class Interact : MonoBehaviour
 {
     [Header("In Range Bools")]
@@ -24,9 +26,17 @@ public class Interact : MonoBehaviour
     public bool KitchenExitInRange;
     public bool BlenderinRange;
     public bool TrashBininRange;
-    public bool DirtyPlateinRange;
+
+    public bool DirtyPlate1inRange;
+    public bool DirtyPlate2inRange;
+    public bool DirtyPlate3inRange;
+    public bool DirtyPlate4inRange;
+
     public bool SinkinRange;
-    public bool CoinsinRange;
+    public bool Coin1inRange;
+    public bool Coin2inRange;
+    public bool Coin3inRange;
+    public bool Coin4inRange;
 
     public bool PandaInRange; //is the player in range of the panda
     public bool AdderInRange;
@@ -215,7 +225,28 @@ public class Interact : MonoBehaviour
 
     public GameObject DirtyPlate;
 
-    public PandaCustomer CustomerTestScript; //customer script
+    public PandaCustomer PandaCustomerScript; //customer script
+    public LeopardCustomer LeopardCustomerScript;
+    public AdderCustomer AdderCustomerScript;
+    public AlpacaCustomer AlpacaCustomerScript;
+    public BatCustomer BatCustomerScript;
+    public BeaverCustomer BeaverCustomerScript;
+    public ChimpCustomer ChimpCustomerScript;
+    public ChipmunkCustomer ChipmunkCustomerScript;
+    public DuckCustomer DuckCustomerScript;
+    public FerretCustomer FerretCustomerScript;
+    public FoxCustomer FoxCustomerScript;
+    public GemsbokCustomer GemsbokCustomerScript;
+    public GiraffeCustomer GiraffeCustomerScript;
+    public HedgehogCustomer HedgehogCustomerScript;
+    public IbexCustomer IbexCustomerScript;
+    public KangarooCustomer KangarooCustomerScript;
+    public PangolinCustomer PangolinCustomerScript;
+    public PlatypusCustomer PlatypusCustomerScript;
+    public PonyCustomer PonyCustomerScript;
+    public RaccoonCustomer RaccoonCustomerScript;
+
+
 
     public bool TimerRunning;
 
@@ -298,7 +329,7 @@ public class Interact : MonoBehaviour
 
     public int TrashTimerInt;
 
-    public GameObject DirtyPlateTable;
+    public GameObject[] DirtyPlateTable;
 
     public bool DayEnd;
 
@@ -306,13 +337,12 @@ public class Interact : MonoBehaviour
 
     public bool Washup2;
 
-    public GameObject Coins;
+    public GameObject[] Coins;
 
     public AudioSource ButtonClick;
     public GameObject ButtonSource;
 
     public AudioSource BlenderNoise;
-    public AudioSource BroomNoise;
     public AudioSource OvenNoise;
     public AudioSource SinkNoise;
     public AudioSource FireExtinguisherNoise;
@@ -323,7 +353,7 @@ public class Interact : MonoBehaviour
 
     public void Start()
     {
-        StartCoroutine(TrashSliderTimer());
+        //StartCoroutine(TrashSliderTimer());
         ButtonSource = GameObject.FindWithTag("ButtonSound");
         ButtonClick = ButtonSource.GetComponent<AudioSource>();
     }
@@ -342,11 +372,22 @@ public class Interact : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Coins")
+        if(other.tag == "Coin1")
         {
-            CoinsinRange = true;
+            Coin1inRange = true;
         }
-
+        if (other.tag == "Coin2")
+        {
+            Coin2inRange = true;
+        }
+        if (other.tag == "Coin3")
+        {
+            Coin3inRange = true;
+        }
+        if (other.tag == "Coin4")
+        {
+            Coin4inRange = true;
+        }
         if (other.tag == "Oven") //check if the player is colliding with the oven
         {
             OvenInRange = true; //set oven in range to true
@@ -531,12 +572,27 @@ public class Interact : MonoBehaviour
             TrashBininRange = true;
         }
 
-        if(other.tag == "DirtyPlate")
+        if(other.tag == "DirtyPlate1")
         {
-            DirtyPlateinRange = true;
+            DirtyPlate1inRange = true;
         }
 
-        if(other.tag == "Sink")
+        if (other.tag == "DirtyPlate2")
+        {
+            DirtyPlate2inRange = true;
+        }
+
+        if (other.tag == "DirtyPlate3")
+        {
+            DirtyPlate3inRange = true;
+        }
+
+        if (other.tag == "DirtyPlate4")
+        {
+            DirtyPlate4inRange = true;
+        }
+
+        if (other.tag == "Sink")
         {
             SinkinRange = true;
         }
@@ -544,9 +600,21 @@ public class Interact : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Coins")
+        if (other.tag == "Coin1")
         {
-            CoinsinRange = false;
+            Coin1inRange = false;
+        }
+        if (other.tag == "Coin2")
+        {
+            Coin2inRange = false;
+        }
+        if (other.tag == "Coin3")
+        {
+            Coin3inRange = false;
+        }
+        if (other.tag == "Coin4")
+        {
+            Coin4inRange = false;
         }
 
         if (other.tag == "Oven")
@@ -742,11 +810,25 @@ public class Interact : MonoBehaviour
             TrashBininRange = false;
         }
 
-        if (other.tag == "DirtyPlate")
+        if (other.tag == "DirtyPlate1")
         {
-            DirtyPlateinRange = false;
+            DirtyPlate1inRange = false;
         }
 
+        if (other.tag == "DirtyPlate2")
+        {
+            DirtyPlate2inRange = false;
+        }
+
+        if (other.tag == "DirtyPlate3")
+        {
+            DirtyPlate3inRange = false;
+        }
+
+        if (other.tag == "DirtyPlate4")
+        {
+            DirtyPlate4inRange = false;
+        }
 
         if (other.tag == "Sink")
         {
@@ -759,12 +841,36 @@ public class Interact : MonoBehaviour
         PlayerScript.target = PlayerScript.transform.position;
         ButtonClick.Play();
 
-        if(CoinsinRange)
+        if(Coin1inRange)
         {
-            CoinsinRange = false;
+            Coin1inRange = false;
             CoinPickup.Play();
             PlayerScript.gold = PlayerScript.gold + 10;
-            Coins.SetActive(false);
+            Coins[1].SetActive(false);
+        }
+
+        if (Coin2inRange)
+        {
+            Coin1inRange = false;
+            CoinPickup.Play();
+            PlayerScript.gold = PlayerScript.gold + 10;
+            Coins[2].SetActive(false);
+        }
+
+        if (Coin3inRange)
+        {
+            Coin1inRange = false;
+            CoinPickup.Play();
+            PlayerScript.gold = PlayerScript.gold + 10;
+            Coins[3].SetActive(false);
+        }
+
+        if (Coin4inRange)
+        {
+            Coin1inRange = false;
+            CoinPickup.Play();
+            PlayerScript.gold = PlayerScript.gold + 10;
+            Coins[4].SetActive(false);
         }
 
         if (OvenInRange && !OnFire)
@@ -1037,6 +1143,7 @@ public class Interact : MonoBehaviour
                 BambooHotdogReady = true;
                 BambooCooked = false;
 
+                BambooHotdogChopping = false;
                 PlayerLeftHandFull = true;
                 PlayerRightHandFull = true;
                 BambooHotdogPrepared = false;
@@ -1058,6 +1165,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 MouseBurgerPrepared = false;
                 MouseBurgerReady = true;
+                MouseBurgerChopping = false;
                 MouseBurger.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1075,6 +1183,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 HaySaladPrepared = false;
                 HaySaladReady = true;
+                HaySaladChopping = false;
                 HaySalad.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1097,6 +1206,7 @@ public class Interact : MonoBehaviour
 
                 PlayerLeftHandFull = true;
                 PlayerRightHandFull = true;
+                WormSpaghettiChopping = false;
 
                 ChoppingBoardInteractPrompt.SetActive(false);
                 ChoppingBoardTimerValue = 0;
@@ -1110,6 +1220,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 LeafSaladPrepared = false;
                 LeafSaladReady = true;
+                LeafSaladChopping = false;
                 LeafSalad.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1127,6 +1238,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 BoneBrothPrepared = false;
                 BoneBrothReady = true;
+                BoneBrothChopping = false;
                 BoneBroth.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1145,6 +1257,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 MossBurgerPrepared = false;
                 MossBurgerReady = true;
+                MossBurgerChopping = false;
                 MossBurger.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1163,6 +1276,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 FruitSaladPrepared = false;
                 FruitSaladReady = true;
+                FruitSaladChopping = false;
                 FruitSalad.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1181,6 +1295,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 StickHotdogPrepared = false;
                 StickHotdogReady = true;
+                StickHotdogChopping = false;
                 StickHotdog.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1198,6 +1313,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 MelonMealPrepared = false;
                 MelonMealReady = true;
+                MelonMealChopping = false;
                 MelonMeal.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1215,6 +1331,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 EscargotPrepared = false;
                 EscargotReady = true;
+                EscargotChopping = false;
                 Escargot.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1232,6 +1349,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 AntPastaPrepared = false;
                 AntPastaReady = true;
+                AntPastaChopping = false;
                 AntPasta.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1249,6 +1367,7 @@ public class Interact : MonoBehaviour
                 PlayerLeftHandFull = true;
                 PlayerRightHandFull = true;
                 CrayfishTempuraPrepared = false;
+                CrayfishTempuraChopping = false;
                 CrayfishTempuraReady = true;
                 CrayfishTempura.SetActive(true); //enable the bamboo hotdog gameobject
 
@@ -1267,6 +1386,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 MothBiscuitPrepared = false;
                 MothBiscuitReady = true;
+                MothBiscuitChopping = false;
                 MothBiscuit.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1284,6 +1404,7 @@ public class Interact : MonoBehaviour
                 PlayerRightHandFull = true;
                 ClamMisoSoupPrepared = false;
                 ClamMisoSoupReady = true;
+                ClamMisoSoupChopping = false;
                 ClamMisoSoup.SetActive(true); //enable the bamboo hotdog gameobject
 
                 PlayerLeftHandFull = true;
@@ -1301,7 +1422,7 @@ public class Interact : MonoBehaviour
             if (BambooHotdogReady) //when the meal is cooked
             {
                 BambooHotdog.SetActive(false); //disable the bamboo hotdog
-                CustomerTestScript.FedMeal();//call to the customer script
+                PandaCustomerScript.FedMeal();//call to the customer script
                 BambooHotdogReady = false;
                 PlayerRightHandFull = false;
                 PlayerLeftHandFull = false;
@@ -1316,7 +1437,7 @@ public class Interact : MonoBehaviour
             {
                 AlreadyFed = true;
                 MeatSmoothie.SetActive(false); //disable the bamboo hotdog
-                CustomerTestScript.FedSmoothie();//call to the customer script
+                PandaCustomerScript.FedSmoothie();//call to the customer script
                 MeatSmoothieMade = false;
                 PlayerLeftHandFull = false;
 
@@ -1324,6 +1445,18 @@ public class Interact : MonoBehaviour
                 {
                     TutorialScript.NextTutorial();
                 }
+            }
+        }
+
+        if (AdderInRange)
+        {
+            if (MouseBurgerReady)
+            {
+                MouseBurger.SetActive(false);
+                AdderCustomerScript.FedMeal();
+                MouseBurgerReady = false;
+                PlayerRightHandFull = false;
+                PlayerLeftHandFull = false;
             }
         }
         
@@ -1586,13 +1719,13 @@ public class Interact : MonoBehaviour
             PlayerRightHandFull = false;
         }
     
-        if(DirtyPlateinRange)
+        if(DirtyPlate1inRange)
         {
             if(!PlayerRightHandFull)
             {
                 DirtyPlateHeld = true;
                 DirtyPlate.SetActive(true);
-                DirtyPlateTable.SetActive(false);
+                DirtyPlateTable[1].SetActive(false);
                 PlayerRightHandFull = true;
             }
             else
@@ -1601,7 +1734,49 @@ public class Interact : MonoBehaviour
             }
         }
 
-        if(SinkinRange && DirtyPlateHeld)
+        if (DirtyPlate2inRange)
+        {
+            if (!PlayerRightHandFull)
+            {
+                DirtyPlateHeld = true;
+                DirtyPlate.SetActive(true);
+                DirtyPlateTable[2].SetActive(false);
+                PlayerRightHandFull = true;
+            }
+            else
+            {
+                StartCoroutine(HandUITimer());
+            }
+        }
+        if (DirtyPlate3inRange)
+        {
+            if (!PlayerRightHandFull)
+            {
+                DirtyPlateHeld = true;
+                DirtyPlate.SetActive(true);
+                DirtyPlateTable[3].SetActive(false);
+                PlayerRightHandFull = true;
+            }
+            else
+            {
+                StartCoroutine(HandUITimer());
+            }
+        }
+        if (DirtyPlate4inRange)
+        {
+            if (!PlayerRightHandFull)
+            {
+                DirtyPlateHeld = true;
+                DirtyPlate.SetActive(true);
+                DirtyPlateTable[4].SetActive(false);
+                PlayerRightHandFull = true;
+            }
+            else
+            {
+                StartCoroutine(HandUITimer());
+            }
+        }
+        if (SinkinRange && DirtyPlateHeld)
         {
             SinkInteractPrompt.SetActive(true);
             if (TutorialScript.TutorialImages == 22)
@@ -1729,12 +1904,12 @@ public class Interact : MonoBehaviour
         BlenderTimerValue = BlenderTimerValue + 0.125f;
         BlenderTimerSlider.value = BlenderTimerValue;
 
-        if (!MeatSmoothieMade || !AntSmoothieMade || !MelonSmoothieMade || !StrawberryandAppleSmoothieMade)
+        if (!MeatSmoothieMade && !AntSmoothieMade && !MelonSmoothieMade && !StrawberryandAppleSmoothieMade)
         {
             StartCoroutine(BlenderTimer());
         }
 
-        if(BlenderTimerValue == 1 && DialogueScript.PandaDrink || DialogueScript.LeopardDrink) 
+        if(BlenderTimerValue == 1 && DialogueScript.PandaDrink1 || DialogueScript.LeopardDrink || DialogueScript.PandaDrink2) 
         {
             MeatSmoothieMade = true;
             BlenderValueColour.color = new Color32(113, 255, 76, 255);
@@ -1743,24 +1918,28 @@ public class Interact : MonoBehaviour
             {
                 TutorialScript.NextTutorial();
             }
+            StopCoroutine(BlenderTimer());
         }
 
         if (BlenderTimerValue == 1 && DialogueScript.HedgehogDrink || DialogueScript.PangolinDrink || DialogueScript.BatDrink)
         {
             AntSmoothieMade = true;
             BlenderValueColour.color = new Color32(113, 255, 76, 255);
+            StopCoroutine(BlenderTimer());
         }
 
         if (BlenderTimerValue == 1 && DialogueScript.GemsbokDrink || DialogueScript.KangarooDrink)
         {
             MelonSmoothieMade = true;
             BlenderValueColour.color = new Color32(113, 255, 76, 255);
+            StopCoroutine(BlenderTimer());
         }
 
         if (BlenderTimerValue == 1 && DialogueScript.PonyDrink || DialogueScript.ChimpDrink || DialogueScript.AlpacaDrink)
         {
             StrawberryandAppleSmoothieMade = true;
             BlenderValueColour.color = new Color32(113, 255, 76, 255);
+            StopCoroutine(BlenderTimer());
         }
     }
 
@@ -1902,6 +2081,7 @@ public class Interact : MonoBehaviour
             
     }
 
+    /*
     IEnumerator TrashSliderTimer()
     {
         TrashTimerValue = TrashTimerValue + 0.0005f;
@@ -1916,6 +2096,7 @@ public class Interact : MonoBehaviour
             TrashTimerSlider.value = 0;
         }
     }
+    */
 
     IEnumerator FridgeLightOverlay()
     {
@@ -2037,18 +2218,21 @@ public class Interact : MonoBehaviour
         {
             HoldingMeatGO.SetActive(false);
             FridgeScript.HoldingMeat = false;
+            PlayerLeftHandFull = false;
         }
 
         if(FridgeScript.HoldingAnt)
         {
             HoldingAntGO.SetActive(false);
             FridgeScript.HoldingAnt = false;
+            PlayerLeftHandFull = false;
         }
 
         if(FridgeScript.HoldingMelon)
         {
             HoldingMelonGO.SetActive(false);
             FridgeScript.HoldingMelon = false;
+            PlayerLeftHandFull = false;
         }
 
         if (FridgeScript.HoldingStrawberry || FridgeScript.HoldingApple)
@@ -2057,6 +2241,8 @@ public class Interact : MonoBehaviour
             FridgeScript.HoldingStrawberry = false;
             HoldingAppleGO.SetActive(false);
             FridgeScript.HoldingApple = false;
+            PlayerLeftHandFull = false;
+            PlayerRightHandFull = true;
         }
     }
 

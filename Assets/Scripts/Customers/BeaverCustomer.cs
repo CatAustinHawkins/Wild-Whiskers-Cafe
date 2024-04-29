@@ -2,15 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+//This script is on the customer, controlling their movement and happiness
 
 /// <summary>
-/// This script is on the customer, controlling their movement and happiness.
-/// Day 1 Adder
+/// Beaver Customer
+/// Day 3
 /// 1 Meal
 /// </summary>
- 
-public class AdderCustomer : MonoBehaviour
+public class BeaverCustomer : MonoBehaviour
 {
     //Speed and location variables
     private float speed = 8.0f;
@@ -64,6 +63,8 @@ public class AdderCustomer : MonoBehaviour
     public AudioSource PlateDrop;
     public AudioSource AnimalEating;
 
+    public GameObject Dialogue;
+    public GameObject Interact;
 
     void Start()
     {
@@ -71,7 +72,9 @@ public class AdderCustomer : MonoBehaviour
         StartCoroutine(HappinessValue());
         DayBegin = true;
 
-        DialogueScript.AdderMeal = true;
+
+        Destroy(Interact);
+        Destroy(Dialogue);
     }
 
     void Update()

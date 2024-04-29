@@ -28,10 +28,8 @@ TagManager:
   - Wardrobe
   - KitchenExit
   - TrashBin
-  - DirtyPlate
   - Sink
   - ButtonSound
-  - Coins
   - AdderCustomer
   - LeopardCustomer
   - PonyCustomer
@@ -51,6 +49,16 @@ TagManager:
   - RaccoonCustomer
   - AlpacaCustomer
   - FoxCustomer
+  - Coin1
+  - Coin2
+  - Coin3
+  - Coin4
+  - DirtyPlate1
+  - DirtyPlate2
+  - DirtyPlate3
+  - DirtyPlate4
+  - MainMenuSave
+  - Puddle
   layers:
   - Default
   - TransparentFX

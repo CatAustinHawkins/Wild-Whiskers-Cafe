@@ -63,13 +63,13 @@ public class PlayerSetup : MonoBehaviour
         Choice8Selected = false;
 
         Choice1.color = new Color32(171, 171, 171, 255);
-        Choice2.color = new Color32(255, 255, 255, 255);
-        Choice3.color = new Color32(255, 255, 255, 255);
-        Choice4.color = new Color32(255, 255, 255, 255);
-        Choice5.color = new Color32(255, 255, 255, 255);
-        Choice6.color = new Color32(255, 255, 255, 255);
-        Choice7.color = new Color32(255, 255, 255, 255);
-        Choice8.color = new Color32(255, 255, 255, 255);
+        Choice2.color = Color.white;
+        Choice3.color = Color.white;
+        Choice4.color = Color.white;
+        Choice5.color = Color.white;
+        Choice6.color = Color.white;
+        Choice7.color = Color.white;
+        Choice8.color = Color.white;
 
     }
     public void PlayerAvatarChoice2()
@@ -84,13 +84,13 @@ public class PlayerSetup : MonoBehaviour
         Choice8Selected = false;
 
         Choice2.color = new Color32(171, 171, 171, 255);
-        Choice1.color = new Color32(255, 255, 255, 255);
-        Choice3.color = new Color32(255, 255, 255, 255);
-        Choice4.color = new Color32(255, 255, 255, 255);
-        Choice5.color = new Color32(255, 255, 255, 255);
-        Choice6.color = new Color32(255, 255, 255, 255);
-        Choice7.color = new Color32(255, 255, 255, 255);
-        Choice8.color = new Color32(255, 255, 255, 255);
+        Choice1.color = Color.white;
+        Choice3.color = Color.white;
+        Choice4.color = Color.white;
+        Choice5.color = Color.white;
+        Choice6.color = Color.white;
+        Choice7.color = Color.white;
+        Choice8.color = Color.white;
     }
     public void PlayerAvatarChoice3()
     {
@@ -104,13 +104,13 @@ public class PlayerSetup : MonoBehaviour
         Choice8Selected = false;
 
         Choice3.color = new Color32(171, 171, 171, 255);
-        Choice2.color = new Color32(255, 255, 255, 255);
-        Choice1.color = new Color32(255, 255, 255, 255);
-        Choice4.color = new Color32(255, 255, 255, 255);
-        Choice5.color = new Color32(255, 255, 255, 255);
-        Choice6.color = new Color32(255, 255, 255, 255);
-        Choice7.color = new Color32(255, 255, 255, 255);
-        Choice8.color = new Color32(255, 255, 255, 255);
+        Choice2.color = Color.white;
+        Choice1.color = Color.white;
+        Choice4.color = Color.white;
+        Choice5.color = Color.white;
+        Choice6.color = Color.white;
+        Choice7.color = Color.white;
+        Choice8.color = Color.white;
     }
     public void PlayerAvatarChoice4()
     {
@@ -124,13 +124,13 @@ public class PlayerSetup : MonoBehaviour
         Choice8Selected = false;
 
         Choice4.color = new Color32(171, 171, 171, 255);
-        Choice2.color = new Color32(255, 255, 255, 255);
-        Choice3.color = new Color32(255, 255, 255, 255);
-        Choice1.color = new Color32(255, 255, 255, 255);
-        Choice5.color = new Color32(255, 255, 255, 255);
-        Choice6.color = new Color32(255, 255, 255, 255);
-        Choice7.color = new Color32(255, 255, 255, 255);
-        Choice8.color = new Color32(255, 255, 255, 255);
+        Choice2.color = Color.white;
+        Choice3.color = Color.white;
+        Choice1.color = Color.white;
+        Choice5.color = Color.white;
+        Choice6.color = Color.white;
+        Choice7.color = Color.white;
+        Choice8.color = Color.white;
     }
     public void PlayerAvatarChoice5()
     {
@@ -144,13 +144,13 @@ public class PlayerSetup : MonoBehaviour
         Choice8Selected = false;
 
         Choice5.color = new Color32(171, 171, 171, 255);
-        Choice2.color = new Color32(255, 255, 255, 255);
-        Choice3.color = new Color32(255, 255, 255, 255);
-        Choice4.color = new Color32(255, 255, 255, 255);
-        Choice1.color = new Color32(255, 255, 255, 255);
-        Choice6.color = new Color32(255, 255, 255, 255);
-        Choice7.color = new Color32(255, 255, 255, 255);
-        Choice8.color = new Color32(255, 255, 255, 255);
+        Choice2.color = Color.white;
+        Choice3.color = Color.white;
+        Choice4.color = Color.white;
+        Choice1.color = Color.white;
+        Choice6.color = Color.white;
+        Choice7.color = Color.white;
+        Choice8.color = Color.white;
     }
     public void PlayerAvatarChoice6()
     {
@@ -164,13 +164,13 @@ public class PlayerSetup : MonoBehaviour
         Choice8Selected = false;
 
         Choice6.color = new Color32(171, 171, 171, 255);
-        Choice2.color = new Color32(255, 255, 255, 255);
-        Choice3.color = new Color32(255, 255, 255, 255);
-        Choice1.color = new Color32(255, 255, 255, 255);
-        Choice5.color = new Color32(255, 255, 255, 255);
-        Choice4.color = new Color32(255, 255, 255, 255);
-        Choice7.color = new Color32(255, 255, 255, 255);
-        Choice8.color = new Color32(255, 255, 255, 255);
+        Choice2.color = Color.white;
+        Choice3.color = Color.white;
+        Choice1.color = Color.white;
+        Choice5.color = Color.white;
+        Choice4.color = Color.white;
+        Choice7.color = Color.white;
+        Choice8.color = Color.white;
     }
     public void PlayerAvatarChoice7()
     {
@@ -184,17 +184,17 @@ public class PlayerSetup : MonoBehaviour
         Choice8Selected = false;
 
         Choice7.color = new Color32(171, 171, 171, 255);
-        Choice2.color = new Color32(255, 255, 255, 255);
-        Choice3.color = new Color32(255, 255, 255, 255);
-        Choice1.color = new Color32(255, 255, 255, 255);
-        Choice5.color = new Color32(255, 255, 255, 255);
-        Choice6.color = new Color32(255, 255, 255, 255);
-        Choice4.color = new Color32(255, 255, 255, 255);
-        Choice8.color = new Color32(255, 255, 255, 255);
+        Choice2.color = Color.white;
+        Choice3.color = Color.white;
+        Choice1.color = Color.white;
+        Choice5.color = Color.white;
+        Choice6.color = Color.white;
+        Choice4.color = Color.white;
+        Choice8.color = Color.white;
     }
     public void PlayerAvatarChoice8()
     {
-        Choice8Selected = true;
+        Choice7Selected = true;
         Choice2Selected = false;
         Choice3Selected = false;
         Choice1Selected = false;
@@ -204,13 +204,13 @@ public class PlayerSetup : MonoBehaviour
         Choice4Selected = false;
 
         Choice8.color = new Color32(171, 171, 171, 255);
-        Choice2.color = new Color32(255, 255, 255, 255);
-        Choice3.color = new Color32(255, 255, 255, 255);
-        Choice1.color = new Color32(255, 255, 255, 255);
-        Choice5.color = new Color32(255, 255, 255, 255);
-        Choice6.color = new Color32(255, 255, 255, 255);
-        Choice7.color = new Color32(255, 255, 255, 255);
-        Choice4.color = new Color32(255, 255, 255, 255);
+        Choice2.color = Color.white;
+        Choice3.color = Color.white;
+        Choice1.color = Color.white;
+        Choice5.color = Color.white;
+        Choice6.color = Color.white;
+        Choice7.color = Color.white;
+        Choice4.color = Color.white;
     }
 
     public void Finished()

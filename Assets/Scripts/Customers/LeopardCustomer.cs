@@ -4,6 +4,11 @@ using UnityEngine.UI;
 
 //This script is on the customer, controlling their movement and happiness
 
+/// <summary>
+/// Leopard Customer
+/// Day 1 
+/// 2 Meals
+/// </summary>
 public class LeopardCustomer : MonoBehaviour
 {
     //Speed and location variables
@@ -175,7 +180,7 @@ public class LeopardCustomer : MonoBehaviour
         VenisonSteak.SetActive(false);
         DialogueScript.AbletoTalk = true;
         DialogueScript.ThoughtIcons[4].SetActive(true);
-        DialogueScript.ThinkBubble.SetActive(true);
+        DialogueScript.ThinkBubble[3].SetActive(true);
         DialogueScript.LeopardMeal = true;
         PlateDrop.Play();
     }

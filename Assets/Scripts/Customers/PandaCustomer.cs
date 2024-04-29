@@ -4,6 +4,11 @@ using UnityEngine.UI;
 
 //This script is on the customer, controlling their movement and happiness
 
+/// <summary>
+/// Panda Customer
+/// Tutorial and Day 5
+/// 
+/// </summary>
 public class PandaCustomer : MonoBehaviour
 {
     //Speed and location variables
@@ -190,8 +195,8 @@ public class PandaCustomer : MonoBehaviour
         BambooHotdog.SetActive(false);
         DialogueScript.AbletoTalk = true;
         DialogueScript.ThoughtIcons[2].SetActive(true);
-        DialogueScript.ThinkBubble.SetActive(true);
-        DialogueScript.PandaMeal = true;
+        DialogueScript.ThinkBubble[1].SetActive(true);
+        DialogueScript.PandaMeal1 = true;
         PlateDrop.Play();
         if (TutorialScript.TutorialImages == 20)
         {

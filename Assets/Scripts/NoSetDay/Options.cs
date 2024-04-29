@@ -127,7 +127,7 @@ public class Options : MonoBehaviour
     public void Save()
     {
         PlayerPrefs.SetFloat("OverallVolume", VolumeSlider.value);
-        PlayerPrefs.SetFloat("MusicVolume", MusicSlider.value);
+        //PlayerPrefs.SetFloat("MusicVolume", MusicSlider.value);
         PlayerPrefs.SetInt("ScreenWidth", width);
         PlayerPrefs.SetInt("ScreenHeight", height);
         PlayerPrefs.SetInt("FullScreen", FullScreenValue);
@@ -137,7 +137,7 @@ public class Options : MonoBehaviour
     public void Load()
     {
         VolumeSlider.value = PlayerPrefs.GetFloat("OverallVolume");
-        MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        //MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         width = PlayerPrefs.GetInt("ScreenWidth");
         height = PlayerPrefs.GetInt("ScreenHeight");
         FullScreenValue = PlayerPrefs.GetInt("FullScreen");

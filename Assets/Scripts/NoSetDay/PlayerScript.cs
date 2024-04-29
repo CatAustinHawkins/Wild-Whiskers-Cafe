@@ -7,13 +7,10 @@ using UnityEngine.EventSystems;
 
 public class PlayerScript : MonoBehaviour
 {
-    public float speed = 8;
+    public float speed = 12;
 
     public GameObject playersetupscript; //the player setup script
     public PlayerSetup playersetup;
-
-    public GameObject setupscript; //the player setup script
-    public Setup setup;
 
     public string PlayerName;
 
@@ -53,13 +50,11 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         Load();
-        DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
-
+        //DontDestroyOnLoad(this.gameObject); //dont destroy - so the player script can access it 
 
         target = transform.position;
-        speed = 12;
 
-        TestSaveGO = GameObject.FindWithTag("Test"); //find the player setup script
+        TestSaveGO = GameObject.FindWithTag("MainMenuSave"); //find the player setup script
         TestScript = TestSaveGO.GetComponent<MainMenuSave>();
 
         if (!PlayedBefore)
@@ -67,7 +62,7 @@ public class PlayerScript : MonoBehaviour
             playersetupscript = GameObject.FindWithTag("Setup"); //find the player setup script
             playersetup = playersetupscript.GetComponent<PlayerSetup>();
 
-            TestSaveGO = GameObject.FindWithTag("Test"); //find the player setup script
+            TestSaveGO = GameObject.FindWithTag("MainMenuSave"); //find the player setup script
             TestScript = TestSaveGO.GetComponent<MainMenuSave>();
 
             //setupscript = GameObject.FindWithTag("SetupOne"); //find the player setup script
@@ -133,55 +128,70 @@ public class PlayerScript : MonoBehaviour
 
             PlayerName = playersetup.PlayerName; //set the players name
 
-            PlayerNameIntro.text = "Hi " + PlayerName + "!";
+            PlayerNameIntro.text = $"Hi {PlayerName}!";
         }
     }
 
     void Update()
     {
         goldtext.text = "Gold: " + gold.ToString() + "g";
-
-        if (!WashingUp)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-
-                if (EventSystem.current.IsPointerOverGameObject())
-                {
-                    Debug.Log("Clicked on the UI");
-                    return;
-                }
-                else
-                {
-
-                    target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    target.z = transform.position.z;
-                }
-
-            }
-
-            if (!ChangedRoom)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            }
-
-            if (ChangedRoom)
-            {
-                target = transform.position;
-            }
-        }
-
-        if(Input.GetKey(KeyCode.Escape))
+        
+        if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene("MainMenu");
         }
 
+        if (WashingUp) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log("Clicked on the UI");
+                return;
+            }
+            else
+            {
+                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                target.z = transform.position.z;
+            }
+
+        }
+
+        if (!ChangedRoom)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        }
+
+        if (ChangedRoom)
+        {
+            target = transform.position;
+        }
+        
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("collided");
         target = transform.position;
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Puddle")
+        {
+            speed = 6;
+        }
+
+    }
+
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Puddle")
+        {
+            speed = 12;
+        }
 
     }
 

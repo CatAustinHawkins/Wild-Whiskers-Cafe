@@ -17,13 +17,13 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI NameTextTMP;
     public Tutorial TutorialScript;
 
-    public GameObject ThinkBubble;
+    public GameObject[] ThinkBubble;
     [Header("Thought GameObjects")]
     public GameObject[] ThoughtIcons;
 
     //Tutorial
-    public bool PandaDrink;
-    public bool PandaMeal;
+    public bool PandaDrink1;
+    public bool PandaMeal1;
 
     //Day 1 
     public bool AdderMeal;
@@ -62,6 +62,10 @@ public class Dialogue : MonoBehaviour
     public bool AlpacaDrink;
     public bool AlpacaMeal;
     public bool FoxMeal;
+
+    public bool PandaDrink2;
+
+    public bool PandaMeal2;
     //tutorial panda drink and meal
 
     //Player
@@ -235,7 +239,7 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-
+    /*
     //same as interact script
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -254,7 +258,7 @@ public class Dialogue : MonoBehaviour
             DialogueOpen = false;
         }
     }
-
+    */
     public void DialogueButton()
     {
 
@@ -279,7 +283,7 @@ public class Dialogue : MonoBehaviour
                 //TUTORIAL
                 if (InteractScript.PandaInRange)
                 {
-                    if (PandaDrink)
+                    if (PandaDrink1)
                     {
                         if (TutorialScript.TutorialImages == 7)
                         {
@@ -291,7 +295,7 @@ public class Dialogue : MonoBehaviour
                         DialogueTextTMP.text = "Can I get a Meat Smoothie?";
                     }
 
-                    if (PandaMeal)
+                    if (PandaMeal1)
                     {
                         BambooHotdogAudio.Play();
                         NameTextTMP.text = "Panda";
@@ -305,6 +309,7 @@ public class Dialogue : MonoBehaviour
                 {
                     if (AdderMeal)
                     {
+                        Debug.Log("Adder Meal Time");
                         DialogueBox.SetActive(true); //enable the panda dialogue asking for the bamboo hotdog
                         DialogueOpen = true;
 
@@ -695,7 +700,7 @@ public class Dialogue : MonoBehaviour
 
                 if (InteractScript.PandaInRange)
                 {
-                    if (PandaDrink)
+                    if (PandaDrink2)
                     {
                         DialogueBox.SetActive(true); //enable the panda dialogue asking for the bamboo hotdog
                         DialogueOpen = true;
@@ -706,7 +711,8 @@ public class Dialogue : MonoBehaviour
                         TickButtonGO.SetActive(true);
                         CrossButtonGO.SetActive(true);
                     }
-                    if (PandaMeal)
+
+                    if (PandaMeal2)
                     {
                         DialogueBox.SetActive(true); //enable the panda dialogue asking for the bamboo hotdog
                         DialogueOpen = true;
@@ -718,18 +724,16 @@ public class Dialogue : MonoBehaviour
                         CrossButtonGO.SetActive(true);
                     }
                 }
-
-                else
-                {
-                    DialogueBox.SetActive(false);
-                    DialogueOpen = false;
-                    if (TutorialScript.TutorialImages == 9)
-                    {
-                        TutorialScript.NextTutorial();
-                    }
-
-
-                }
+            }
+        }
+        
+        if (DialogueOpen)
+        {
+            DialogueBox.SetActive(false);
+            DialogueOpen = false;
+            if (TutorialScript.TutorialImages == 9)
+            {
+                TutorialScript.NextTutorial();
             }
         }
     }
@@ -768,12 +772,11 @@ public class Dialogue : MonoBehaviour
             {
                 TutorialScript.NextTutorial();
             }
-            ThinkBubble.SetActive(false);
             DialogueTextTMP.text = "Yay!!!";
             CrossButtonGO.SetActive(false);
             TickButtonGO.SetActive(false);
 
-            if (PandaMeal)
+            if (PandaMeal1)
             {
                 Player.CurrentOrder = 2;
                 BambooUIUnused.SetActive(false);
@@ -784,7 +787,7 @@ public class Dialogue : MonoBehaviour
                 CrossButtonGO.SetActive(false);
                 TickButtonGO.SetActive(false);
                 ThoughtIcons[2].SetActive(false);
-                ThinkBubble.SetActive(false);
+                ThinkBubble[1].SetActive(false);
                 AbletoTalk = false;
                 if (TutorialScript.TutorialImages == 21)
                 {
@@ -792,7 +795,7 @@ public class Dialogue : MonoBehaviour
                 }
             }
 
-            if (PandaDrink)
+            if (PandaDrink1)
             {
                 Player.CurrentOrder = 1;
                 MeatUIUnused.SetActive(false);
@@ -800,7 +803,7 @@ public class Dialogue : MonoBehaviour
                 CrossButtonGO.SetActive(false);
                 TickButtonGO.SetActive(false);
                 ThoughtIcons[1].SetActive(false);
-                ThinkBubble.SetActive(false);
+                ThinkBubble[1].SetActive(false);
                 AbletoTalk = false;
             }
 
@@ -808,18 +811,22 @@ public class Dialogue : MonoBehaviour
             {
                 Player.CurrentOrder = 3;
                 ThoughtIcons[3].SetActive(false);
+                ThinkBubble[2].SetActive(false);
+
             }
 
             if (LeopardDrink)
             {
                 Player.CurrentOrder = 4;
                 ThoughtIcons[4].SetActive(false);
+                ThinkBubble[3].SetActive(false);
 
             }
             if (LeopardMeal)
             {
                 Player.CurrentOrder = 5;
                 ThoughtIcons[5].SetActive(false);
+                ThinkBubble[4].SetActive(false);
             }
             if (PonyDrink)
             {
@@ -1003,13 +1010,13 @@ public class Dialogue : MonoBehaviour
                 ThoughtIcons[30].SetActive(false);
             }
 
-            if (PandaDrink)
+            if (PandaDrink2)
             {
                 Player.CurrentOrder = 31;
                 ThoughtIcons[31].SetActive(false);
             }
 
-            if (PandaMeal)
+            if (PandaMeal2)
             {
                 Player.CurrentOrder = 32;
                 ThoughtIcons[32].SetActive(false);

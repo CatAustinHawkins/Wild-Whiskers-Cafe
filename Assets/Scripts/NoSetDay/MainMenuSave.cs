@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenuSave : MonoBehaviour
 {
-    public int Testing = 1;
+    public int Testing = 0;
 
     public int PlayerLevel;
 

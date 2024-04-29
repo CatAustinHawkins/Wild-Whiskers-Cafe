@@ -265,6 +265,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameObjectTag: ButtonSound
+--- !u!1 &81226310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 81226312}
+  - component: {fileID: 81226311}
+  - component: {fileID: 81226313}
+  m_Layer: 0
+  m_Name: MainMenuSave
+  m_TagString: MainMenuSave
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &81226311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81226310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c9958628169a9478d7fd6e8bbddb1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Testing: 0
+  PlayerLevel: 0
+  StartButton: {fileID: 1679609922}
+  ContinueButton: {fileID: 176889432}
+--- !u!4 &81226312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81226310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7399982, y: -0.026218444, z: 22.735853}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &81226313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81226310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f15bcac6e6ec9e4cb1ab4063e304775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObjectTag: MainMenuSave
 --- !u!1 &88074981
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,9 +523,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1767474430}
-        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 81226311}
+        m_TargetAssemblyTypeName: MainMenuSave, Assembly-CSharp
+        m_MethodName: ContinueGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

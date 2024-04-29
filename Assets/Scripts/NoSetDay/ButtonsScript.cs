@@ -16,7 +16,7 @@ public class ButtonsScript : MonoBehaviour
         Tutorials.SetActive(true); //Enable the UI screen, starting the tutorial
     }
 
-    public void FinishedDay1() //When Day 1 is finished
+    public void MainMenuOpen() //When Day 1 is finished
     {
         SceneManager.LoadScene("MainMenu"); //Player can return to the main menu
     }
