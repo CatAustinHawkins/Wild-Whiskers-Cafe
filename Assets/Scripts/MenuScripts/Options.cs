@@ -28,7 +28,7 @@ public class Options : MonoBehaviour
 
     public void Start()
     {
-        Load(); //load any save data
+      //  Load(); //load any save data
     }
 
     public void DropdownMenuChanged() //Screen resolution dropdown
@@ -125,7 +125,7 @@ public class Options : MonoBehaviour
         PlayerPrefs.SetInt("FullScreen", FullScreenValue); //save the fullscreen value
         PlayerPrefs.SetInt("GraphicsSetting", DropdownMenu.value); //save the graphics setting value
     }
-
+    /*
     public void Load() //load the options data
     {
         VolumeSlider.value = PlayerPrefs.GetFloat("OverallVolume"); //load the overall volume value
@@ -134,4 +134,5 @@ public class Options : MonoBehaviour
         FullScreenValue = PlayerPrefs.GetInt("FullScreen"); //load the fullscreen value
         DropdownMenu.value = PlayerPrefs.GetInt("GraphicsSetting"); //load the graphics setting value
     }
+    */
 }

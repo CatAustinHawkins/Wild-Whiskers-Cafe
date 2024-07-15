@@ -366,7 +366,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Critter Cafe
+  m_text: Wild Whiskers Cafe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7eedbb3b323e9f7429d8def5461dd35d, type: 2}
   m_sharedMaterial: {fileID: 4035300132230051486, guid: 7eedbb3b323e9f7429d8def5461dd35d, type: 2}
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -296.46548, w: 0}
+  m_margin: {x: 0, y: 0, z: -780.9376, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -635,8 +635,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Critter Cafe is an Educational Cafe Simulator about feeding a variety of
-    wild critters! Thank you for playing.
+  m_text: Wild Whiskers Cafe is an Educational Cafe Simulator about feeding a variety
+    of wild critters! Thank you for playing.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7eedbb3b323e9f7429d8def5461dd35d, type: 2}
   m_sharedMaterial: {fileID: 4035300132230051486, guid: 7eedbb3b323e9f7429d8def5461dd35d, type: 2}

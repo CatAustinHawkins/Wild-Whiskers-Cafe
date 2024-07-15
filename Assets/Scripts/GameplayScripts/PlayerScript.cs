@@ -34,7 +34,7 @@ public class PlayerScript : MonoBehaviour
 
     public int CurrentOrder = 0; //the player's current order, used by the current order script
 
-    public int gold; //their gold count
+    public int gold = 50; //their gold count
 
     public TextMeshProUGUI goldtext; //gold textmeshpro object used in shop cookbook section
 
@@ -46,12 +46,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
-        Load(); //load any saved data
-
-        if(PlayedBefore)
-        {
-            TutorialPrompts.SetActive(false);
-        }
+       // Load(); //load any saved data
 
         if (!PlayedBefore) //if the player hasn't played before
         {
@@ -235,10 +230,12 @@ public class PlayerScript : MonoBehaviour
     }
 
     //loads their gold, appearance, and name
+    /*
     public void Load()
     {
         PlayerAppearance = PlayerPrefs.GetInt("PlayerSprite");
         gold = PlayerPrefs.GetInt("PlayerGold");
         name = PlayerPrefs.GetString("PlayerName");
     }
+    */
 }

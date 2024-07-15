@@ -31,6 +31,7 @@ public class MoveRooms : MonoBehaviour
             Camera.transform.position = new Vector3(103, 0, -10); //update the cameras position
             Player.transform.position = new Vector3(87, -4.5f, 0); //update the players position
             PlayerMove.target = PlayerMove.transform.position; //freeze the players movement, to avoid issues
+            PlayerMove.speed = 14;
 
             if (TutorialScript.TutorialImages == 12) //if the player is on the 31st tutorial section
             {
@@ -48,6 +49,7 @@ public class MoveRooms : MonoBehaviour
             Camera.transform.position = new Vector3(0, 0, -10); //update the cameras position
             Player.transform.position = new Vector3(-21, -4.5f, 0); //update the players position
             PlayerMove.target = PlayerMove.transform.position; //freeze the players movement, to avoid issues
+            PlayerMove.speed = 14;
 
             InBedroom = false; //the player is no longer in the bedroom
             InCafe = true; //the player is in the cafe
@@ -64,6 +66,7 @@ public class MoveRooms : MonoBehaviour
             Camera.transform.position = new Vector3(-120, 0, -10); //update the cameras position
             Player.transform.position = new Vector3(-110, -4.5f, 0); //update the players position
             PlayerMove.target = PlayerMove.transform.position; //freeze the players movement, to avoid issues
+            PlayerMove.speed = 14;
 
             if (TutorialScript.TutorialImages == 31) //if the player is on the 31st tutorial section
             {
@@ -81,6 +84,7 @@ public class MoveRooms : MonoBehaviour
             Camera.transform.position = new Vector3(0, 0, -10); //update the cameras position
             Player.transform.position = new Vector3(21, -4.5f, 0); //update the players position
             PlayerMove.target = PlayerMove.transform.position; //freeze the players movement, to avoid issues
+            PlayerMove.speed = 14;
 
             InKitchen = false; //the player is no longer in the kitchen
             InCafe = true; //the player is in the cafe

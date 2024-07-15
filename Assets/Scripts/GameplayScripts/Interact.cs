@@ -2425,11 +2425,15 @@ public class Interact : MonoBehaviour
             MushroomsCooked = true;
             OvenValueColour.color = new Color32(113, 255, 76, 255);
         }
-        if (OvenTimerValue > 3)
+        
+        if (OvenTimerValue > 7)
         {
-            OnFire = true;
-            OvenValueColour.color = new Color32(255, 76, 76, 255);
-            FireController.SetActive(true);
+            if (Random.Range(1, 2) == 2)
+            {
+                OnFire = true;
+                OvenValueColour.color = new Color32(255, 76, 76, 255);
+                FireController.SetActive(true);
+            }
         }
             
     }

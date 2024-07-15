@@ -17,7 +17,7 @@ public class MenuButtons : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Escape)) //if the player presses escape
         {
-            Application.Quit(); //close the game
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

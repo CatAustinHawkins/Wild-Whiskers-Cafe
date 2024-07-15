@@ -143,6 +143,7 @@ public class AdderCustomer : MonoBehaviour
         StartCoroutine(Eating1());
         DialogueScript.AdderMeal = false;
         DialogueScript.AdderDone = true;
+        DialogueScript.LeopardDrink = true;
     }
 
     public void OnTriggerEnter2D(Collider2D other)

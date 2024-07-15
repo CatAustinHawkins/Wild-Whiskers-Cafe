@@ -28,7 +28,7 @@ public class Shop : MonoBehaviour
     public int BearPlushBought;
 
     //after player buys shop item, save value of the item to be saved and instaniated
-
+    /*
     public void Start()
     {
         //check what items the player has previously bought 
@@ -121,7 +121,7 @@ public class Shop : MonoBehaviour
         VendingMachineBought = PlayerPrefs.GetInt("VendingMachinePurchased");
         BearPlushBought = PlayerPrefs.GetInt("BearPlushPurchased");
     }
-
+    */
     public void FishtankBuy() //when the fish tank button is clicked
     {
         if (TutorialScript.TutorialImages == 5) //if on tutorial 5
@@ -133,7 +133,7 @@ public class Shop : MonoBehaviour
         Overlays[0].SetActive(true); //enable the fish tank overlay, preventing the player from buying it again
 
         FishTankBought = 1; //save that the fish tank has been bought
-        Save();
+      //  Save();
     }
 
     //repeat
@@ -147,7 +147,7 @@ public class Shop : MonoBehaviour
             Overlays[1].SetActive(true);
             KiwiCrocodileBought = 1;
         }
-        Save();
+      //  Save();
     }
 
     public void PineappleHedgehogBuy() //when the pineapple hedgehog poster button is clicked
@@ -161,7 +161,7 @@ public class Shop : MonoBehaviour
 
             PineappleHedgehogBought = 1;
         }
-        Save();
+     //   Save();
     }
 
     public void AppleCrabBuy() //when the apple crab poster button is clicked
@@ -174,7 +174,7 @@ public class Shop : MonoBehaviour
             Overlays[3].SetActive(true);
             AppleCrabBought = 1;
         }
-        Save();
+      //  Save();
     }
 
     public void StrawberryMiceBuy() //when the strawberry mice poster button is clicked
@@ -187,7 +187,7 @@ public class Shop : MonoBehaviour
             Overlays[4].SetActive(true);
             StrawberryMiceBought = 1;
         }
-        Save();
+     //   Save();
     }
 
     public void AppleDogBuy() //when the apple dog poster button is clicked
@@ -200,7 +200,7 @@ public class Shop : MonoBehaviour
             Overlays[5].SetActive(true);
             AppleDogBought = 1;
         }
-        Save();
+      //  Save();
     }
 
     public void DisplayTable1Buy() //when the display table 1 button is clicked
@@ -213,7 +213,7 @@ public class Shop : MonoBehaviour
             Overlays[6].SetActive(true);
             DisplayTable1Bought = 1;
         }
-        Save();
+     //   Save();
     }
 
     public void DisplayTable2Buy() //when the display table 2 button is clicked
@@ -227,7 +227,7 @@ public class Shop : MonoBehaviour
 
             DisplayTable2Bought = 1;
         }
-        Save();
+     //   Save();
     }
 
     public void AlienPlushBuy()//when the alien plush button is clicked
@@ -241,7 +241,7 @@ public class Shop : MonoBehaviour
 
             AlienPlushBought = 1;
         }
-        Save();
+     //   Save();
     }
 
     public void WardrobeBuy()//when the wardrobe button is clicked
@@ -255,7 +255,7 @@ public class Shop : MonoBehaviour
 
             WardrobeBought = 1;
         }
-        Save();
+    //    Save();
     }
 
     public void VendingMachineBuy()//when the vending machine button is clicked
@@ -270,7 +270,7 @@ public class Shop : MonoBehaviour
             VendingMachineBought = 1;
 
         }
-        Save();
+     //   Save();
     }
 
     public void BearPlushBuy()//when the bear plushie button is clicked
@@ -284,6 +284,6 @@ public class Shop : MonoBehaviour
 
             BearPlushBought = 1;
         }
-        Save();
+       // Save();
     }
 }

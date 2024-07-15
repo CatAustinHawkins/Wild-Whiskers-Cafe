@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadingMenu.unity
     guid: fe08e9a8d57f64a4db769b2a29b3e7ef
   - enabled: 1
+    path: Assets/Scenes/BackupScene.unity
+    guid: 5db6d0d59d5f6604c87876204433b765
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

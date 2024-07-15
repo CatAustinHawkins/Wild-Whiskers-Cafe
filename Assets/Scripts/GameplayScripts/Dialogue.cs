@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 //This script controls all the dialogue that appears in Critter Cafe
 
@@ -202,6 +203,26 @@ public class Dialogue : MonoBehaviour
 
     public bool FailedConvo;
 
+    public Image DialogueImage;
+
+    public Sprite PandaSprite;
+    public Sprite LeopardSprite;
+
+    public GameObject DialogueImageGO;
+    public GameObject AdderSpriteGO;
+
+    public Sprite PlayerSprite1;
+    public Sprite PlayerSprite2;
+    public Sprite PlayerSprite3;
+    public Sprite PlayerSprite4;
+    public Sprite PlayerSprite5;
+    public Sprite PlayerSprite6;
+    public Sprite PlayerSprite7;
+    public Sprite PlayerSprite8;
+
+    public GameObject PlayerSetup; //the player setup gameobject
+    public PlayerSetup PlayerSetupScript; //the player setup script
+
     /*Tutorial
     Panda Orders Meat Smoothie and Bamboo Hotdog T1
 
@@ -235,7 +256,11 @@ public class Dialogue : MonoBehaviour
     Fox Orders Mouse Burger T1
     Panda Orders Meat Smoothie and Bamboo Hotdog T2
     */
-
+    public void Start()
+    {
+        PlayerSetup = GameObject.FindWithTag("Setup"); //find the player setup script
+        PlayerSetupScript = PlayerSetup.GetComponent<PlayerSetup>();
+    }
     public void Update()
     {
         if (AbletoTalk) //if the player is able to talk
@@ -418,7 +443,48 @@ public class Dialogue : MonoBehaviour
                     DialogueBox.SetActive(true); //open the dialogue box
                     DialogueOpen = true;
 
-                    NameTextTMP.text = "Player";
+                    if (PlayerSetupScript.Choice1Selected)
+                    {
+                        DialogueImage.sprite = PlayerSprite1;
+                    }
+
+                    if (PlayerSetupScript.Choice2Selected)
+                    {
+                        DialogueImage.sprite = PlayerSprite2;
+                    }
+
+                    if (PlayerSetupScript.Choice3Selected)
+                    {
+                        DialogueImage.sprite = PlayerSprite3;
+                    }
+
+                    if (PlayerSetupScript.Choice4Selected)
+                    {
+                        DialogueImage.sprite = PlayerSprite4;
+                    }
+
+                    if (PlayerSetupScript.Choice5Selected)
+                    {
+                        DialogueImage.sprite = PlayerSprite5;
+                    }
+
+                    if (PlayerSetupScript.Choice6Selected)
+                    {
+                        DialogueImage.sprite = PlayerSprite6;
+                    }
+
+                    if (PlayerSetupScript.Choice7Selected)
+                    {
+                        DialogueImage.sprite = PlayerSprite7;
+                    }
+
+                    if (PlayerSetupScript.Choice8Selected)
+                    {
+                        DialogueImage.sprite = PlayerSprite8;
+                    }
+                    DialogueImageGO.SetActive(true);
+
+                    NameTextTMP.text = PlayerSetupScript.PlayerName;
                     DialogueTextTMP.text = "I can't speak to this customer at the moment.";
                     FailedConvo = true;
 
@@ -437,6 +503,8 @@ public class Dialogue : MonoBehaviour
                             }
                             MeatSmoothieAudio.Play();
 
+                            DialogueImage.sprite = PandaSprite;
+
                             NameTextTMP.text = "Panda";
                             DialogueTextTMP.text = "Can I get a Meat Smoothie?";
                         }
@@ -444,6 +512,7 @@ public class Dialogue : MonoBehaviour
                         if (PandaMeal1)
                         {
                             FailedConvo = false;
+                            DialogueImage.sprite = PandaSprite;
 
                             BambooHotdogAudio.Play();
                             NameTextTMP.text = "Panda";
@@ -457,6 +526,8 @@ public class Dialogue : MonoBehaviour
                     {
                         if (AdderMeal)
                         {
+                            DialogueImageGO.SetActive(false);
+                            AdderSpriteGO.SetActive(true);
                             FailedConvo = false;
 
                             Debug.Log("Adder Meal Time");
@@ -475,8 +546,9 @@ public class Dialogue : MonoBehaviour
                     {
                         if (LeopardDrink)
                         {
+                            AdderSpriteGO.SetActive(false);
                             FailedConvo = false;
-
+                            DialogueImage.sprite = LeopardSprite;
                             DialogueBox.SetActive(true);
                             DialogueOpen = true;
 
@@ -489,6 +561,8 @@ public class Dialogue : MonoBehaviour
 
                         if (LeopardMeal)
                         {
+                            DialogueImage.sprite = LeopardSprite;
+
                             FailedConvo = false;
 
                             DialogueBox.SetActive(true);
@@ -1034,6 +1108,7 @@ public class Dialogue : MonoBehaviour
                 ThoughtIcons[3].SetActive(false);
                 ThinkBubble[2].SetActive(false);
                 AbletoTalk = false;
+                AdderSpriteGO.SetActive(false);
 
             }
 
