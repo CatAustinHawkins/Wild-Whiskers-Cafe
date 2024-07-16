@@ -13349,7 +13349,7 @@ RectTransform:
   m_GameObject: {fileID: 173450983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.20936675, y: 0.20936675, z: 0.20936675}
+  m_LocalScale: {x: 0.47214296, y: 0.47214296, z: 0.47214296}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116615845}
@@ -13358,7 +13358,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -204.9, y: 264.7}
-  m_SizeDelta: {x: 397, y: 553}
+  m_SizeDelta: {x: 182, y: 177}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &173450985
 MonoBehaviour:
@@ -58796,7 +58796,7 @@ RectTransform:
   m_GameObject: {fileID: 882267573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.20445324, y: 0.20445324, z: 0.20445324}
+  m_LocalScale: {x: 0.5622668, y: 0.5622668, z: 0.5622668}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1488309092}
@@ -58805,7 +58805,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -198, y: 267}
-  m_SizeDelta: {x: 544, y: 573}
+  m_SizeDelta: {x: 179, y: 184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &882267575
 MonoBehaviour:
@@ -62843,7 +62843,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to your very own Critter Cafe!
+  m_text: Welcome to your very own Cafe!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de0fffc089686594abc8a8ab7defe650, type: 2}
   m_sharedMaterial: {fileID: 4035300132230051486, guid: de0fffc089686594abc8a8ab7defe650, type: 2}
@@ -67800,7 +67800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &988971634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -135371,7 +135371,7 @@ RectTransform:
   m_GameObject: {fileID: 1992581070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2111914, y: 0.2111914, z: 0.2111914}
+  m_LocalScale: {x: 0.5882525, y: 0.5882525, z: 0.5882525}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 393331937}
@@ -135380,7 +135380,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -195.4, y: 266.8}
-  m_SizeDelta: {x: 529, y: 550}
+  m_SizeDelta: {x: 249, y: 143}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992581072
 MonoBehaviour:
@@ -138811,7 +138811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2049165264
 RectTransform:
   m_ObjectHideFlags: 0

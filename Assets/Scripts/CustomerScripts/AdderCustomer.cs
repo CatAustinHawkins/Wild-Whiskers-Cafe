@@ -111,7 +111,6 @@ public class AdderCustomer : MonoBehaviour
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(3);
         gameObject.SetActive(false); //destroy the customer
-
     }
 
     IEnumerator DeskWait() //waiting at the front of house desk - then they can move to the table
@@ -144,6 +143,7 @@ public class AdderCustomer : MonoBehaviour
         DialogueScript.AdderMeal = false;
         DialogueScript.AdderDone = true;
         DialogueScript.LeopardDrink = true;
+        DialogueScript.AbletoTalk = true;
     }
 
     public void OnTriggerEnter2D(Collider2D other)

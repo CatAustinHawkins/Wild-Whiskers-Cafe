@@ -121,7 +121,7 @@ public class LeopardCustomer : MonoBehaviour
 
     IEnumerator ThoughtWait()//waiting at the table - then the thought bubble appears
     {
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4);
         movingtotable = false;
         ThoughtBubble.SetActive(true);
         DialogueScript.AbletoTalk = true;
