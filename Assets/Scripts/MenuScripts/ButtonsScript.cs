@@ -20,4 +20,9 @@ public class ButtonsScript : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu"); //Player can return to the main menu
     }
+
+    public void Testing()
+    {
+        Debug.Log("Test");
+    }
 }

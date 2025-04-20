@@ -60,6 +60,9 @@ TagManager:
   - MainMenuSave
   - Puddle
   - PandaDay5Customer
+  - PlatePlace1
+  - PlatePlace2
+  - OrderPoint
   layers:
   - Default
   - TransparentFX

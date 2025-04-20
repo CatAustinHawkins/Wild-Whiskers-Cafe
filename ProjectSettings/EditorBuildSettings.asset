@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/FoodTruck.unity
+    guid: 661786ecf7d73484b937ef74d77cac78
   m_configObjects: {}

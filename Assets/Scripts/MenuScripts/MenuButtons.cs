@@ -9,8 +9,8 @@ public class MenuButtons : MonoBehaviour
 
     public void Start()
     {
-        ButtonSource = GameObject.FindWithTag("ButtonSound"); //locate buttonsource gameobject
-        ButtonClick = ButtonSource.GetComponent<AudioSource>(); //locate audio source component 
+        //ButtonSource = GameObject.FindWithTag("ButtonSound"); //locate buttonsource gameobject
+        //ButtonClick = ButtonSource.GetComponent<AudioSource>(); //locate audio source component 
     }
 
     public void FixedUpdate()
