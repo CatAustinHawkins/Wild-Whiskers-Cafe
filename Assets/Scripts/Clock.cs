@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//Day starts at 8am ends at 6pm
+
 public class Clock : MonoBehaviour
 {
     public TextMeshProUGUI ClockText;

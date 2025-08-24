@@ -20,12 +20,10 @@ TagManager:
   - ToCafe2
   - FireExtinguisher
   - Broom
-  - SetupOne
   - Blender
   - TrashBag1
   - TrashBag2
   - TrashBag3
-  - Wardrobe
   - KitchenExit
   - TrashBin
   - Sink
@@ -49,20 +47,23 @@ TagManager:
   - RaccoonCustomer
   - AlpacaCustomer
   - FoxCustomer
-  - Coin1
-  - Coin2
-  - Coin3
-  - Coin4
   - DirtyPlate1
   - DirtyPlate2
   - DirtyPlate3
   - DirtyPlate4
   - MainMenuSave
   - Puddle
-  - PandaDay5Customer
   - PlatePlace1
   - PlatePlace2
   - OrderPoint
+  - Table1
+  - Table2
+  - Table4
+  - Table3
+  - TableCheck
+  - CustomerSpawn
+  - BobCatCustomer
+  - BearCustomer
   layers:
   - Default
   - TransparentFX

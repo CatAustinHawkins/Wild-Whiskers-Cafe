@@ -58,4 +58,9 @@ public class MenuButtons : MonoBehaviour
         SceneManager.LoadScene("MainMenu"); //load main menu scene
         ButtonClick.Play(); //play button click noise
     }
+
+    public void Choose()
+    {
+        SceneManager.LoadScene("Select Screen");
+    }
 }

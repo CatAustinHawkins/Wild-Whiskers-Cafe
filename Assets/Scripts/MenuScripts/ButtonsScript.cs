@@ -21,8 +21,13 @@ public class ButtonsScript : MonoBehaviour
         SceneManager.LoadScene("MainMenu"); //Player can return to the main menu
     }
 
-    public void Testing()
+    public void FoodTruck()
     {
-        Debug.Log("Test");
+        SceneManager.LoadScene("FoodTruck");
+    }
+
+    public void StoryMode()
+    {
+        SceneManager.LoadScene("BackupScene");
     }
 }
