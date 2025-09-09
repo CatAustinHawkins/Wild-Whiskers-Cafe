@@ -16,7 +16,7 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator LoadNextLevel()
     {
-        AsyncOperation loadLevel = SceneManager.LoadSceneAsync("BackupScene"); //start loading the gameplay scene
+        AsyncOperation loadLevel = SceneManager.LoadSceneAsync("StoryModeScene"); //start loading the gameplay scene
 
         while (!loadLevel.isDone) //while the scene is loading
         {

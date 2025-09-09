@@ -264,7 +264,7 @@ public class PlayerSetup : MonoBehaviour
 
     public void Finished() //finished button
     {
-        SceneManager.LoadScene("Tutorial"); //when done, load the tutorial
+        SceneManager.LoadScene("Select Screen"); //when done, load the tutorial
     }
 
     public void Check()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CustomerTest : MonoBehaviour
+public class Customers : MonoBehaviour
 {
 
     //check if a table is occupied

@@ -28,6 +28,6 @@ public class ButtonsScript : MonoBehaviour
 
     public void StoryMode()
     {
-        SceneManager.LoadScene("BackupScene");
+        SceneManager.LoadScene("LoadingMenu");
     }
 }
