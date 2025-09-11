@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class Customers : MonoBehaviour
 {
 
-    //check if a table is occupied
-    //
+    //Script on each customer
+    //Controls movement
 
     public GameObject[] target;
 
